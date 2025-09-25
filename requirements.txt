@@ -1,7 +1,7 @@
 Gunicorn
 Flask
 Translate
-Random
+random
 wikipedia
 beautifulsoup4
 requests
