@@ -19,7 +19,7 @@ app.secret_key = "cx1228"  # Necessário para usar sessão
 
 
 aurora_proc = None  # Guarda o processo da Aurora
-CAMINHO = r"C:\Users\Marco Otávio\Documents\Marco Otavio\Python\dashboard\dictionary.json"
+CAMINHO = r"dictionary.json"
 
 with open(CAMINHO, "r", encoding="utf-8") as f:
     dicionario = json.load(f)
