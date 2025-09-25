@@ -7,7 +7,6 @@ import webbrowser as wb
 from bs4 import BeautifulSoup
 import urllib.parse
 from translate import Translator
-
 import requests
 import wikipedia
 from datetime import datetime

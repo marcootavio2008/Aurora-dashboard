@@ -1,0 +1,7 @@
+Gunicorn
+Flask
+Translate
+Random
+wikipedia
+beautifulsoup4
+requests
