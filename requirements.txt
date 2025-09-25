@@ -4,3 +4,4 @@ Translate
 wikipedia
 beautifulsoup4
 requests
+psutil
