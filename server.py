@@ -40,8 +40,10 @@ def get_dados():
     temperatura = int(temperatura)
     clima = f'{descricao.capitalize()}, está fazendo neste momento: {int(temperatura)}°C'
     hora_atual = datetime.now()
-    hora_resposta = hora_atual.strftime('%H:%M')
-    horas = f"{hora_resposta}"
+    hora_resposta = hora_atual.strftime('%H')
+    minutos = hora_atual.strftime('%M')
+    hora_resposta = hora_resposta + 3
+    horas = f"{hora_resposta}:{minutos}"
     return {
         "Horas: ": horas,
         "Data: ": dia_resposta,
