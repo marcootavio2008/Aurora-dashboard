@@ -87,12 +87,18 @@ USERS = {
 def ws_endpoint(ws):
     connections.append(ws)
     print("PC conectado via WebSocket")
+
     try:
         while True:
-            ws.receive()  # só para manter a conexão viva
+            msg = ws.receive(timeout=1)   # <<< NÃO BLOQUEIA
+            if msg:
+                print("Mensagem recebida:", msg)
     except:
         print("PC desconectado")
-        connections.remove(ws)
+    finally:
+        if ws in connections:
+            connections.remove(ws)
+ections.remove(ws)
 
         # --- endpoint chamado pelo botão do site ---
 @app.route("/ativar")
