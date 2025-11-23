@@ -8,3 +8,4 @@ wikipedia
 pyfirmata
 Flask-SocketIO
 flask-sock
+eventlet
