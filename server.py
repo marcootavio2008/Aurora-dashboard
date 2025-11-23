@@ -23,7 +23,15 @@ app.secret_key = "cx1228"  # Necessário para usar sessão
 socketio = SocketIO(app)
 sock = Sock(app)
 connections = []
-
+dias = {
+    "Monday": "Segunda-feira",
+    "Tuesday": "Terça-feira",
+    "Wednesday": "Quarta-feira",
+    "Thursday": "Quinta-feira",
+    "Friday": "Sexta-feira",
+    "Saturday": "Sábado",
+    "Sunday": "Domingo",
+}
 aurora_proc = None  # Guarda o processo da Aurora
 CAMINHO = r"dictionary.json"
 
@@ -34,10 +42,10 @@ def get_dados():
     #data
     agora_br = datetime.now(ZoneInfo("America/Sao_Paulo"))
     dia = agora_br.strftime(f'%A')
-    
+    dia = (dias[day_en])
     translator = Translator(to_lang='pt', from_lang='en')
     dia = translator.translate(dia_ingles)
-    dia_resposta = agora_br.strftime(f'{dia.capitalize()}, %d/%m/%Y')
+    dia_resposta = agora_br.strftime(f'{dia}, %d/%m/%Y')
     #clima
     API_KEY = "d9d2657ec1b46a818cd8d41288954437"
     cidade = "Barbacena"
