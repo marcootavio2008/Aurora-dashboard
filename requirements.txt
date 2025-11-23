@@ -1,7 +1,10 @@
 Gunicorn
 Flask
-Translate
-wikipedia
+psutil
 beautifulsoup4
+translate
 requests
-flask_sock
+wikipedia
+pyfirmata
+Flask-SocketIO
+flask-sock
