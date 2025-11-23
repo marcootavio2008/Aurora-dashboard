@@ -11,6 +11,7 @@ import requests
 import wikipedia
 from pyfirmata import *
 from datetime import datetime
+from zoneinfo import ZoneInfo
 import datetime as dt
 from flask_socketio import SocketIO
 from flask import redirect, url_for, session, flash
@@ -31,11 +32,11 @@ with open(CAMINHO, "r", encoding="utf-8") as f:
 
 def get_dados():
     #data
-    dia_atual = datetime.now()
-    dia_ingles = dia_atual.strftime(f'%A')
+    agora_br = datetime.now(ZoneInfo("America/Sao_Paulo"))
+    dia_ingles = agora_br.strftime(f'%A')
     translator = Translator(to_lang='pt', from_lang='en')
     dia = translator.translate(dia_ingles)
-    dia_resposta = dia_atual.strftime(f'{dia.capitalize()}, %d/%m/%Y')
+    dia_resposta = agora_br.strftime(f'{dia.capitalize()}, %d/%m/%Y')
     #clima
     API_KEY = "d9d2657ec1b46a818cd8d41288954437"
     cidade = "Barbacena"
@@ -49,21 +50,15 @@ def get_dados():
     umidade = f"Umidade: {umidade}%"
     clima = f'{descricao.capitalize()}, está fazendo neste momento: {int(temperatura)}°C'
     #horas
-    hora_atual = datetime.now()
-    hora_resposta = hora_atual.strftime('%H:%M')
+    hora_resposta = agora_br.strftime('%H:%M')
     horas = f"{hora_resposta}"
-    #local ip
-    ip = request.remote_addr
-    r = requests.get("http://ip-api.com/json/").json()
-    local = f"{r['city']}, {r['country']}"
-    local = translator.translate(local)
+
 
     return {
         "Horas: ": horas,
         "Data: ": dia_resposta,
         "Clima: ": clima,
         "Umidade: ": umidade,
-        "Local: ": local}
 
 def processar_frase(frase):
     frase = frase.lower()
