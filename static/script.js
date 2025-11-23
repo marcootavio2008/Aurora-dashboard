@@ -20,11 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-async function startAurora() {
-    let res = await fetch('/start', {method: 'POST'});
-    let data = await res.json();
-    alert(data.status);
-}
+
 function auroraFalar(texto) {
     if ('speechSynthesis' in window) {
         const fala = new SpeechSynthesisUtterance(texto);
@@ -39,16 +35,14 @@ function auroraFalar(texto) {
     }
 }
 
-async function stopAurora() {
-    let res = await fetch('/stop', {method: 'POST'});
-    let data = await res.json();
-    alert(data.status);
-}
 
-function controleLuz(estado) {
-  const valor = estado ? 1 : 0;
-  socket.emit('comando_arduino', { tipo: 'luz', valor: valor });
-  document.getElementById('status').innerText = estado ? 'Ligado' : 'Desligado';
+function toggleLuz(el) {
+    const estado = el.checked ? "ligar" : "desligar";
+
+    fetch(`/controle_luz?acao=${estado}`)
+        .then(res => res.json())
+        .then(data => console.log(data))
+        .catch(err => console.error(err));
 }
 
 
