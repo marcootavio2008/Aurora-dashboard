@@ -99,16 +99,33 @@ def ws_endpoint(ws):
         if ws in connections:
             connections.remove(ws)
 
-        # --- endpoint chamado pelo botão do site ---
-@app.route("/ativar")
-def ativar():
-    print("Enviando sinal aos PCs conectados...")
-    for pc in connections:
-        try:
-            pc.send("ATIVAR")
-        except:
-            pass
-    return jsonify({"status": "sinal enviado"})
+
+@app.route("/controle_luz")
+def controle_luz():
+    acao = request.args.get("acao")
+
+    if acao == "ligar":
+        print("Enviando comando LIGAR")
+        for pc in connections:
+            try:
+                pc.send("LIGAR_LUZ")
+            except:
+                pass
+
+        return jsonify({"status": "luz ligada"})
+
+    elif acao == "desligar":
+        print("Enviando comando DESLIGAR")
+        for pc in connections:
+            try:
+                pc.send("DESLIGAR_LUZ")
+            except:
+                pass
+
+        return jsonify({"status": "luz desligada"})
+
+    return jsonify({"erro": "comando invalido"})
+
 
 # Página inicial -> Login
 @app.route("/", methods=["GET", "POST"])
