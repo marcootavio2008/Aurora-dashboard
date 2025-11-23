@@ -58,7 +58,7 @@ def get_dados():
         "Horas: ": horas,
         "Data: ": dia_resposta,
         "Clima: ": clima,
-        "Umidade: ": umidade,
+        "Umidade: ": umidade}
 
 def processar_frase(frase):
     frase = frase.lower()
