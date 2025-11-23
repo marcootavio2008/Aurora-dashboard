@@ -98,7 +98,6 @@ def ws_endpoint(ws):
     finally:
         if ws in connections:
             connections.remove(ws)
-ections.remove(ws)
 
         # --- endpoint chamado pelo botão do site ---
 @app.route("/ativar")
