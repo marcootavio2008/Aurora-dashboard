@@ -19,8 +19,6 @@ from flask_sock import Sock
 
 app = Flask(__name__)
 app.secret_key = "cx1228"  # Necessário para usar sessão
-Uno = Arduino('COM5')
-luz = Uno.get_pin('d:08:o')
 socketio = SocketIO(app)
 sock = Sock(app)
 connections = []
@@ -149,11 +147,6 @@ def casa():
 @app.route('/controles')
 def controles():
     return render_template('controles.html')  # renderiza a página de controle
-
-@socketio.on('comando_arduino')
-def handle_command(data):
-    if data['tipo'] == 'luz':
-        luz.write(int(data['valor']))
 
 
 @app.route('/message', methods=['POST'])
