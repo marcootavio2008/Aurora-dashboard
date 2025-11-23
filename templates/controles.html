@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Dash Residencial{% endblock %}
+
+{% block page_title %}Residência{% endblock %}
+
+{% block content %}
+<h2>Controle de Luz</h2>
+<label class="switch">
+<input type="checkbox" onchange="fetch('/ativar')">
+<span class="slider"></span>
+</label>
+
+
+<h2>Controle TV</h2>
+<label class="switch">
+<input type="checkbox" onchange="">
+<span class="slider"></span>
+</label>
+
+
+{% endblock %}

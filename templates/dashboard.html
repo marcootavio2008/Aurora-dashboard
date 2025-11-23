@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Aurora Dashboard{% endblock %}
+
+{% block page_title %}Aurora Dashboard{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="chat">
+            <div id="messages" class="messages"></div>
+            <input type="text" id="inputMsg" placeholder="Digite uma mensagem...">
+            <button onclick="sendMessage()">Enviar</button>
+        </div>
+    </div>
+{% endblock %}

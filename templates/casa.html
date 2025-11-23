@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard Status{% endblock %}
+
+{% block page_title %}Status{% endblock %}
+
+{% block content %}
+    <main class="device-list">
+        {% for nome, status in dados.items() %}
+        <div class="device-item {{ status }}">
+            <p class="status-text"><span>{{ status }}</span></p>
+        </div>
+        {% endfor %}
+    </main>
+{% endblock %}
