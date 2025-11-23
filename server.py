@@ -103,7 +103,7 @@ def ativar():
             pc.send("ATIVAR")
         except:
             pass
-        return jsonify({"status": "sinal enviado"})
+    return jsonify({"status": "sinal enviado"})
 
 # Página inicial -> Login
 @app.route("/", methods=["GET", "POST"])
