@@ -43,8 +43,6 @@ def get_dados():
     agora_br = datetime.now(ZoneInfo("America/Sao_Paulo"))
     day_en = agora_br.strftime(f'%A')
     dia = (dias[day_en])
-    translator = Translator(to_lang='pt', from_lang='en')
-    dia = translator.translate(dia_ingles)
     dia_resposta = agora_br.strftime(f'{dia}, %d/%m/%Y')
     #clima
     API_KEY = "d9d2657ec1b46a818cd8d41288954437"
