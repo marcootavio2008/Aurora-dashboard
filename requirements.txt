@@ -7,6 +7,5 @@ wikipedia
 pyfirmata
 Flask-SocketIO
 flask-sock
-eventlet
 urllib3==2.2.2
 requests>=2.32.0
