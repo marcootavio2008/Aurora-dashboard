@@ -49,11 +49,23 @@ def get_dados():
     #horas
     hora_resposta = agora_br.strftime('%H:%M')
     horas = f"{hora_resposta}"
-
-
+    #clima
+    API_KEY = "d9d2657ec1b46a818cd8d41288954437"
+    cidade = "Barbacena"
+    link = f"https://api.openweathermap.org/data/2.5/weather?q={cidade}&appid={API_KEY}&lang=pt_br"
+    requisicao = requests.get(link)
+    requisicao_dic = requisicao.json()
+    descricao = requisicao_dic['weather'][0]['description']
+    temperatura = requisicao_dic['main']['temp'] - 273.15
+    temperatura = int(temperatura)
+    umidade = requisicao_dic['main']['humidity']
+    umidade = f"Umidade: {umidade}%"
+    clima = f'{descricao.capitalize()}, está fazendo neste momento: {int(temperatura)}°C'
     return {
         "Horas: ": horas,
-        "Data: ": dia_resposta}
+        "Data: ": dia_resposta,
+        "Clima: ": clima,
+        "Umidade: ": umidade}
 
 def processar_frase(frase):
     frase = frase.lower()
