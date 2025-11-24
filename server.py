@@ -139,16 +139,9 @@ def home():
         return redirect(url_for("login"))
     return render_template("dashboard.html", username=session["user"])
 
-@app.route('/localizacao')
-def localizacao():
-    ip = request.remote_addr
-    r = requests.get(f"http://ip-api.com/json/{ip}").json()
-    return {
-        "cidade": r["city"],
-        "pais": r["country"],
-        "latitude": r["lat"],
-        "longitude": r["lon"]
-    }
+@app.route("/dash_residencial")
+def dash_residencial():
+    return redirect("https://controle-dispositivos.onrender.com")
 
 # Rota para a página "Serviços"
 @app.route('/casa')
