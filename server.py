@@ -17,8 +17,7 @@ from flask_socketio import SocketIO
 from flask import redirect, url_for, session, flash
 from datetime import timedelta
 from flask_sock import Sock
-import eventlet
-eventlet.monkey_patch(socket=True, select=True, time=True, os=True, thread=True)
+
 
 app = Flask(__name__)
 app.secret_key = "cx1228"  # Necessário para usar sessão
