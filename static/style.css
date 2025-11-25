@@ -35,7 +35,7 @@ body {
 }
 
 .messages {
-    height: 400px;
+    height: 80vh;
     overflow-y: auto;
     background: #1a1a1a;
     padding: 10px;
