@@ -86,12 +86,13 @@ input {
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
-    color: green}
+    color: green;}
 
 /* Lista de links do menu */
 .sidebar-menu ul {
     list-style-type: none;
     text-align: center;
+    color: green;
 }
 
 .sidebar-menu a {
