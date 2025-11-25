@@ -85,7 +85,8 @@ input {
     background-color: #111;
     overflow-x: hidden;
     transition: 0.5s;
-    padding-top: 60px;}
+    padding-top: 60px;
+    color: green}
 
 /* Lista de links do menu */
 .sidebar-menu ul {
@@ -115,7 +116,7 @@ input {
     font-size: 36px;
     background: none;
     border: none;
-    color: #f1f1f1;
+    color: purple;
     cursor: pointer;
 }
 
