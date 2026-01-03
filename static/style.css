@@ -229,3 +229,18 @@ input:checked + .slider {
 input:checked + .slider:before {
     transform: translateX(26px);
 }
+
+/* =========================
+   HUD GRID DE FUNDO
+========================= */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(123,63,242,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(123,63,242,0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+}
