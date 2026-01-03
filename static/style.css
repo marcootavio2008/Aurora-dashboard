@@ -155,7 +155,7 @@ body {
    ÁREA DE MENSAGENS
 ========================= */
 .messages {
-    height: 70vh;
+    height: 65vh;
     overflow-y: auto;
     background: linear-gradient(180deg, #14141d, #0d0d12);
     padding: 15px;
@@ -169,7 +169,7 @@ body {
 ========================= */
 input {
     padding: 12px;
-    width: 70%;
+    width: 65%;
     border-radius: 10px;
     border: none;
     background: #1a1a25;
