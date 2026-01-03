@@ -1,81 +1,63 @@
+/* =========================
+   BASE GLOBAL
+========================= */
 body {
-    background: #000;
-    color: #fff;
-    font-family: Arial, sans-serif;
+    background: radial-gradient(circle at top, #0f0f1a, #050507);
+    color: #eaeaea;
+    font-family: 'Inter', 'Poppins', Arial, sans-serif;
     margin: 0;
     padding: 0;
     text-align: center;
 }
 
+/* Transições globais */
+* {
+    transition: all 0.25s ease;
+}
+
+/* =========================
+   CONTAINER PRINCIPAL
+========================= */
 .container {
     padding: 20px;
+    max-width: 900px;
+    margin: auto;
 }
 
-.buttons button {
-    background: #6200ea;
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    margin: 5px;
-    border-radius: 8px;
-    cursor: pointer;
-}
-
-.chat {
-    margin-top: 20px;
-    button{
-        background: #252;
-        color: white;
-        border: none;
-        padding: 10px 8px;
-        margin: 5px;
-        border-radius: 8px;
-        cursor: pointer;
-    }
-}
-
-.messages {
-    height: 70vh;
-    overflow-y: auto;
-    background: #1a1a1a;
-    padding: 10px;
-    border-radius: 8px;
-    margin-bottom: 10px;
-}
-
-input {
-    padding: 10px;
-    width: 70%;
-    border-radius: 5px;
-    border: none;
-}
-
+/* =========================
+   HEADER / NAVBAR
+========================= */
 .main-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px 20px;
-    background-color: black;
-    border-bottom: 1px solid #ddd;
+    padding: 14px 20px;
+    background: rgba(10, 10, 20, 0.7);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(123, 63, 242, 0.4);
 }
 
 .main-header h1 {
     margin: 0;
-    text-align: center;
     flex-grow: 1;
-    color: #7B3FF2;
+    text-align: center;
+    color: #8B5CF6;
+    font-weight: 600;
+    letter-spacing: 1px;
 }
 
-/* Estilos do botão de hambúrguer */
+/* Botão hambúrguer */
 .menu-toggle {
     font-size: 30px;
     background: none;
     border: none;
     cursor: pointer;
-    color: #9370db;
+    color: #8B5CF6;
 }
 
-/* --- Estilos do Menu Lateral --- */
+/* =========================
+   MENU LATERAL
+========================= */
 .sidebar-menu {
     height: 100%;
     width: 0;
@@ -83,87 +65,167 @@ input {
     z-index: 1000;
     top: 0;
     left: 0;
-    background-color: #111;
+    background: linear-gradient(180deg, #0d0d14, #050508);
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
-    color: green;}
-
-/* Lista de links do menu */
-.sidebar-menu ul {
-    list-style-type: none;
-    text-align: center;
-    color: green;
+    box-shadow: 0 0 40px rgba(123, 63, 242, 0.3);
 }
 
-.sidebar-menu a {
-    padding: 8px 8px 8px;
-    text-decoration: none;
-    font-size: 25px;
-    color: #818181;
-    display: inline-block;
-    transition: 0.3s;
-}
-
-.sidebar-menu a:hover {
-    color: #f1f1f1;
-    background-color: #555;
-}
-
-/* Estilo do botão de fechar */
-.close-btn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    background: none;
-    border: none;
-    color: #9370db;
-    cursor: pointer;
-}
-
-/* Classe 'open' adicionada via JavaScript */
 .sidebar-menu.open {
     width: auto;
     padding-right: 27px;
 }
+
+.sidebar-menu ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+}
+
+.sidebar-menu a {
+    display: block;
+    padding: 14px;
+    font-size: 20px;
+    color: #aaa;
+    text-decoration: none;
+}
+
+.sidebar-menu a:hover {
+    color: #fff;
+    background: rgba(123, 63, 242, 0.2);
+}
+
+/* Botão fechar */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 36px;
+    background: none;
+    border: none;
+    color: #8B5CF6;
+    cursor: pointer;
+}
+
+/* =========================
+   BOTÕES PADRÃO
+========================= */
+.buttons button {
+    background: linear-gradient(135deg, #7B3FF2, #9F6BFF);
+    color: white;
+    border: none;
+    padding: 14px 22px;
+    margin: 6px;
+    border-radius: 14px;
+    cursor: pointer;
+    font-weight: 500;
+    box-shadow: 0 0 15px rgba(123, 63, 242, 0.4);
+}
+
+.buttons button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(123, 63, 242, 0.7);
+}
+
+/* =========================
+   CHAT
+========================= */
+.chat {
+    margin-top: 20px;
+}
+
+.chat button {
+    background: linear-gradient(135deg, #2ecc71, #27ae60);
+    color: white;
+    border: none;
+    padding: 12px 14px;
+    margin: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 500;
+    box-shadow: 0 0 10px rgba(46, 204, 113, 0.6);
+}
+
+.chat button:hover {
+    transform: scale(1.05);
+}
+
+/* =========================
+   ÁREA DE MENSAGENS
+========================= */
+.messages {
+    height: 70vh;
+    overflow-y: auto;
+    background: linear-gradient(180deg, #14141d, #0d0d12);
+    padding: 15px;
+    border-radius: 16px;
+    margin-bottom: 12px;
+    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.6);
+}
+
+/* =========================
+   INPUT
+========================= */
+input {
+    padding: 12px;
+    width: 70%;
+    border-radius: 10px;
+    border: none;
+    background: #1a1a25;
+    color: white;
+    outline: none;
+}
+
+input::placeholder {
+    color: #888;
+}
+
+/* =========================
+   SWITCH (TOGGLE)
+========================= */
 .switch {
-  position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 34px;
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
 }
 
 .switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
+    opacity: 0;
+    width: 0;
+    height: 0;
 }
 
 .slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0; left: 0;
-  right: 0; bottom: 0;
-  background-color: #ccc;
-  transition: .4s;
-  border-radius: 34px;
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #444;
+    transition: .4s;
+    border-radius: 34px;
 }
 
 .slider:before {
-  position: absolute;
-  content: "";
-  height: 26px; width: 26px;
-  left: 4px; bottom: 4px;
-  background-color: white;
-  transition: .4s;
-  border-radius: 50%;
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
 }
 
 input:checked + .slider {
-  background-color: #4CAF50; /* verde Android */
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    box-shadow: 0 0 15px rgba(34, 197, 94, 0.6);
 }
 
 input:checked + .slider:before {
-  transform: translateX(26px);
+    transform: translateX(26px);
 }
