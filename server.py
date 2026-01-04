@@ -164,6 +164,9 @@ def casa():
 def controles():
     return render_template('controles.html')  # renderiza a página de controle
 
+@app.route('/configs')
+def configs():
+    return render_template('configs.html')
 
 @app.route('/message', methods=['POST'])
 def send_message():
