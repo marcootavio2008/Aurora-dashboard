@@ -244,3 +244,77 @@ body::before {
     pointer-events: none;
     z-index: 0;
 }
+
+.page-title {
+  margin-bottom: 25px;
+  color: var(--purple-glow);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.field label {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 5px;
+}
+
+.field input,
+.field select,
+.field textarea {
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid var(--border-soft);
+  border-radius: 10px;
+  padding: 10px 12px;
+  color: var(--text-main);
+  outline: none;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  border-color: var(--purple-glow);
+  box-shadow: 0 0 8px rgba(158, 108, 255, 0.5);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+}
+
+.slide {
+  accent-color: var(--purple-main);
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+}
+
+.btn-primary {
+  background: var(--purple-main);
+  color: #fff;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(123, 63, 242, 0.6);
+}
+
+.btn-primary:hover {
+  background: var(--purple-glow);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--text-muted);
+  border: 1px solid var(--border-soft);
+  padding: 10px 22px;
+  border-radius: 12px;
+  cursor: pointer;
+}
