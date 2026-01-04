@@ -166,7 +166,7 @@ def controles():
 
 @app.route('/configs')
 def configs():
-    return render_template('configs.html')
+    return render_template('config.html')
 
 @app.route('/message', methods=['POST'])
 def send_message():
