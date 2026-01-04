@@ -17,13 +17,20 @@ from flask_socketio import SocketIO
 from flask import redirect, url_for, session, flash
 from datetime import timedelta
 from flask_sock import Sock
+import os
+from flask_sqlalchemy import SQLAlchemy
 
-USERS_FILE = 'users.json'
 
-def load_users():
-    with open(USERS_FILE, "r", encoding="utf-8") as f:
-        return json.load(f)["users"]
+database_url = os.environ.get("DATABASE_URL")
 
+# ajuste necessário no Render
+if database_url.startswith("postgres://"):
+    database_url = database_url.replace("postgres://", "postgresql://", 1)
+
+app.config["SQLALCHEMY_DATABASE_URI"] = database_url
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+
+db = SQLAlchemy(app)
 app = Flask(__name__)
 app.secret_key = "cx1228"  # Necessário para usar sessão
 socketio = SocketIO(app)
@@ -40,6 +47,15 @@ dias = {
 }
 aurora_proc = None  # Guarda o processo da Aurora
 CAMINHO = r"dictionary.json"
+
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(80), unique=True, nullable=False)
+    password = db.Column(db.String(120), nullable=False)
+    role = db.Column(db.String(20), default="user")
+with app.app_context():
+    db.create_all()
+
 
 with open(CAMINHO, "r", encoding="utf-8") as f:
     dicionario = json.load(f)
@@ -133,20 +149,20 @@ def controle_luz():
 @app.route("/", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
-        username = request.form["usuario"]
-        password = request.form["senha"]
+        username = request.form.get("usuario")
+        password = request.form.get("senha")
 
-        users = load_users()
+        user = User.query.filter_by(username=username, password=password).first()
 
-        for user in users:
-            if user["username"] == username and user["password"] == password:
-                session["user"] = username
-                session["role"] = user.get("role", "user")
-                return redirect(url_for("home"))
+        if user:
+            session["user"] = user.username
+            session["role"] = user.role
+            return redirect(url_for("home"))
 
         return redirect(url_for("login"))
 
     return render_template("login.html")
+
 
 # Rota principal (abre o dashboard)
 @app.route('/dashboard')
@@ -175,21 +191,16 @@ def configs():
 
 @app.route("/add_user", methods=["POST"])
 def add_user():
-    username = request.form["usuario"]
-    password = request.form["senha"]
+    username = request.form.get("usuario")
+    password = request.form.get("senha")
     role = request.form.get("role", "user")
 
-    with open(USERS_FILE, "r", encoding="utf-8") as f:
-        data = json.load(f)
+    if not username or not password:
+        return redirect(url_for("configs"))
 
-    data["users"].append({
-        "username": username,
-        "password": password,
-        "role": role
-    })
-
-    with open(USERS_FILE, "w", encoding="utf-8") as f:
-        json.dump(data, f, indent=2, ensure_ascii=False)
+    novo = User(username=username, password=password, role=role)
+    db.session.add(novo)
+    db.session.commit()
 
     return redirect(url_for("home"))
 
