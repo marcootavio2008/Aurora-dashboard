@@ -224,7 +224,34 @@ def api_settings():
 
     return jsonify({"status": "usuário criado"})
 
+@app.route("/api/users", methods=["GET"])
+def list_users():
+    if "user" not in session or session.get("role") != "admin":
+        return jsonify({"error": "acesso negado"}), 403
 
+    users = User.query.all()
+    return jsonify([
+        {
+            "id": u.id,
+            "username": u.username,
+            "role": u.role
+        } for u in users
+    ])
+
+@app.route("/api/users/<int:user_id>", methods=["DELETE"])
+def delete_user(user_id):
+    if "user" not in session or session.get("role") != "admin":
+        return jsonify({"error": "acesso negado"}), 403
+
+    user = User.query.get(user_id)
+
+    if not user:
+        return jsonify({"error": "usuário não encontrado"}), 404
+
+    db.session.delete(user)
+    db.session.commit()
+
+    return jsonify({"status": "usuário removido"})
 
 
 @app.route('/message', methods=['POST'])
