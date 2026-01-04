@@ -1,24 +1,26 @@
 function salvarConfiguracoes() {
-  const dados = {
-    nome: document.getElementById('nome').value,
-    senha: document.getElementById('senha').value,
-  };
+  const usuario = document.getElementById('nome').value;
+  const senha = document.getElementById('senha').value;
+  const role = document.getElementById('role').value; // select ou input
 
-  console.log('Configurações:', dados);
-
-  fetch('/api/settings', {
-    method: 'POST',
+  fetch("/api/settings", {
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json'
+      "Content-Type": "application/json"
     },
-    body: JSON.stringify(dados)
+    body: JSON.stringify({
+      usuario: usuario,
+      senha: senha,
+      role: role
+    })
   })
   .then(res => res.json())
-  .then(res => {
-    alert('Configurações salvas com sucesso!');
+  .then(data => {
+    console.log("Resposta:", data);
+    alert("Usuário salvo com sucesso!");
   })
   .catch(err => {
-    console.error(err);
-    alert('Erro ao salvar configurações');
+    console.error("Erro:", err);
+    alert("Erro ao salvar usuário");
   });
 }
