@@ -240,7 +240,8 @@ def list_users():
 
 @app.route("/api/users/<int:user_id>", methods=["DELETE"])
 def delete_user(user_id):
-    if "user" not in session or session.get("role") != "admin":
+    # 🔒 só admin pode apagar usuário
+    if session.get("role") != "admin":
         return jsonify({"error": "acesso negado"}), 403
 
     user = User.query.get(user_id)
@@ -248,12 +249,14 @@ def delete_user(user_id):
     if not user:
         return jsonify({"error": "usuário não encontrado"}), 404
 
+    # 🚫 REGRA IMPORTANTE (AQUI ENTRA O SEU IF)
+    if user.role == "admin":
+        return jsonify({"error": "admin não pode ser removido"}), 403
+
     db.session.delete(user)
     db.session.commit()
 
     return jsonify({"status": "usuário removido"})
-
-
 @app.route('/message', methods=['POST'])
 def send_message():
     data = request.get_json()
