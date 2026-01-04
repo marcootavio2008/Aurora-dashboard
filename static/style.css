@@ -290,8 +290,9 @@ body::before {
 
 .actions {
   display: flex;
-  justify-content: flex-end;
-  gap: 15px;
+  justify-content: center;
+  gap: 16px;             
+  margin-top: 20px;
 }
 
 .btn-primary {
@@ -315,11 +316,4 @@ body::before {
   padding: 10px 22px;
   border-radius: 12px;
   cursor: pointer;
-}
-
-.buttons-center {
-  display: flex;
-  justify-content: center; /* centraliza horizontal */
-  gap: 16px;               /* espaço entre os botões */
-  margin-top: 20px;
 }
