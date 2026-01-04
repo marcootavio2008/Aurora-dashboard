@@ -316,3 +316,10 @@ body::before {
   border-radius: 12px;
   cursor: pointer;
 }
+
+.buttons-center {
+  display: flex;
+  justify-content: center; /* centraliza horizontal */
+  gap: 16px;               /* espaço entre os botões */
+  margin-top: 20px;
+}
