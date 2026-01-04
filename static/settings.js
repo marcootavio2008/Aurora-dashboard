@@ -1,11 +1,7 @@
 function salvarConfiguracoes() {
   const dados = {
     nome: document.getElementById('nome').value,
-    idioma: document.getElementById('idioma').value,
-    tema: document.getElementById('tema').value,
-    modo: document.getElementById('modo').value,
-    volume: document.getElementById('volume').value,
-    frase_chegada: document.getElementById('frase').value
+    senha: document.getElementById('senha').value,
   };
 
   console.log('Configurações:', dados);
