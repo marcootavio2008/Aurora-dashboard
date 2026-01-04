@@ -28,7 +28,7 @@ def check_login():
     allowed_routes = ["login", "static"]
 
     if request.endpoint not in allowed_routes and "user" not in session: 
-        return render_template('login')
+        return redirect(url_for("login"))
 
 database_url = os.environ.get("DATABASE_URL")
 
@@ -223,7 +223,7 @@ def api_settings():
     db.session.commit()
 
     return jsonify({"status": "usuário criado"})
-    return render_template('login.html')
+    return redirect(url_for("login"))
 
 @app.route("/api/users", methods=["GET"])
 def list_users():
