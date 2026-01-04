@@ -20,15 +20,15 @@ from flask_sock import Sock
 import os
 from flask_sqlalchemy import SQLAlchemy
 
+app = Flask(__name__)
+app.secret_key = "cx1228"
+
 @app.before_request
 def check_login():
     allowed_routes = ["login", "static"]
 
     if request.endpoint not in allowed_routes and "user" not in session:
         return redirect(url_for("login"))
-        
-app = Flask(__name__)
-app.secret_key = "cx1228"
 
 database_url = os.environ.get("DATABASE_URL")
 
