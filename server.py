@@ -223,6 +223,7 @@ def api_settings():
     db.session.commit()
 
     return jsonify({"status": "usuário criado"})
+    return redirect(url_for("login"))
 
 @app.route("/api/users", methods=["GET"])
 def list_users():
