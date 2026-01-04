@@ -202,9 +202,11 @@ def configs():
 
 @app.route("/api/settings", methods=["POST"])
 def api_settings():
-    username = request.form.get("usuario")
-    password = request.form.get("senha")
-    role = request.form.get("role", "user")
+    data = request.get_json()
+
+    username = data.get("usuario")
+    password = data.get("senha")
+    role = data.get("role", "user")
 
     if not username or not password:
         return jsonify({"error": "dados inválidos"}), 400
@@ -213,7 +215,7 @@ def api_settings():
     db.session.add(novo)
     db.session.commit()
 
-    return jsonify({"status": "salvo"})
+    return jsonify({"status": "usuário criado"})
 
 
 
