@@ -200,20 +200,21 @@ def controles():
 def configs():
     return render_template('config.html')
 
-@app.route("/add_user", methods=["POST"])
-def add_user():
+@app.route("/api/settings", methods=["POST"])
+def api_settings():
     username = request.form.get("usuario")
     password = request.form.get("senha")
     role = request.form.get("role", "user")
 
     if not username or not password:
-        return redirect(url_for("configs"))
+        return jsonify({"error": "dados inválidos"}), 400
 
     novo = User(username=username, password=password, role=role)
     db.session.add(novo)
     db.session.commit()
 
-    return redirect(url_for("home"))
+    return jsonify({"status": "salvo"})
+
 
 
 
