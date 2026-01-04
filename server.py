@@ -18,6 +18,11 @@ from flask import redirect, url_for, session, flash
 from datetime import timedelta
 from flask_sock import Sock
 
+USERS_FILE = 'users.json'
+
+def load_users():
+    with open(USERS_FILE, "r", encoding="utf-8") as f:
+        return json.load(f)["users"]
 
 app = Flask(__name__)
 app.secret_key = "cx1228"  # Necessário para usar sessão
@@ -80,9 +85,6 @@ def pesquisar(query):
     wikipedia.set_lang(prefix='pt')
     result = wikipedia.summary(query, sentences=2)
     return result
-USERS = {
-    "Marco": "2810",
-}
 
 @sock.route('/ws')
 def ws_endpoint(ws):
@@ -128,21 +130,24 @@ def controle_luz():
     return jsonify({"erro": "comando invalido"})
 
 
-# Página inicial -> Login
 @app.route("/", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
         username = request.form["usuario"]
         password = request.form["senha"]
 
-        # Validação de usuário
-        if username in USERS and USERS[username] == password:
-            session["user"] = username  # Guarda o login na sessão
-            return redirect(url_for("home"))  # Redireciona para o dashboard
-        else:
-            return redirect(url_for("login"))
+        users = load_users()
+
+        for user in users:
+            if user["username"] == username and user["password"] == password:
+                session["user"] = username
+                session["role"] = user.get("role", "user")
+                return redirect(url_for("home"))
+
+        return redirect(url_for("login"))
 
     return render_template("login.html")
+
 # Rota principal (abre o dashboard)
 @app.route('/dashboard')
 def home():
@@ -168,11 +173,27 @@ def controles():
 def configs():
     return render_template('config.html')
 
-@app.route('/api/settings', methods=['POST'])
-def salvar_settings():
-    dados = request.json
-    print(dados)
-    return jsonify({'status': 'ok'})
+@app.route("/add_user", methods=["POST"])
+def add_user():
+    username = request.form["usuario"]
+    password = request.form["senha"]
+    role = request.form.get("role", "user")
+
+    with open(USERS_FILE, "r", encoding="utf-8") as f:
+        data = json.load(f)
+
+    data["users"].append({
+        "username": username,
+        "password": password,
+        "role": role
+    })
+
+    with open(USERS_FILE, "w", encoding="utf-8") as f:
+        json.dump(data, f, indent=2, ensure_ascii=False)
+
+    return redirect(url_for("home"))
+
+
 
 @app.route('/message', methods=['POST'])
 def send_message():
