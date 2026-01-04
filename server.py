@@ -56,6 +56,16 @@ class User(db.Model):
 with app.app_context():
     db.create_all()
 
+    if User.query.count() == 0:
+        admin = User(
+            username="admin",
+            password="admin",
+            role="admin"
+        )
+        db.session.add(admin)
+        db.session.commit()
+
+
 
 with open(CAMINHO, "r", encoding="utf-8") as f:
     dicionario = json.load(f)
