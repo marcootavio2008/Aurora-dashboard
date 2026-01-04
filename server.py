@@ -168,6 +168,12 @@ def controles():
 def configs():
     return render_template('config.html')
 
+@app.route('/api/settings', methods=['POST'])
+def salvar_settings():
+    dados = request.json
+    print(dados)
+    return jsonify({'status': 'ok'})
+
 @app.route('/message', methods=['POST'])
 def send_message():
     data = request.get_json()
