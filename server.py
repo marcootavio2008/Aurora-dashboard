@@ -20,6 +20,8 @@ from flask_sock import Sock
 import os
 from flask_sqlalchemy import SQLAlchemy
 
+app = Flask(__name__)
+app.secret_key = "cx1228"
 
 database_url = os.environ.get("DATABASE_URL")
 
@@ -31,8 +33,7 @@ app.config["SQLALCHEMY_DATABASE_URI"] = database_url
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 db = SQLAlchemy(app)
-app = Flask(__name__)
-app.secret_key = "cx1228"  # Necessário para usar sessão
+  # Necessário para usar sessão
 socketio = SocketIO(app)
 sock = Sock(app)
 connections = []
