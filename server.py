@@ -27,8 +27,8 @@ app.secret_key = "cx1228"
 def check_login():
     allowed_routes = ["login", "static"]
 
-    if request.endpoint not in allowed_routes and "user" not in session:
-        return redirect(url_for("login"))
+    if request.endpoint not in allowed_routes and "user" not in session: 
+        return render_template('login')
 
 database_url = os.environ.get("DATABASE_URL")
 
@@ -223,7 +223,7 @@ def api_settings():
     db.session.commit()
 
     return jsonify({"status": "usuário criado"})
-    return redirect(url_for("login"))
+    return render_template('login.html')
 
 @app.route("/api/users", methods=["GET"])
 def list_users():
