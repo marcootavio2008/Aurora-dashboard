@@ -355,6 +355,7 @@ def delete_user(user_id):
 def send_message():
     data = request.get_json()
     message = data.get("message", "")
+    message = normalizar(message)
 
     # 🔍 TENTA PROCESSAR COMO PESQUISA
     resposta_pesquisa = processar_pesquisa(message)
