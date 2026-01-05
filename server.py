@@ -93,7 +93,10 @@ GATILHOS_PESQUISA = [
     "me fale sobre",
     "explique",
     "defina",
-    "pesquise"
+    "pesquise",
+    "como aconteceu",
+    "como e",
+    "qual o"
 ]
 
 
