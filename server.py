@@ -286,7 +286,15 @@ def home():
 
 @app.route("/dash_residencial")
 def dash_residencial():
-    return redirect("https://controle-dispositivos.onrender.com")
+    if "user" not in session:
+        return redirect(url_for("login"))
+
+    user = User.query.filter_by(username=session["user"]).first()
+
+    return redirect(
+        f"https://controle-dispositivos.onrender.com/"
+        f"?user_id={user.id}&role={user.role}"
+    )
 
 # Rota para a página "Serviços"
 @app.route('/casa')
