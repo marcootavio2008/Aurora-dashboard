@@ -270,8 +270,9 @@ def login():
         if user:
             session["user"] = user.username
             session["role"] = user.role
-            return redirect(url_for("home"))
+            session["user_id"] = user.id
 
+    return redirect(url_for("home"))
         return redirect(url_for("login"))
 
     return render_template("login.html")
@@ -284,17 +285,17 @@ def home():
         return redirect(url_for("login"))
     return render_template("dashboard.html", username=session["user"])
 
+
 @app.route("/dash_residencial")
 def dash_residencial():
-    if "user" not in session:
+    if "user_id" not in session:
         return redirect(url_for("login"))
-
-    user = User.query.filter_by(username=session["user"]).first()
 
     return redirect(
         f"https://controle-dispositivos.onrender.com/"
-        f"?user_id={user.id}&role={user.role}"
+        f"?user_id={session['user_id']}&role={session['role']}"
     )
+
 
 # Rota para a página "Serviços"
 @app.route('/casa')
