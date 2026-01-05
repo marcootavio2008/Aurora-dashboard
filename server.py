@@ -166,7 +166,7 @@ def processar_pesquisa(frase_original: str):
     resultado = pesquisar_wikipedia(termo)
 
     if resultado:
-        print(resultado)
+        return(resultado)
 
     return resposta_sem_resultado()
 
