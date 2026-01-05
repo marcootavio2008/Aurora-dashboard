@@ -264,7 +264,6 @@ def login():
     if request.method == "POST":
         username = request.form.get("usuario")
         password = request.form.get("senha")
-
         user = User.query.filter_by(username=username, password=password).first()
 
         if user:
@@ -272,9 +271,8 @@ def login():
             session["role"] = user.role
             session["user_id"] = user.id
 
-    return redirect(url_for("home"))
-        return redirect(url_for("login"))
-
+        return redirect(url_for("home"))
+    
     return render_template("login.html")
 
 
