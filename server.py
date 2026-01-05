@@ -19,6 +19,8 @@ from datetime import timedelta
 from flask_sock import Sock
 import os
 from flask_sqlalchemy import SQLAlchemy
+import unicodedata
+import re
 
 app = Flask(__name__)
 app.secret_key = "cx1228"
@@ -74,6 +76,103 @@ with app.app_context():
         db.session.commit()
 
 
+# ==============================
+# CONFIGURAÇÕES
+# ==============================
+
+wikipedia.set_lang("pt")
+
+GATILHOS_PESQUISA = [
+    "pesquisar",
+    "buscar",
+    "procurar",
+    "quem e",
+    "quem foi",
+    "o que e",
+    "o que significa",
+    "me fale sobre",
+    "explique",
+    "defina",
+    "pesquise"
+]
+
+
+RESPOSTAS_SEM_RESULTADO = [
+    "Não encontrei informações confiáveis sobre isso",
+    "Esse assunto não parece estar bem documentado",
+    "Ainda não achei nada relevante sobre esse tema"
+]
+
+# ==============================
+# NORMALIZAÇÃO DE TEXTO
+# ==============================
+
+def normalizar(texto: str) -> str:
+    texto = texto.lower().strip()
+    texto = unicodedata.normalize("NFD", texto)
+    texto = texto.encode("ascii", "ignore").decode("utf-8")
+    texto = re.sub(r"[^\w\s]", "", texto)
+    texto = re.sub(r"\s+", " ", texto)
+    return texto
+
+# ==============================
+# DETECÇÃO DE PESQUISA
+# ==============================
+
+def detectar_pesquisa(frase: str):
+    for gatilho in GATILHOS_PESQUISA:
+        if frase.startswith(gatilho):
+            termo = frase.replace(gatilho, "").strip()
+            if termo:
+                return termo
+    return None
+
+# ==============================
+# PESQUISA NA WIKIPEDIA
+# ==============================
+
+def pesquisar_wikipedia(termo: str):
+    try:
+        return wikipedia.summary(termo, sentences=2)
+
+    except wikipedia.exceptions.DisambiguationError as e:
+        sugestoes = ", ".join(e.options[:3])
+        return f"Esse termo é ambíguo. Você quis dizer: {sugestoes}?"
+
+    except wikipedia.exceptions.PageError:
+        return None
+
+    except Exception:
+        return None
+
+# ==============================
+# FALLBACK
+# ==============================
+
+def resposta_sem_resultado():
+    return random.choice(RESPOSTAS_SEM_RESULTADO)
+
+# ==============================
+# FUNÇÃO FINAL (USE ESSA)
+# ==============================
+
+def processar_pesquisa(frase_original: str):
+    frase = normalizar(frase_original)
+
+    termo = detectar_pesquisa(frase)
+    if not termo:
+        return None  # não é pesquisa
+
+    resultado = pesquisar_wikipedia(termo)
+
+    if resultado:
+        print(resultado)
+
+    return resposta_sem_resultado()
+    
+frase = input("Pesquisa: ")
+processar_pesquisa(frase)
+
 
 with open(CAMINHO, "r", encoding="utf-8") as f:
     dicionario = json.load(f)
@@ -115,10 +214,6 @@ def processar_frase(frase):
     else:
         return "Não tenho respostas para isso"
 
-def pesquisar(query):
-    wikipedia.set_lang(prefix='pt')
-    result = wikipedia.summary(query, sentences=2)
-    return result
 
 @sock.route('/ws')
 def ws_endpoint(ws):
@@ -258,17 +353,18 @@ def delete_user(user_id):
     db.session.commit()
 
     return jsonify({"status": "usuário removido"})
+
 @app.route('/message', methods=['POST'])
 def send_message():
     data = request.get_json()
-    message = data.get("message").lower()
-    # Detecta se é uma pesquisa
-    if message.startswith("pesquisar"):
-        query = message.replace("pesquisar", "").strip()
-        resultados = pesquisar(query)
-        return jsonify({"response": resultados})
+    message = data.get("message", "")
 
-    # Caso contrário, só responde normal
+    # 🔍 TENTA PROCESSAR COMO PESQUISA
+    resposta_pesquisa = processar_pesquisa(message)
+    if resposta_pesquisa:
+        return jsonify({"response": resposta_pesquisa})
+
+    # 💬 CONVERSA NORMAL
     resposta = processar_frase(message)
     return jsonify({"response": resposta})
 
