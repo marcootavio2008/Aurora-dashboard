@@ -169,9 +169,6 @@ def processar_pesquisa(frase_original: str):
         print(resultado)
 
     return resposta_sem_resultado()
-    
-frase = input("Pesquisa: ")
-processar_pesquisa(frase)
 
 
 with open(CAMINHO, "r", encoding="utf-8") as f:
