@@ -316,4 +316,6 @@ body::before {
   padding: 10px 22px;
   border-radius: 12px;
   cursor: pointer;
+  box-shadow: 0 0 15px rgba(123, 63, 242, 0.6);
+}
 }
