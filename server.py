@@ -284,6 +284,37 @@ def select_house():
 # USUÁRIOS
 # ===============================
 
+@app.route("/api/settings", methods=["POST"])
+def save_settings():
+    data = request.json
+
+    # Usuário
+    user = User.query.get(session["user_id"])
+    if not user:
+        return jsonify({"error": "usuário não encontrado"}), 404
+
+    nome = data.get("nome")
+    senha = data.get("senha")
+    role = data.get("role")
+    house_id = data.get("house_id")
+
+    if nome:
+        user.username = nome
+    if senha:
+        user.password = senha
+    if role and session.get("role") == "admin":
+        user.role = role
+
+    # Casa ativa
+    if house_id:
+        house = House.query.filter_by(id=house_id, owner_id=user.id).first()
+        if house:
+            session["house_id"] = house.id
+
+    db.session.commit()
+
+    return jsonify({"status": "ok"})
+
 @app.route("/api/users", methods=["GET"])
 def list_users():
     if session.get("role") != "admin":
