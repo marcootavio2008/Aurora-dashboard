@@ -234,7 +234,7 @@ def configs():
 def dash_residencial():
     house_id = session.get("house_id")
     if not house_id:
-        return redirect(url_for("dashboard"))
+        return redirect(url_for("home"))
 
     return redirect(
         f"https://controle-dispositivos.onrender.com/"
