@@ -138,6 +138,15 @@ def pesquisar_wikipedia(termo):
     except:
         return None
 
+dias = { 
+    "Monday": "Segunda-feira", 
+    "Tuesday": "Terça-feira", 
+    "Wednesday": "Quarta-feira", 
+    "Thursday": "Quinta-feira", 
+    "Friday": "Sexta-feira", 
+    "Saturday": "Sábado", 
+    "Sunday": "Domingo", }
+
 def get_dados(): 
     #data 
     agora_br = datetime.now(ZoneInfo("America/Sao_Paulo")) 
