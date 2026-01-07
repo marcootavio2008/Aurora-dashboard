@@ -88,13 +88,25 @@ with app.app_context():
     db.create_all()
 
     if User.query.count() == 0:
+        # Cria uma casa padrão para o admin
+        admin_house = House(name="Casa Admin", owner_id=1)  # temporário, o id do admin ainda não existe
+        db.session.add(admin_house)
+        db.session.commit()  # preciso do id da casa
+
+        # Cria o admin e associa à casa criada
         admin = User(
             username="admin",
             password="admin",
-            role="admin"
+            role="admin",
+            house_id=admin_house.id  # associa a casa
         )
         db.session.add(admin)
         db.session.commit()
+
+        # Atualiza a casa com o owner_id correto do admin
+        admin_house.owner_id = admin.id
+        db.session.commit()
+
         print(">>> Admin padrão criado: admin / admin")
 
 # ===============================
