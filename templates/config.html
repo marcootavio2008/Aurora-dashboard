@@ -157,24 +157,23 @@ async function apagarUsuario(id) {
 /* ==========================
    SALVAR CONFIGURAÇÕES
 ========================== */
-async function salvarConfiguracoes() {
-  const nome = document.getElementById("nome").value;
-  const senha = document.getElementById("senha").value;
+async function criarUsuario() {
+  const username = document.getElementById("nome").value;
+  const password = document.getElementById("senha").value;
   const role = document.getElementById("role").value;
-  const house_id = document.getElementById("houseSelect").value;
 
-  const res = await fetch("/api/settings", {
+  const res = await fetch("/api/users", {
     method: "POST",
     headers: {"Content-Type": "application/json"},
-    body: JSON.stringify({ nome, senha, role, house_id })
+    body: JSON.stringify({username, password, role})
   });
 
-  if (res.ok) {
-    alert("Configurações salvas com sucesso!");
+  const data = await res.json();
+  if (data.status === "ok") {
+    alert("Usuário criado!");
     carregarUsuarios();
-    carregarCasas();
   } else {
-    alert("Erro ao salvar configurações");
+    alert(data.error || "Erro ao criar usuário");
   }
 }
 
