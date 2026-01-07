@@ -64,13 +64,19 @@ class User(db.Model):
     password = db.Column(db.String(120), nullable=False)
     role = db.Column(db.String(20), default="user")
 
+with app.app_context():
+    db.create_all()
+
 class House(db.Model):
     __tablename__ = "houses"
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(120), nullable=False)
-    owner_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
-    
+    owner_id = db.Column(db.Integer, nullable=False)
+
+with app.app_context():
+    db.create_all()
+
 class Device(db.Model):
     __tablename__ = "devices"
 
@@ -329,16 +335,24 @@ def configs():
 
 @app.route("/api/houses/select", methods=["POST"])
 def select_house():
-    data = request.get_json()
+    if "user_id" not in session:
+        return jsonify({"error": "não autenticado"}), 401
+
+    data = request.json
     house_id = data.get("house_id")
 
-    house = House.query.get(house_id)
+    house = House.query.filter_by(
+        id=house_id,
+        owner_id=session["user_id"]
+    ).first()
 
-    if not house or house.owner_id != session["user_id"]:
-        return jsonify({"error": "acesso negado"}), 403
+    if not house:
+        return jsonify({"error": "casa inválida"}), 403
 
     session["house_id"] = house.id
+
     return jsonify({"status": "ok"})
+
 
 
 @app.route("/api/houses", methods=["POST"])
@@ -346,8 +360,11 @@ def create_house():
     if "user_id" not in session:
         return jsonify({"error": "não autenticado"}), 401
 
-    data = request.get_json()
+    data = request.json
     name = data.get("name")
+
+    if not name:
+        return jsonify({"error": "nome inválido"}), 400
 
     house = House(
         name=name,
@@ -357,15 +374,18 @@ def create_house():
     db.session.add(house)
     db.session.commit()
 
-    return jsonify({"status": "ok", "id": house.id})
+    return jsonify({"status": "ok", "house_id": house.id})
 
 
-@app.route("/api/houses")
+
+@app.route("/api/houses", methods=["GET"])
 def list_houses():
     if "user_id" not in session:
         return jsonify([])
 
-    houses = House.query.filter_by(owner_id=session["user_id"]).all()
+    houses = House.query.filter_by(
+        owner_id=session["user_id"]
+    ).all()
 
     return jsonify([
         {"id": h.id, "name": h.name}
