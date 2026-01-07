@@ -72,27 +72,44 @@ async function carregarCasas() {
   const res = await fetch("/api/houses");
   const houses = await res.json();
 
+  // Select da casa ativa
   const select = document.getElementById("houseSelect");
   select.innerHTML = "";
-
   houses.forEach(h => {
     const opt = document.createElement("option");
     opt.value = h.id;
     opt.textContent = h.name;
     select.appendChild(opt);
   });
+
+  // Select da casa padrão do usuário
+  const userHouseSelect = document.getElementById("userHouseSelect");
+  if (userHouseSelect) {
+    userHouseSelect.innerHTML = "";
+    houses.forEach(h => {
+      const opt = document.createElement("option");
+      opt.value = h.id;
+      opt.textContent = h.name;
+      userHouseSelect.appendChild(opt);
+    });
+  }
 }
 
 async function selecionarCasa() {
   const house_id = document.getElementById("houseSelect").value;
 
-  await fetch("/api/houses/select", {
+  const res = await fetch("/api/houses/select", {
     method: "POST",
     headers: {"Content-Type": "application/json"},
     body: JSON.stringify({ house_id })
   });
 
-  alert("Casa selecionada!");
+  if (res.ok) {
+    alert("Casa selecionada!");
+  } else {
+    const data = await res.json();
+    alert("Erro ao selecionar casa: " + (data.error || "Erro desconhecido"));
+  }
 }
 
 async function criarCasa() {
@@ -111,10 +128,11 @@ async function criarCasa() {
 
   if (res.ok) {
     document.getElementById("newHouseName").value = "";
-    carregarCasas();
+    await carregarCasas();
     alert("Casa criada com sucesso!");
   } else {
-    alert("Erro ao criar casa");
+    const data = await res.json();
+    alert("Erro ao criar casa: " + (data.error || "Erro desconhecido"));
   }
 }
 
@@ -148,10 +166,6 @@ async function carregarUsuarios() {
   });
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  carregarUsuarios();
-});
-
 async function apagarUsuario(id) {
   if (!confirm("Tem certeza que deseja apagar este usuário?")) return;
 
@@ -162,7 +176,8 @@ async function apagarUsuario(id) {
   if (res.ok) {
     carregarUsuarios();
   } else {
-    alert("Erro ao apagar usuário");
+    const data = await res.json();
+    alert("Erro ao apagar usuário: " + (data.error || "Erro desconhecido"));
   }
 }
 
@@ -170,6 +185,7 @@ async function criarUsuario() {
   const username = document.getElementById("nome").value;
   const password = document.getElementById("senha").value;
   const role = document.getElementById("role").value;
+  const house_id = document.getElementById("userHouseSelect").value; // nova linha
 
   if (!username || !password) {
     alert("Preencha usuário e senha!");
@@ -179,23 +195,28 @@ async function criarUsuario() {
   const res = await fetch("/api/users", {
     method: "POST",
     headers: {"Content-Type": "application/json"},
-    body: JSON.stringify({username, password, role})
+    body: JSON.stringify({username, password, role, house_id}) // house_id incluído
   });
 
   const data = await res.json();
 
   if (res.ok) {
     alert("Usuário criado com sucesso!");
-    carregarUsuarios(); // atualiza tabela
+    document.getElementById("nome").value = "";
+    document.getElementById("senha").value = "";
+    document.getElementById("role").value = "";
+    carregarUsuarios();
   } else {
-    alert("Erro ao criar usuário: " + data.error);
+    alert("Erro ao criar usuário: " + (data.error || "Erro desconhecido"));
   }
 }
+
 /* ==========================
    INIT
 ========================== */
-carregarCasas();
-carregarUsuarios();
+document.addEventListener("DOMContentLoaded", () => {
+  carregarCasas();
+  carregarUsuarios();
+});
 </script>
-
 {% endblock %}
