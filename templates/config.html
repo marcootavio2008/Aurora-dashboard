@@ -24,6 +24,22 @@
       <input type="text" id="role" placeholder="admin ou visitante">
     </div>
 
+    <h1>🏠 CASAS</h1>
+
+<div class="card">
+  <label>Casa ativa</label>
+  <select id="houseSelect"></select>
+
+  <button onclick="selecionarCasa()">Selecionar</button>
+
+  <hr>
+
+  <label>Nova casa</label>
+  <input type="text" id="newHouseName" placeholder="Ex: Casa da Praia">
+  <button onclick="criarCasa()">Adicionar Casa</button>
+</div>
+
+
 <div class="actions">
   <button class="btn-secondary">Cancelar</button>
   <button class="btn-primary" onclick="salvarConfiguracoes()">
@@ -48,6 +64,48 @@
 
 
 <script>
+
+async function carregarCasas() {
+  const res = await fetch("/api/houses");
+  const houses = await res.json();
+
+  const select = document.getElementById("houseSelect");
+  select.innerHTML = "";
+
+  houses.forEach(h => {
+    const opt = document.createElement("option");
+    opt.value = h.id;
+    opt.textContent = h.name;
+    select.appendChild(opt);
+  });
+}
+
+async function selecionarCasa() {
+  const house_id = document.getElementById("houseSelect").value;
+
+  await fetch("/api/houses/select", {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({ house_id })
+  });
+
+  alert("Casa selecionada!");
+}
+
+async function criarCasa() {
+  const name = document.getElementById("newHouseName").value;
+
+  await fetch("/api/houses", {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({ name })
+  });
+
+  carregarCasas();
+}
+
+carregarCasas();
+  
 async function carregarUsuarios() {
   const res = await fetch("/api/users");
   const users = await res.json();
