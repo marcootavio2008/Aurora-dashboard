@@ -163,7 +163,7 @@ def login():
 
 
 @app.route("/dashboard")
-def dashboard():
+def home():
     if "user_id" not in session:
         return redirect(url_for("login"))
 
