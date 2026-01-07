@@ -280,40 +280,46 @@ def select_house():
     session["house_id"] = house.id
     return jsonify({"status": "ok"})
 
-# ===============================
-# USUÁRIOS
-# ===============================
 
+# ===============================
+# CONFIGURAÇÕES DO USUÁRIO
+# ===============================
 @app.route("/api/settings", methods=["POST"])
-def save_settings():
+def salvar_settings():
+    user_id = session.get("user_id")
+    if not user_id:
+        return jsonify({"error": "usuário não logado"}), 403
+
     data = request.json
-
-    # Usuário
-    user = User.query.get(session["user_id"])
-    if not user:
-        return jsonify({"error": "usuário não encontrado"}), 404
-
     nome = data.get("nome")
     senha = data.get("senha")
     role = data.get("role")
     house_id = data.get("house_id")
 
+    user = User.query.get(user_id)
+    if not user:
+        return jsonify({"error": "usuário não encontrado"}), 404
+
+    # Atualiza os campos se enviados
     if nome:
         user.username = nome
+        session["username"] = nome
     if senha:
         user.password = senha
-    if role and session.get("role") == "admin":
-        user.role = role
+    if role:
+        # só admin pode alterar a role de outros usuários
+        if session.get("role") == "admin" or user.id == user_id:
+            user.role = role
 
-    # Casa ativa
+    # Atualiza casa ativa
     if house_id:
-        house = House.query.filter_by(id=house_id, owner_id=user.id).first()
+        house = House.query.filter_by(id=house_id, owner_id=user_id).first()
         if house:
             session["house_id"] = house.id
 
     db.session.commit()
-
     return jsonify({"status": "ok"})
+
 
 @app.route("/api/users", methods=["GET"])
 def list_users():
