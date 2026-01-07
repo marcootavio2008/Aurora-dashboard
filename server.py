@@ -164,7 +164,10 @@ def login():
 
 @app.route("/dashboard")
 def dashboard():
-    return render_template("dashboard.html", username=session["username"])
+    return render_template(
+    "dashboard.html",
+    username=session.get("username", "Usuário")
+)
 
 
 @app.route("/dash_residencial")
