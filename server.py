@@ -247,7 +247,7 @@ def dash_residencial():
 
 @app.route("/api/houses", methods=["GET"])
 def list_houses():
-    houses = House.query.filter_by(owner_id=session["user_id"]).all()
+    houses = House.query.all()
     return jsonify([{"id": h.id, "name": h.name} for h in houses])
 
 
