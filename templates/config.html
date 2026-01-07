@@ -122,13 +122,19 @@ async function criarCasa() {
 ========================== */
 async function carregarUsuarios() {
   const res = await fetch("/api/users");
-  const users = await res.json();
+  const data = await res.json();
+
+  if (!res.ok) {
+    alert("Não foi possível carregar usuários: " + (data.error || "Erro desconhecido"));
+    return;
+  }
 
   const tbody = document.querySelector("#usersTable tbody");
   tbody.innerHTML = "";
 
-  users.forEach(u => {
+  data.forEach(u => {
     const tr = document.createElement("tr");
+
     tr.innerHTML = `
       <td>${u.username}</td>
       <td>${u.role}</td>
@@ -136,6 +142,7 @@ async function carregarUsuarios() {
         <button onclick="apagarUsuario(${u.id})">🗑 Apagar</button>
       </td>
     `;
+
     tbody.appendChild(tr);
   });
 }
