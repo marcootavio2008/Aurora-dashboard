@@ -287,9 +287,6 @@ def select_house():
 
 @app.route("/api/users", methods=["POST"])
 def create_user():
-    if session.get("role") != "admin":
-        return jsonify({"error": "acesso negado"}), 403
-
     data = request.json
     username = data.get("username")
     password = data.get("password")
