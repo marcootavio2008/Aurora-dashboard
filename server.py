@@ -135,7 +135,8 @@ def pesquisar_wikipedia(termo):
         return None
 
 def get_dados(): 
-    #data agora_br = datetime.now(ZoneInfo("America/Sao_Paulo")) 
+    #data 
+    agora_br = datetime.now(ZoneInfo("America/Sao_Paulo")) 
     day_en = agora_br.strftime(f'%A') 
     dia = (dias[day_en]) 
     dia_resposta = agora_br.strftime(f'{dia}, %d/%m/%Y') 
