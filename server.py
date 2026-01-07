@@ -63,6 +63,24 @@ class User(db.Model):
     username = db.Column(db.String(80), unique=True, nullable=False)
     password = db.Column(db.String(120), nullable=False)
     role = db.Column(db.String(20), default="user")
+
+class House(db.Model):
+    __tablename__ = "houses"
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(120), nullable=False)
+    owner_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
+    
+class Device(db.Model):
+    __tablename__ = "devices"
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(120), nullable=False)
+    device_type = db.Column(db.String(20), nullable=False)
+    config = db.Column(db.JSON, nullable=False)
+    house_id = db.Column(db.Integer, db.ForeignKey("houses.id"), nullable=False)
+
+
 with app.app_context():
     db.create_all()
 
@@ -308,6 +326,52 @@ def controles():
 @app.route('/configs')
 def configs():
     return render_template('config.html')
+
+@app.route("/api/houses/select", methods=["POST"])
+def select_house():
+    data = request.get_json()
+    house_id = data.get("house_id")
+
+    house = House.query.get(house_id)
+
+    if not house or house.owner_id != session["user_id"]:
+        return jsonify({"error": "acesso negado"}), 403
+
+    session["house_id"] = house.id
+    return jsonify({"status": "ok"})
+
+
+@app.route("/api/houses", methods=["POST"])
+def create_house():
+    if "user_id" not in session:
+        return jsonify({"error": "não autenticado"}), 401
+
+    data = request.get_json()
+    name = data.get("name")
+
+    house = House(
+        name=name,
+        owner_id=session["user_id"]
+    )
+
+    db.session.add(house)
+    db.session.commit()
+
+    return jsonify({"status": "ok", "id": house.id})
+
+
+@app.route("/api/houses")
+def list_houses():
+    if "user_id" not in session:
+        return jsonify([])
+
+    houses = House.query.filter_by(owner_id=session["user_id"]).all()
+
+    return jsonify([
+        {"id": h.id, "name": h.name}
+        for h in houses
+    ])
+
 
 @app.route("/api/settings", methods=["POST"])
 def api_settings():
