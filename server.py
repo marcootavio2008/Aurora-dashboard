@@ -284,42 +284,28 @@ def select_house():
 # ===============================
 # CONFIGURAÇÕES DO USUÁRIO
 # ===============================
-@app.route("/api/settings", methods=["POST"])
-def salvar_settings():
-    user_id = session.get("user_id")
-    if not user_id:
-        return jsonify({"error": "usuário não logado"}), 403
+
+@app.route("/api/users", methods=["POST"])
+def criar_usuario():
+    if session.get("role") != "admin":
+        return jsonify({"error": "acesso negado"}), 403
 
     data = request.json
-    nome = data.get("nome")
-    senha = data.get("senha")
-    role = data.get("role")
-    house_id = data.get("house_id")
+    username = data.get("username")
+    password = data.get("password")
+    role = data.get("role", "user")
 
-    user = User.query.get(user_id)
-    if not user:
-        return jsonify({"error": "usuário não encontrado"}), 404
+    if not username or not password:
+        return jsonify({"error": "dados incompletos"}), 400
 
-    # Atualiza os campos se enviados
-    if nome:
-        user.username = nome
-        session["username"] = nome
-    if senha:
-        user.password = senha
-    if role:
-        # só admin pode alterar a role de outros usuários
-        if session.get("role") == "admin" or user.id == user_id:
-            user.role = role
+    if User.query.filter_by(username=username).first():
+        return jsonify({"error": "usuário já existe"}), 400
 
-    # Atualiza casa ativa
-    if house_id:
-        house = House.query.filter_by(id=house_id, owner_id=user_id).first()
-        if house:
-            session["house_id"] = house.id
-
+    user = User(username=username, password=password, role=role)
+    db.session.add(user)
     db.session.commit()
-    return jsonify({"status": "ok"})
 
+    return jsonify({"status": "ok", "user_id": user.id})
 
 @app.route("/api/users", methods=["GET"])
 def list_users():
