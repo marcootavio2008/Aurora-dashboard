@@ -147,6 +147,10 @@ async function carregarUsuarios() {
   });
 }
 
+document.addEventListener("DOMContentLoaded", () => {
+  carregarUsuarios();
+});
+
 async function apagarUsuario(id) {
   if (!confirm("Tem certeza que deseja apagar este usuário?")) return;
 
@@ -192,7 +196,5 @@ async function criarUsuario() {
 carregarCasas();
 carregarUsuarios();
 </script>
-
-<script src="/static/settings.js"></script>
 
 {% endblock %}
