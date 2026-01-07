@@ -235,7 +235,7 @@ def casa():
 def configs():
     return render_template("config.html")
     
-@@app.route("/dash_residencial")
+@app.route("/dash_residencial")
 def dash_residencial():
     house_id = session.get("house_id")
     if not house_id:
