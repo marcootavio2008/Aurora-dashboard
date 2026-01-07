@@ -59,37 +59,41 @@ db = SQLAlchemy(app)
 # ===============================
 
 class User(db.Model):
+    __tablename__ = "users"
+
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True, nullable=False)
     password = db.Column(db.String(120), nullable=False)
     role = db.Column(db.String(20), default="user")
-
-
+    
 class House(db.Model):
     __tablename__ = "houses"
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(120), nullable=False)
-    owner_id = db.Column(db.Integer, nullable=False)
-
+    owner_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
 
 class Device(db.Model):
     __tablename__ = "devices"
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(120), nullable=False)
-    device_type = db.Column(db.String(20), nullable=False)
+    device_type = db.Column(db.String(50), nullable=False)
     config = db.Column(db.JSON, nullable=False)
     house_id = db.Column(db.Integer, db.ForeignKey("houses.id"), nullable=False)
-
 
 with app.app_context():
     db.create_all()
 
     if User.query.count() == 0:
-        admin = User(username="admin", password="admin", role="admin")
+        admin = User(
+            username="admin",
+            password="admin",
+            role="admin"
+        )
         db.session.add(admin)
         db.session.commit()
+        print(">>> Admin padrão criado: admin / admin")
 
 # ===============================
 # CHATBOT / AURORA
