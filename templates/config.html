@@ -37,13 +37,13 @@
   <label>Casa ativa</label>
   <select id="houseSelect"></select>
 
-  <button onclick="selecionarCasa()">Selecionar</button>
+  <button class="botoes-config" onclick="selecionarCasa()">Selecionar</button>
 
   <hr>
 
   <label>Nova casa</label>
   <input type="text" id="newHouseName" placeholder="Ex: Casa da Praia">
-  <button onclick="criarCasa()">Adicionar Casa</button>
+  <button class="botoes-config" onclick="criarCasa()">Adicionar Casa</button>
 </div>
 
 
@@ -164,7 +164,7 @@ async function carregarUsuarios() {
       <td>${u.username}</td>
       <td>${u.role}</td>
       <td>
-        <button onclick="apagarUsuario(${u.id})">🗑 Apagar</button>
+        <button class="botoes-config" onclick="apagarUsuario(${u.id})">🗑 Apagar</button>
       </td>
     `;
 
