@@ -1,16 +1,23 @@
 from flask import Flask, render_template, request, jsonify, redirect, url_for, session
-from flask_sqlalchemy import SQLAlchemy
-from flask_sock import Sock
-from flask_socketio import SocketIO
-import os
-import json
-import random
-import unicodedata
+import subprocess 
+import psutil 
+import json 
+import random 
+from bs4 import BeautifulSoup 
+import urllib.parse 
+from translate import Translator 
+import requests 
+import wikipedia 
+from datetime import datetime 
+from zoneinfo import ZoneInfo 
+import datetime as dt 
+from flask_socketio import SocketIO 
+from datetime import timedelta 
+from flask_sock import Sock 
+import os 
+from flask_sqlalchemy import SQLAlchemy 
+import unicodedata 
 import re
-import wikipedia
-import requests
-from datetime import datetime
-from zoneinfo import ZoneInfo
 
 # ===============================
 # APP
@@ -127,6 +134,31 @@ def pesquisar_wikipedia(termo):
     except:
         return None
 
+def get_dados(): 
+    #data agora_br = datetime.now(ZoneInfo("America/Sao_Paulo")) 
+    day_en = agora_br.strftime(f'%A') 
+    dia = (dias[day_en]) 
+    dia_resposta = agora_br.strftime(f'{dia}, %d/%m/%Y') 
+    #horas 
+    hora_resposta = agora_br.strftime('%H:%M') 
+    horas = f"{hora_resposta}" 
+    #clima 
+    API_KEY = "d9d2657ec1b46a818cd8d41288954437" 
+    cidade = "Barbacena" 
+    link = f"https://api.openweathermap.org/data/2.5/weather?q={cidade}&appid={API_KEY}&lang=pt_br" 
+    requisicao = requests.get(link) 
+    requisicao_dic = requisicao.json() 
+    descricao = requisicao_dic['weather'][0]['description'] 
+    temperatura = requisicao_dic['main']['temp'] - 273.15 
+    temperatura = int(temperatura) 
+    umidade = requisicao_dic['main']['humidity'] 
+    umidade = f"Umidade: {umidade}%" 
+    clima = f'{descricao.capitalize()}, está fazendo neste momento: {int(temperatura)}°C' 
+    return {"Horas: ": horas, 
+            "Data: ": dia_resposta, 
+            "Clima: ": clima, 
+            "Umidade: ": umidade}
+
 def processar_pesquisa(frase):
     termo = detectar_pesquisa(frase)
     if not termo:
@@ -135,12 +167,14 @@ def processar_pesquisa(frase):
     resultado = pesquisar_wikipedia(termo)
     return resultado or random.choice(RESPOSTAS_SEM_RESULTADO)
 
-def processar_frase(frase):
-    respostas = dicionario.get(frase)
-    if not respostas:
-        return "Não tenho resposta para isso"
-    return random.choice(respostas) if isinstance(respostas, list) else respostas
-
+def processar_frase(frase): 
+    frase = frase.lower() 
+    if frase in dicionario: 
+        respostas = dicionario[frase] 
+        if isinstance(respostas, list): 
+            return random.choice(respostas) 
+        return respostas 
+    else: return "Não tenho respostas para isso"
 # ===============================
 # ROTAS AUTH
 # ===============================
@@ -172,8 +206,15 @@ def home():
         username=session.get("username", "Usuário")
     )
 
+@app.route('/casa') 
+def casa(): 
+    dados = get_dados() 
+    return render_template('casa.html', dados=dados)
 
-
+@app.route("/configs")
+def configs():
+    return render_template("config.html")
+    
 @app.route("/dash_residencial")
 def dash_residencial():
     house_id = session.get("house_id")
