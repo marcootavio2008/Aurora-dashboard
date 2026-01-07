@@ -65,7 +65,8 @@ class User(db.Model):
     username = db.Column(db.String(80), unique=True, nullable=False)
     password = db.Column(db.String(120), nullable=False)
     role = db.Column(db.String(20), default="user")
-    
+    house_id = db.Column(db.Integer, db.ForeignKey("houses.id"), nullable=True)  # nova coluna
+
 class House(db.Model):
     __tablename__ = "houses"
 
