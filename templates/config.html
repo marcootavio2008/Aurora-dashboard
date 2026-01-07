@@ -64,7 +64,9 @@
 
 
 <script>
-
+/* ==========================
+   CASAS
+========================== */
 async function carregarCasas() {
   const res = await fetch("/api/houses");
   const houses = await res.json();
@@ -95,17 +97,29 @@ async function selecionarCasa() {
 async function criarCasa() {
   const name = document.getElementById("newHouseName").value;
 
-  await fetch("/api/houses", {
+  if (!name) {
+    alert("Digite o nome da nova casa");
+    return;
+  }
+
+  const res = await fetch("/api/houses", {
     method: "POST",
     headers: {"Content-Type": "application/json"},
     body: JSON.stringify({ name })
   });
 
-  carregarCasas();
+  if (res.ok) {
+    document.getElementById("newHouseName").value = "";
+    carregarCasas();
+    alert("Casa criada com sucesso!");
+  } else {
+    alert("Erro ao criar casa");
+  }
 }
 
-carregarCasas();
-  
+/* ==========================
+   USUÁRIOS
+========================== */
 async function carregarUsuarios() {
   const res = await fetch("/api/users");
   const users = await res.json();
@@ -115,7 +129,6 @@ async function carregarUsuarios() {
 
   users.forEach(u => {
     const tr = document.createElement("tr");
-
     tr.innerHTML = `
       <td>${u.username}</td>
       <td>${u.role}</td>
@@ -123,7 +136,6 @@ async function carregarUsuarios() {
         <button onclick="apagarUsuario(${u.id})">🗑 Apagar</button>
       </td>
     `;
-
     tbody.appendChild(tr);
   });
 }
@@ -142,6 +154,34 @@ async function apagarUsuario(id) {
   }
 }
 
+/* ==========================
+   SALVAR CONFIGURAÇÕES
+========================== */
+async function salvarConfiguracoes() {
+  const nome = document.getElementById("nome").value;
+  const senha = document.getElementById("senha").value;
+  const role = document.getElementById("role").value;
+  const house_id = document.getElementById("houseSelect").value;
+
+  const res = await fetch("/api/settings", {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({ nome, senha, role, house_id })
+  });
+
+  if (res.ok) {
+    alert("Configurações salvas com sucesso!");
+    carregarUsuarios();
+    carregarCasas();
+  } else {
+    alert("Erro ao salvar configurações");
+  }
+}
+
+/* ==========================
+   INIT
+========================== */
+carregarCasas();
 carregarUsuarios();
 </script>
 
