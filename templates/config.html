@@ -3,9 +3,8 @@
 
 {% block content %}
 
-<h1 class="page-title"> 👤 PERFIL </h1>
+<h1 class="page-title">👤 Perfil</h1>
 
-<div>
 <div class="card">
   <div class="row">
     <div class="field">
@@ -13,61 +12,67 @@
       <input type="text" id="nome" placeholder="Ex: João">
     </div>
 
-  <div class="row">
     <div class="field">
       <label>Senha</label>
       <input type="text" id="senha" placeholder="Ex: 1234">
     </div>
 
-  <div class="row">
     <div class="field">
       <label>Permissão</label>
       <input type="text" id="role" placeholder="admin ou visitante">
     </div>
 
-  <div class="field">
-  <label>Casa do usuário</label>
-  <select id="userHouseSelect"></select>
+    <div class="field">
+      <label>Casa do usuário</label>
+      <select id="userHouseSelect"></select>
+    </div>
   </div>
 
+  <div class="actions">
+    <button class="btn-secondary">Cancelar</button>
+    <button class="btn-primary" onclick="criarUsuario()">Salvar Configurações</button>
+  </div>
+</div>
 
-    <h1>🏠 CASAS</h1>
+<h1 class="page-title">🏠 Casas</h1>
 
 <div class="card">
-  <label>Casa ativa</label>
-  <select id="houseSelect"></select>
-
-  <button class="botoes-config" onclick="selecionarCasa()">Selecionar</button>
+  <div class="row">
+    <div class="field">
+      <label>Casa ativa</label>
+      <select id="houseSelect"></select>
+    </div>
+    <div class="field" style="align-self:flex-end;">
+      <button class="botoes-config" onclick="selecionarCasa()">Selecionar</button>
+    </div>
+  </div>
 
   <hr>
 
-  <label>Nova casa</label>
-  <input type="text" id="newHouseName" placeholder="Ex: Casa da Praia">
-  <button class="botoes-config" onclick="criarCasa()">Adicionar Casa</button>
+  <div class="row">
+    <div class="field">
+      <label>Nova casa</label>
+      <input type="text" id="newHouseName" placeholder="Ex: Casa da Praia">
+    </div>
+    <div class="field" style="align-self:flex-end;">
+      <button class="botoes-config" onclick="criarCasa()">Adicionar Casa</button>
+    </div>
+  </div>
 </div>
 
+<h1 class="page-title">👥 Usuários</h1>
 
-<div class="actions">
-  <button class="btn-secondary">Cancelar</button>
-  <button class="btn-primary" onclick="criarUsuario()">
-    Salvar Configurações
-  </button>
-</div>
-
-<h2>-------------------------------</h2> 
-
-
-<h1> 👥 USUÁRIOS </h1>
-<table id="usersTable">
-  <thead>
-    <tr>
-      <th>Usuário</th>
-      <th>Perfil</th>
-      <th>Ação</th>
-    </tr>
-  </thead>
-  <tbody></tbody>
-</table>
+<div class="card">
+  <table id="usersTable">
+    <thead>
+      <tr>
+        <th>Usuário</th>
+        <th>Perfil</th>
+        <th>Ação</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
 </div>
 
 <script>
