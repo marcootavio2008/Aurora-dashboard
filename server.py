@@ -305,6 +305,15 @@ def add_user():
 
     return jsonify({"status": "ok", "user_id": novo_user.id})
 
+@app.route("/api/users", methods=["GET"])
+def list_users():
+    users = User.query.all()
+    return jsonify([
+        {"id": u.id, "username": u.username, "role": u.role}
+        for u in users
+    ])
+
+
 @app.route("/api/users/<int:user_id>", methods=["DELETE"])
 def delete_user(user_id):
     if session.get("role") != "admin":
