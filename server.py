@@ -206,10 +206,15 @@ def login():
             session["user_id"] = user.id
             session["username"] = user.username
             session["role"] = user.role
+
+            # Pega a primeira casa do usuário, se existir
+            first_house = House.query.filter_by(owner_id=user.id).first()
+            if first_house:
+                session["house_id"] = first_house.id
+
             return redirect(url_for("home"))
 
     return render_template("login.html")
-
 
 @app.route("/dashboard")
 def home():
@@ -230,7 +235,7 @@ def casa():
 def configs():
     return render_template("config.html")
     
-@app.route("/dash_residencial")
+@@app.route("/dash_residencial")
 def dash_residencial():
     house_id = session.get("house_id")
     if not house_id:
