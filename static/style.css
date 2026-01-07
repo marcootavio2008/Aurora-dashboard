@@ -318,4 +318,14 @@ body::before {
   cursor: pointer;
   box-shadow: 0 0 15px rgba(123, 63, 242, 0.6);
 }
+
+.botoes-config{
+  background: rgba(46, 45, 45, 0.45);;
+  color: var(--text-muted);
+  border: 1px solid var(--border-soft);
+  padding: 5px 11px;
+  border-radius: 7px;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+   
 }
