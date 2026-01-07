@@ -206,15 +206,11 @@ def login():
             session["user_id"] = user.id
             session["username"] = user.username
             session["role"] = user.role
-
-            # Pega a primeira casa do usuário, se existir
-            first_house = House.query.filter_by(owner_id=user.id).first()
-            if first_house:
-                session["house_id"] = first_house.id
-
+            session["house_id"] = user.house_id  # <- aqui
             return redirect(url_for("home"))
 
     return render_template("login.html")
+
 
 @app.route("/dashboard")
 def home():
@@ -296,15 +292,15 @@ def add_user():
     username = data.get("username")
     password = data.get("password")
     role = data.get("role", "user")
+    house_id = data.get("house_id")  # novo
 
     if not username or not password:
         return jsonify({"error": "usuário e senha obrigatórios"}), 400
 
-    # Checar se o usuário já existe
     if User.query.filter_by(username=username).first():
         return jsonify({"error": "usuário já existe"}), 400
 
-    novo_user = User(username=username, password=password, role=role)
+    novo_user = User(username=username, password=password, role=role, house_id=house_id)
     db.session.add(novo_user)
     db.session.commit()
 
