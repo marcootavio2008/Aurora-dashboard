@@ -164,10 +164,14 @@ def login():
 
 @app.route("/dashboard")
 def dashboard():
+    if "user_id" not in session:
+        return redirect(url_for("login"))
+
     return render_template(
-    "dashboard.html",
-    username=session.get("username", "Usuário")
-)
+        "dashboard.html",
+        username=session.get("username", "Usuário")
+    )
+
 
 
 @app.route("/dash_residencial")
