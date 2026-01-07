@@ -154,13 +154,15 @@ async function apagarUsuario(id) {
   }
 }
 
-/* ==========================
-   SALVAR CONFIGURAÇÕES
-========================== */
 async function criarUsuario() {
   const username = document.getElementById("nome").value;
   const password = document.getElementById("senha").value;
   const role = document.getElementById("role").value;
+
+  if (!username || !password) {
+    alert("Preencha usuário e senha!");
+    return;
+  }
 
   const res = await fetch("/api/users", {
     method: "POST",
@@ -169,14 +171,14 @@ async function criarUsuario() {
   });
 
   const data = await res.json();
-  if (data.status === "ok") {
-    alert("Usuário criado!");
-    carregarUsuarios();
+
+  if (res.ok) {
+    alert("Usuário criado com sucesso!");
+    carregarUsuarios(); // atualiza tabela
   } else {
-    alert(data.error || "Erro ao criar usuário");
+    alert("Erro ao criar usuário: " + data.error);
   }
 }
-
 /* ==========================
    INIT
 ========================== */
