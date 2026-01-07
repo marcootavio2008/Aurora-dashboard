@@ -51,7 +51,6 @@ if database_url.startswith("postgres://"):
 
 app.config["SQLALCHEMY_DATABASE_URI"] = database_url
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-
 db = SQLAlchemy(app)
 
 # ===============================
@@ -65,7 +64,12 @@ class User(db.Model):
     username = db.Column(db.String(80), unique=True, nullable=False)
     password = db.Column(db.String(120), nullable=False)
     role = db.Column(db.String(20), default="user")
-    house_id = db.Column(db.Integer, db.ForeignKey("houses.id"), nullable=True)  # nova coluna
+    house_id = db.Column(db.Integer, db.ForeignKey("houses.id"), nullable=True)  # FK opcional para casa
+
+    # Relacionamentos
+    house = db.relationship("House", back_populates="owner", uselist=False)
+    devices = db.relationship("Device", back_populates="user")
+
 
 class House(db.Model):
     __tablename__ = "houses"
@@ -74,40 +78,49 @@ class House(db.Model):
     name = db.Column(db.String(120), nullable=False)
     owner_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
 
+    # Relacionamentos
+    owner = db.relationship("User", back_populates="house", uselist=False)
+    devices = db.relationship("Device", back_populates="house")
+
+
 class Device(db.Model):
+    __tablename__ = "devices"
+
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
     device_type = db.Column(db.String(50), nullable=False)
     config = db.Column(db.JSON, default={})
-    house_id = db.Column(db.Integer, db.ForeignKey("house.id"), nullable=False)
-    
-    # ADICIONE esta linha:
-    user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
+    house_id = db.Column(db.Integer, db.ForeignKey("houses.id"), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
+
+    # Relacionamentos
+    house = db.relationship("House", back_populates="devices")
+    user = db.relationship("User", back_populates="devices")
+
+
+# ===============================
+# CRIAR ADMIN PADRÃO COM CASA
+# ===============================
 
 with app.app_context():
     db.create_all()
 
     if User.query.count() == 0:
-        # Cria uma casa padrão para o admin
-        admin_house = House(name="Casa Admin", owner_id=1)  # temporário, o id do admin ainda não existe
-        db.session.add(admin_house)
-        db.session.commit()  # preciso do id da casa
-
-        # Cria o admin e associa à casa criada
-        admin = User(
-            username="admin",
-            password="admin",
-            role="admin",
-            house_id=admin_house.id  # associa a casa
-        )
+        # Cria o admin primeiro
+        admin = User(username="admin", password="admin", role="admin")
         db.session.add(admin)
+        db.session.commit()  # precisa do id do admin
+
+        # Cria a casa padrão do admin
+        admin_house = House(name="Casa Admin", owner_id=admin.id)
+        db.session.add(admin_house)
+        db.session.commit()  # precisa do id da casa
+
+        # Atualiza o admin com house_id
+        admin.house_id = admin_house.id
         db.session.commit()
 
-        # Atualiza a casa com o owner_id correto do admin
-        admin_house.owner_id = admin.id
-        db.session.commit()
-
-        print(">>> Admin padrão criado: admin / admin")
+        print(">>> Admin padrão criado: admin / admin com casa associada")
 
 # ===============================
 # CHATBOT / AURORA
