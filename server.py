@@ -286,24 +286,24 @@ def select_house():
 # ===============================
 
 @app.route("/api/users", methods=["POST"])
-def create_user():
-    data = request.json
+def add_user():
+    data = request.get_json()
     username = data.get("username")
     password = data.get("password")
     role = data.get("role", "user")
 
     if not username or not password:
-        return jsonify({"error": "usuário ou senha inválidos"}), 400
+        return jsonify({"error": "usuário e senha obrigatórios"}), 400
 
-    # Verifica se já existe
+    # Checar se o usuário já existe
     if User.query.filter_by(username=username).first():
         return jsonify({"error": "usuário já existe"}), 400
 
-    user = User(username=username, password=password, role=role)
-    db.session.add(user)
+    novo_user = User(username=username, password=password, role=role)
+    db.session.add(novo_user)
     db.session.commit()
 
-    return jsonify({"status": "ok", "user_id": user.id})
+    return jsonify({"status": "ok", "user_id": novo_user.id})
 
 @app.route("/api/users/<int:user_id>", methods=["DELETE"])
 def delete_user(user_id):
