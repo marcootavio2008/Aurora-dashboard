@@ -74,13 +74,14 @@ class House(db.Model):
     owner_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
 
 class Device(db.Model):
-    __tablename__ = "devices"
-
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(120), nullable=False)
+    name = db.Column(db.String(100), nullable=False)
     device_type = db.Column(db.String(50), nullable=False)
-    config = db.Column(db.JSON, nullable=False)
-    house_id = db.Column(db.Integer, db.ForeignKey("houses.id"), nullable=False)
+    config = db.Column(db.JSON, default={})
+    house_id = db.Column(db.Integer, db.ForeignKey("house.id"), nullable=False)
+    
+    # ADICIONE esta linha:
+    user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
 
 with app.app_context():
     db.create_all()
