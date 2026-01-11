@@ -269,6 +269,8 @@ body::before {
   padding: 10px 12px;
   color: var(--text-main);
   outline: none;
+  margin: 0 auto;
+  width: 80%
 }
 
 .field input:focus,
