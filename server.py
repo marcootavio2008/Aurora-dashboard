@@ -132,7 +132,7 @@ with open(CAMINHO, "r", encoding="utf-8") as f:
 GATILHOS_PESQUISA = [
     "pesquisar", "buscar", "procurar", "quem e",
     "quem foi", "o que e", "o que significa",
-    "me fale sobre", "explique", "defina"
+    "me fale sobre", "explique", "defina", "quando foi", "qual é"
 ]
 
 RESPOSTAS_SEM_RESULTADO = [
