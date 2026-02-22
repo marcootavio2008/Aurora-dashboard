@@ -122,6 +122,15 @@ with app.app_context():
 # CHATBOT / AURORA
 # ===============================
 
+MEMORIA_USUARIOS = {}
+
+PALAVRAS_CONTINUACAO = [
+    "e", "ai", "entao", "mas",
+    "fala mais", "continua",
+    "sei la", "hm", "hmm",
+    "ata", "ahn"
+]
+
 wikipedia.set_lang("pt")
 
 CAMINHO = "dictionary.json"
@@ -204,14 +213,75 @@ def processar_pesquisa(frase):
     resultado = pesquisar_wikipedia(termo)
     return resultado or random.choice(RESPOSTAS_SEM_RESULTADO)
 
-def processar_frase(frase): 
-    frase = frase.lower() 
-    if frase in dicionario: 
-        respostas = dicionario[frase] 
-        if isinstance(respostas, list): 
-            return random.choice(respostas) 
-        return respostas 
-    else: return "Não tenho respostas para isso"
+def eh_continuacao(texto):
+    palavras = texto.split()
+    if len(palavras) <= 2:
+        return True
+    for p in PALAVRAS_CONTINUACAO:
+        if texto.startswith(p):
+            return True
+    return False
+
+def processar_frase(frase, user_id):
+    global MEMORIA_USUARIOS
+
+    if user_id not in MEMORIA_USUARIOS:
+        MEMORIA_USUARIOS[user_id] = {
+            "ultima_chave": None,
+            "historico": [],
+            "reutilizacoes": 0
+        }
+
+    memoria = MEMORIA_USUARIOS[user_id]
+
+    # 1️⃣ Resposta direta
+    if frase in dicionario:
+        respostas = dicionario[frase]
+
+        if isinstance(respostas, list):
+            ultima_resposta = None
+            if memoria["historico"]:
+                ultima_resposta = memoria["historico"][-1]["bot"]
+
+            opcoes = [r for r in respostas if r != ultima_resposta]
+            resposta = random.choice(opcoes if opcoes else respostas)
+        else:
+            resposta = respostas
+
+        memoria["ultima_chave"] = frase
+        memoria["reutilizacoes"] = 0
+
+    # 2️⃣ Continuação
+    elif eh_continuacao(frase) and memoria["ultima_chave"] in dicionario:
+        respostas = dicionario[memoria["ultima_chave"]]
+
+        if isinstance(respostas, list):
+            resposta = random.choice(respostas)
+        else:
+            resposta = respostas
+
+        memoria["reutilizacoes"] += 1
+
+        if memoria["reutilizacoes"] > 2:
+            resposta = "Sobre o que você quer falar agora?"
+            memoria["ultima_chave"] = None
+            memoria["reutilizacoes"] = 0
+
+    else:
+        resposta = "Não entendi muito bem."
+
+    # atualizar histórico
+    memoria["historico"].append({
+        "user": frase,
+        "bot": resposta
+    })
+
+    if len(memoria["historico"]) > 10:
+        memoria["historico"].pop(0)
+
+    MEMORIA_USUARIOS[user_id] = memoria
+
+    return resposta
 # ===============================
 # ROTAS AUTH
 # ===============================
@@ -359,12 +429,17 @@ def delete_user(user_id):
 @app.route("/message", methods=["POST"])
 def send_message():
     frase = normalizar(request.json.get("message", ""))
+    user_id = session.get("user_id")
 
-    resposta = processar_pesquisa(frase)
-    if resposta:
-        return jsonify({"response": resposta})
+    # Pesquisa primeiro
+    resposta_pesquisa = processar_pesquisa(frase)
+    if resposta_pesquisa:
+        return jsonify({"response": resposta_pesquisa})
 
-    return jsonify({"response": processar_frase(frase)})
+    # Conversa contextual
+    resposta = processar_frase(frase, user_id)
+
+    return jsonify({"response": resposta})
 
 # ===============================
 # RUN
