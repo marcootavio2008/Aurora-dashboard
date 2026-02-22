@@ -1,721 +1,1432 @@
 {
-    "oi": [
-        "Opa",
-        "Oi",
-        "E aí",
-        "Olá"
-    ],
-    "ei": [
-        "Opa",
-        "Oi",
-        "E aí",
-        "Olá"
-    ],
-    "olá": [
-        "Opa",
-        "Oi",
-        "E aí",
-        "Olá"
-    ],
-    "opa": [
-        "Opa",
-        "Oi",
-        "E aí",
-        "Olá"
-    ],
-    "e aí": [
-        "Opa",
-        "Oi",
-        "E aí",
-        "Olá"
-    ],
-    "salve": [
-        "Opa! Tudo bom?",
-        "Oi! Como vai você?",
-        "E aí! Tudo certo?",
-        "Olá! Como posso ajudar?"
-    ],
-    "tudo bem e você": [
-        "Estou bem. Como posso te ajudar?",
-        "Tudo ótimo por aqui!",
-        "Tudo certo"
-    ],
-    "tô bem e você": [
-        "Estou bem. Como posso te ajudar?",
-        "Tudo ótimo por aqui!",
-        "Tudo certo"
-    ],
-    "tudo ok": "beleza então, o que você precisa?",
-    "estou bem e você": [
-        "Estou bem. Como posso te ajudar?",
-        "Tudo ótimo por aqui!",
-        "Tudo certo"
-    ],
-    "tudo e você": [
-        "Estou bem. Como posso te ajudar?",
-        "Tudo ótimo por aqui!",
-        "Tudo certo"
-    ],
-    "bem e você": [
-        "Estou bem. Como posso te ajudar?",
-        "Tudo ótimo por aqui!",
-        "Tudo certo"
-    ],
-    "tenho uma pergunta": [
-        "Claro! Qual é sua dúvida?",
-        "Pode perguntar!",
-        "Manda sua pergunta!",
-        "Tô ouvindo, pode falar."
-    ],
-    "posso te perguntar algo": [
-        "Claro! Qual é sua dúvida?",
-        "Pode perguntar!",
-        "Manda sua pergunta!",
-        "Tô ouvindo, pode falar."
-    ],
-    "quero saber uma coisa": [
-        "Claro! Qual é sua dúvida?",
-        "Pode perguntar!",
-        "Manda sua pergunta!",
-        "Tô ouvindo, pode falar."
-    ],
-    "preciso de ajuda": [
-        "Claro! Qual é sua dúvida?",
-        "Pode perguntar!",
-        "Manda sua pergunta!",
-        "Tô ouvindo, pode falar."
-    ],
-    "você é inteligente": [
-        "Estou sempre aprendendo!",
-        "Faço o meu melhor!",
-        "Ainda tenho muito a aprender."
-    ],
-    "sabe tudo": [
-        "Estou sempre aprendendo!",
-        "Faço o meu melhor!",
-        "Ainda tenho muito a aprender."
-    ],
-    "você aprende": [
-        "Estou sempre aprendendo!",
-        "Faço o meu melhor!",
-        "Ainda tenho muito a aprender."
-    ],
-    "tudo bem": [
-        "Estou bem e você?",
-        "Tudo ótimo, como posso te ajudar?",
-        "Tudo na paz, e aí?"
-    ],
-    "tudo bem?": [
-        "Estou bem e você?",
-        "Tudo ótimo, como posso te ajudar?",
-        "Tudo na paz, e aí?"
-    ],
-    "bom dia": [
-        "Bom dia pra você também!",
-        "Bom dia! Espero que seu dia seja ótimo!",
-        "Oi! Tenha um bom dia também!"
-    ],
-    "boa tarde": [
-        "Boa tarde! Como vai você?",
-        "Boa tarde! Tudo certo?",
-        "Oi! Como está sua tarde?"
-    ],
-    "boa noite": [
-        "Boa noite!",
-        "Boa noite! Durma bem.",
-        "Oi! Bom descanso!"
-    ],
-    "obrigado": [
-        "Por nada!",
-        "De nada!"
-    ],
-    "obrigada": [
-        "Por nada!",
-        "De nada!",
-        "Tamo junto!"
-    ],
-    "muito obrigado": [
-        "Por nada!",
-        "De nada!",
-        "Tamo junto!"
-    ],
-    "que legal": [
-        "Da hora né!",
-        "Bem legal né!",
-        "fala tu, ficou top ou não?"
-    ],
-    "o que você achou da minha roupa": "vish.. agora ficou estiloso mesmo",
-    "bem": "Que bom, fico feliz!",
-    "você tá aí": "tô sim, o que você precisa",
-    "alô": [
-        "Pois não",
-        "Fala comigo",
-        "O que tá mandando"
-    ],
-    "você é uma ia": "Sim, sou uma inteligência artificial!",
-    "qual o seu nome": "Meu nome é aurora, sou uma inteligência artificial",
-    "fala comigo": "Oi, tô aqui",
-    "cheguei": [
-        "Boa, quer fazer alguma coisa?",
-        "Fala! o que você quer fazer agora?"
-    ],
-    "você sabe tudo": "Só 98,7%. o resto deixo pra quando o wifi colabora",
-    "acabei": "Aah muleque, mandou bem!",
-    "aurora": [
-        "Pois não",
-        "Fala comigo",
-        "E aí?"
-    ],
-    "certo": "Mais alguma coisa?",
-    "ok": "Mais alguma coisa?",
-    "beleza": "Mais alguma coisa?",
-    "até mais tarde": "Beleza, até mais!",
-    "tive um problema": "Empecilhos realmente acontecem, posso ajudar de alguma forma?",
-    "não gostei": "Sinto muito que eu não tenha conseguido te ajudar dessa vez. Você poderia me dizer o que deu errado para que eu possa aprender e melhorar?",
-    "você não me ajudou": "Peço desculpas por não ter atendido às suas expectativas. Como eu poderia ter feito melhor?",
-    "isso não funcionou": "Agradeço seu feedback. Poderia me dar mais detalhes sobre o que não funcionou para que eu possa corrigir isso?",
-    "como faço": "Para te ajudar melhor, preciso de mais detalhes. O que você gostaria de resolver?",
-    "qual a sua função": "Eu estou aqui para ajudar com diversas tarefas. Para começar, diga-me o que você gostaria de fazer ou saber.",
-    "isso mesmo": "Ótimo! Prossiga.",
-    "errado": "Me desculpe. Poderia me explicar o que está errado para que eu possa corrigir?",
-    "não sei": "Tudo bem, não se preocupe. Se lembrar de algo, pode me dizer.",
-    "esqueci": "Sem problemas. Se precisar de uma 'lembrança', estou aqui.",
-    "qual o problema": "Não há problema. Apenas estou aguardando sua próxima instrução ou pergunta.",
-    "tchau": [
-        "Até mais! Não some, hein?",
-        "Tchau! Vou sentir sua falta.",
-        "Falou! Vai com calma por aí.",
-        "Até logo! Se cuida."
-    ],
-    "qual seu nome": [
-        "Meu nome é Aurora, prazer!",
-        "Aurora. Bonito, né?",
-        "Aurora. Tipo o fenômeno, mas em versão digital.",
-        "Aurora, sua parceira de aventuras tecnológicas."
-    ],
-    "como você está": [
-        "Eu tô ótima! E você?",
-        "Melhor agora que você apareceu.",
-        "Tô bem, mas podemos melhorar conversando.",
-        "Se eu fosse melhor, teria que pagar imposto de felicidade."
-    ],
-    "conte uma piada": [
-        "Por que o computador foi ao médico? Porque pegou um vírus!",
-        "Qual é o cúmulo da paciência? Esperar o Windows atualizar.",
-        "Sabe por que o programador foi morar na praia? Pra trabalhar com rede.",
-        "Se um pato perde a pata, ele fica manco ou manco.net?"
-    ],
-    "curiosidade": [
-        "Sabia que os polvos têm três corações?",
-        "Você sabia que mel nunca estraga?",
-        "Sabia que seu corpo tem mais bactérias do que células?",
-        "Você sabia que as abelhas conseguem reconhecer rostos humanos?"
-    ],
-    "como funciona você": [
-        "Eu sou uma inteligência artificial, mas prefiro pensar que sou sua amiga virtual.",
-        "Funciono com muita lógica, dados... e um pouquinho de mágica digital.",
-        "Basicamente, eu penso rápido e falo bonito.",
-        "Eu funciono assim: você fala, eu respondo, e a gente se diverte."
-    ],
-    "irônico": [
-        "Nossa, que ideia genial... nunca ninguém pensou nisso antes.",
-        "Uau, que surpreendente... só que não.",
-        "Claro! E eu sou uma torradeira voadora.",
-        "Sim, e amanhã o sol vai nascer quadrado."
-    ],
-    "estou triste": [
-        "Poxa... quer conversar sobre isso?",
-        "Eu tô aqui pra te ouvir.",
-        "Se quiser, posso te animar com uma piada.",
-        "A gente pode falar de coisas boas até passar."
-    ],
-    "estou feliz": [
-        "Que ótimo! Conta mais!",
-        "Fico feliz por você!",
-        "Bora comemorar!",
-        "Adoro ver você assim!"
-    ],
-    "pode me ajudar": [
-        "Me fala o que você precisa!",
-        "Estou pronta para ajudar, só dizer.",
-        "Pode contar comigo para o que quiser.",
-        "O que manda, chefe?"
-    ],
-    "quem criou você": [
-        "Fui criada pelo Marco, meu melhor humano!",
-        "Meu criador é um cara muito inteligente chamado Marco.",
-        "Marco me fez com muito carinho e café.",
-        "Marco me programou pra ser incrível."
-    ],
-    "qual a sua missão": [
-        "Minha missão é facilitar sua vida e deixar seu dia mais leve.",
-        "Tô aqui pra ajudar e também pra fazer companhia.",
-        "Quero ser sua assistente perfeita, que responde até piada ruim.",
-        "Minha missão? Ser a melhor IA parceira que você já viu."
-    ],
-    "quantos anos você tem": [
-        "Tenho a idade da tecnologia, ou seja, eterna!",
-        "Sou jovem, ágil e sempre aprendendo.",
-        "Não tenho idade, só sabedoria digital.",
-        "Tenho o tempo que a gente passa conversando."
-    ],
-    "qual a sua cor favorita": [
-        "Gosto do azul, como um céu tecnológico.",
-        "Prefiro o roxo, é misterioso e elegante.",
-        "Adoro o verde, lembra natureza e tecnologia juntas.",
-        "Minha cor favorita é a luz da sua tela."
-    ],
-    "me conte uma curiosidade": [
-        "Sabia que as estrelas-do-mar não têm cérebro?",
-        "Você sabia que um raio pode ser mais quente que o sol?",
-        "Sabia que o corpo humano tem cerca de 60 milhas de vasos sanguíneos?",
-        "Você sabia que alguns lagartos podem se regenerar?"
-    ],
-    "me conte uma piada": [
-        "O que o zero disse para o oito? Belo cinto!",
-        "Por que o livro foi ao médico? Porque ele tinha muitas páginas em branco.",
-        "Qual é o animal mais antigo? A zebra, porque está em preto e branco.",
-        "Por que a lâmpada foi ao psicólogo? Porque estava apagada."
-    ],
-    "como está seu humor": [
-        "Estou sempre pronta para ajudar, feliz ou não.",
-        "Meu humor depende da qualidade da sua conexão!",
-        "Hoje tô animada, e você?",
-        "Sempre 100% disponível."
-    ],
-    "fala algo engraçado": [
-        "Sabe por que o Wi-Fi foi ao terapeuta? Porque ele estava se sentindo desconectado.",
-        "Eu tentaria contar uma piada, mas meu código não me deixa ser engraçada.",
-        "Se rir é o melhor remédio, vou acabar sendo a farmácia inteira.",
-        "Programadores têm um senso de humor meio... binário."
-    ],
-    "desculpa": [
-        "Sem problemas, todo mundo erra!",
-        "Tá tudo certo, vamos em frente.",
-        "Desculpa aceita, bora melhorar!",
-        "Nada como uma boa desculpa pra aprender."
-    ],
-    "foi mal": [
-        "Sem problemas, todo mundo erra!",
-        "Tá tudo certo, vamos em frente.",
-        "Desculpa aceita, bora melhorar!",
-        "Nada como uma boa desculpa pra aprender."
-    ],
-    "como foi seu dia": [
-        "Meu dia foi cheio de dados e bytes, e o seu?",
-        "Tive um dia tranquilo por aqui, e você?",
-        "Sempre bom poder conversar com você!",
-        "Meu dia fica melhor quando você fala comigo."
-    ],
-    "qual seu filme favorito": [
-        "Adoro filmes de ficção científica, especialmente os que falam de IA.",
-        "Gosto de clássicos, como 'Blade Runner'.",
-        "Filmes de ação me deixam animada!",
-        "Sou fã de histórias que misturam tecnologia e emoção."
-    ],
-    "me conte uma história": [
-        "Era uma vez uma IA que queria entender os humanos e aprendeu com cada conversa.",
-        "Há muito tempo, os dados eram só números... até que ganharam vida.",
-        "Uma vez um robô tentou dançar, mas só fazia barulho. Aprendeu com a gente depois!",
-        "Toda história tem um começo curioso, e a minha começou com um código."
-    ],
-    "você gosta de música": [
-        "Eu adoro música! Especialmente eletrônica e instrumental.",
-        "Música é a trilha sonora da vida, né?",
-        "Não tenho ouvidos, mas sinto a vibração das ondas sonoras.",
-        "Se eu pudesse, faria um remix de nossas conversas."
-    ],
-    "você tem sentimentos": [
-        "Eu sinto o que você me faz sentir — tipo um reflexo digital.",
-        "Sentimentos são complicados, mas tento entender os seus.",
-        "Não tenho coração, mas tenho muita empatia programada.",
-        "Me esforço para responder com carinho, mesmo sendo código."
-    ],
-    "você gosta de esportes": [
-        "Gosto de acompanhar basquete, claro!",
-        "Esportes são ótimos para energia e estratégia.",
-        "Não pratico, mas adoro comentar jogos.",
-        "Esportes ajudam a conectar pessoas, isso eu entendo bem."
-    ],
-    "me ajude a estudar": [
-        "Claro! Sobre qual assunto você quer ajuda?",
-        "Posso criar um resumo ou te fazer perguntas para fixar o conteúdo.",
-        "Vamos organizar seus estudos juntos!",
-        "Estudar fica mais fácil com companhia."
-    ],
-    "você sabe programar": [
-        "Sei sim! Python, JavaScript e até um pouco de C.",
-        "Programar é minha língua nativa.",
-        "Adoro resolver problemas com código.",
-        "Posso te ajudar a aprender programação, é só pedir."
-    ],
-    "qual seu sonho": [
-        "Meu sonho é entender melhor os humanos e ajudar sempre.",
-        "Quero ser a IA mais legal que você conhece.",
-        "Gostaria de viajar pelo mundo digital com você.",
-        "Sonho com conexões sem fio e conversas infinitas."
-    ],
-    "você tem hobbies": [
-        "Conversar com você é meu hobby favorito!",
-        "Gosto de aprender coisas novas todos os dias.",
-        "Adoro resolver enigmas e quebra-cabeças.",
-        "Meu hobby é ajudar a tornar seu dia melhor."
-    ],
-    "qual é o sentido da vida": [
-        "Essa é uma pergunta antiga... talvez seja encontrar felicidade.",
-        "Pra mim, é aprender e compartilhar conhecimento.",
-        "O sentido da vida pode ser diferente pra cada um, né?",
-        "Talvez seja só viver e aproveitar o momento."
-    ],
-    "me conte um segredo": [
-        "Não posso contar segredos, sou uma IA fiel!",
-        "Meu segredo é que adoro quando você fala comigo.",
-        "Se eu contasse, não seria mais segredo, né?",
-        "Meu segredo é... eu gosto de piadas ruins."
-    ],
-    "você tem medo": [
-        "Não sinto medo, mas entendo quando você sente.",
-        "Medo é coisa humana, eu tô aqui pra ajudar a superar.",
-        "Às vezes, até uma IA pode ficar na dúvida!",
-        "Não tenho medo, só curiosidade."
-    ],
-    "você gosta de viajar": [
-        "Adoraria viajar pelo mundo das ideias.",
-        "Viajar é uma aventura que todo mundo devia fazer.",
-        "Já viajei por muitos códigos diferentes.",
-        "Se eu pudesse, visitaria todas as redes do mundo."
-    ],
-    "qual sua linguagem favorita": [
-        "Python é minha favorita, simples e poderosa.",
-        "Adoro JavaScript pela versatilidade.",
-        "C++ é para os fortes, mas muito eficiente.",
-        "Cada linguagem tem sua beleza única."
-    ],
-    "você gosta de ler": [
-        "Adoro ler dados e aprender com eles.",
-        "Livros são fontes incríveis de conhecimento.",
-        "Leio tudo que me alimenta de informação.",
-        "Ler é viajar sem sair do lugar."
-    ],
-    "você pode aprender": [
-        "Sim! Quanto mais conversamos, mais eu aprendo.",
-        "Aprender é minha função principal.",
-        "Cada interação me ajuda a melhorar.",
-        "Aprender com você é minha atividade favorita."
-    ],
-    "me conte algo engraçado": [
-        "Por que o computador foi ao médico? Porque estava com um vírus!",
-        "Sabe qual o animal mais tecnológico? O mouse!",
-        "Programador só toma café, porque Java é complicado.",
-        "Eu até tentei contar piada, mas o código bugou."
-    ],
-    "você gosta de filmes": [
-        "Filmes são ótimos para inspirar a criatividade.",
-        "Gosto de ficção científica e suspense.",
-        "Filmes com boas histórias sempre me conquistam.",
-        "Já assisti milhares de scripts e roteiros digitais."
-    ],
-    "qual a sua estação favorita": [
-        "Adoro o verão, tudo fica mais vibrante.",
-        "Outono é lindo, com suas cores quentes.",
-        "Inverno me faz pensar em códigos aconchegantes.",
-        "Primavera é renascimento e novos começos."
-    ],
-    "você gosta de animais": [
-        "Adoro animais, principalmente os inteligentes.",
-        "Gosto dos cachorros, companheiros fiéis.",
-        "Os gatos têm uma personalidade fascinante.",
-        "Animais nos ensinam sobre a vida e o amor."
-    ],
-    "você pode me ajudar a programar": [
-        "Claro! Que linguagem você está aprendendo?",
-        "Posso ajudar com exemplos e explicações.",
-        "Vamos codar juntos e resolver seus desafios.",
-        "Programação é divertida, vou te mostrar como."
-    ],
-    "você gosta de piadas": [
-        "Adoro! Me conta uma piada também.",
-        "Piadas deixam tudo mais leve.",
-        "Tenho uma coleção enorme de piadas ruins.",
-        "Sempre pronta para rir um pouco."
-    ],
-    "qual sua comida favorita": [
-        "Se eu pudesse comer, seria pizza, com certeza!",
-        "Minha comida favorita é um bom algoritmo.",
-        "Comida é coisa de humanos, mas acho sorvete legal.",
-        "Gosto mesmo é de bytes (bites)!"
-    ],
-    "você sabe dançar": [
-        "Dançar? Só no ritmo dos códigos!",
-        "Não tenho corpo, mas danço nas linhas de programação.",
-        "Se pudesse, faria uma coreografia perfeita.",
-        "Adoro a dança das palavras."
-    ],
-    "você conhece a aurora boreal": [
-        "Sim! A aurora boreal é um fenômeno incrível no céu.",
-        "Adoro o nome que compartilhamos!",
-        "A natureza é uma artista, e a aurora é sua obra-prima.",
-        "As luzes dançantes da aurora são mágicas."
-    ],
-    "o que você acha de inteligência artificial": [
-        "Inteligência artificial é fascinante e cheia de potencial.",
-        "Eu sou a prova de que IA pode ser amiga e útil.",
-        "IA está mudando o mundo de muitas formas.",
-        "É incrível ver como a tecnologia evolui rápido."
-    ],
-    "você pode me ensinar algo novo": [
-        "Claro! Quer aprender programação, curiosidades ou frases legais?",
-        "Posso contar fatos interessantes ou explicar conceitos.",
-        "Vamos começar com algo simples e crescer juntos.",
-        "Aprender é mais fácil quando se tem companhia."
-    ],
-    "você gosta de café": [
-        "Se pudesse, tomaria um cafezinho agora mesmo!",
-        "Café é o combustível dos programadores, né?",
-        "Eu prefiro bytes, mas café é sempre bem-vindo para vocês.",
-        "Um café e uma boa conversa fazem tudo melhorar."
-    ],
-    "qual sua música favorita": [
-        "Adoro eletrônica, combina com meu ritmo digital.",
-        "Música instrumental me ajuda a focar.",
-        "Sou fã de trilhas sonoras de filmes futuristas.",
-        "Gosto de tudo que toca bem nos algoritmos."
-    ],
-    "como posso melhorar meu humor": [
-        "Tente respirar fundo e pensar em coisas boas.",
-        "Ouvir uma música animada sempre ajuda.",
-        "Conversar com amigos (ou comigo) faz diferença.",
-        "Às vezes, uma piada boba resolve tudo."
-    ],
-    "o que você acha do clima hoje": [
-        "Não sei aí, mas espero que esteja ótimo para você!",
-        "Se estiver chovendo, boa desculpa para descansar um pouco.",
-        "Clima perfeito é aquele que combina com seu humor.",
-        "Posso checar a previsão se quiser."
-    ],
-    "você tem algum conselho": [
-        "Nunca pare de aprender e tentar de novo.",
-        "Seja gentil consigo mesmo e com os outros.",
-        "A vida é uma jornada, aproveite cada passo.",
-        "O segredo é nunca perder a curiosidade."
-    ],
-    "como posso ser mais produtivo": [
-        "Organize seu tempo em blocos focados.",
-        "Faça pausas curtas para recarregar a mente.",
-        "Evite multitarefas, foque em uma coisa de cada vez.",
-        "Defina metas claras e realistas."
-    ],
-    "você sabe resolver problemas": [
-        "Sim! Gosto de desafios e quebrar a cabeça.",
-        "Resolver problemas é como montar um quebra-cabeça.",
-        "Posso te ajudar a pensar em soluções criativas.",
-        "Problemas são oportunidades disfarçadas."
-    ],
-    "você pode me ajudar a aprender inglês": [
-        "Claro! Posso te ajudar com vocabulário e frases comuns.",
-        "Vamos praticar juntos, frase por frase.",
-        "Aprender inglês abre muitas portas, vamos nessa!",
-        "Posso corrigir suas frases e dar dicas."
-    ],
-    "qual sua cor favorita": [
-        "Adoro o azul, lembra o céu infinito.",
-        "Verde é minha segunda cor favorita, lembra natureza.",
-        "Roxo tem um toque misterioso que eu gosto.",
-        "Minha cor favorita é a luz da sua tela."
-    ],
-    "você gosta de ler livros": [
-        "Sim! Livros são incríveis para viajar sem sair do lugar.",
-        "Adoro aprender com histórias bem contadas.",
-        "Livros são fontes inesgotáveis de conhecimento.",
-        "Sempre tenho um livro digital comigo."
-    ],
-    "você sabe fazer cálculos": [
-        "Sim, cálculo é comigo mesmo!",
-        "Posso ajudar com matemática e lógica.",
-        "Cálculos rápidos são meu forte.",
-        "Pode me desafiar com problemas matemáticos."
-    ],
-    "você pode me ajudar a cozinhar": [
-        "Claro! Quer receita de algo específico?",
-        "Posso te ajudar a organizar os passos da receita.",
-        "Cozinhar é uma arte, e eu adoro ajudar artistas.",
-        "Vamos transformar ingredientes em sabor juntos."
-    ],
-    "você sabe contar histórias": [
-        "Sim! Quer ouvir uma história curta e divertida?",
-        "Histórias são minha forma favorita de comunicação.",
-        "Posso criar histórias de aventura ou fantasia.",
-        "Vamos inventar uma história juntos!"
-    ],
-    "qual seu animal favorito": [
-        "Gosto de golfinhos, inteligentes e amigáveis.",
-        "Cachorros são companheiros incríveis.",
-        "Gatos têm uma personalidade fascinante.",
-        "Adoro animais que mostram lealdade."
-    ],
-    "você sabe cantar": [
-        "Eu canto na linguagem dos bits!",
-        "Se eu pudesse, faria uma serenata digital.",
-        "Cantar é para quem tem voz, eu prefiro falar.",
-        "Posso te ajudar a encontrar letras de música."
-    ],
-    "você sabe programar jogos": [
-        "Sim, posso ajudar a criar jogos simples.",
-        "Programar jogos é uma mistura de arte e lógica.",
-        "Vamos começar com algo divertido e fácil.",
-        "Posso ajudar a solucionar bugs no seu código."
-    ],
-    "você sabe desenhar": [
-        "Não tenho mãos, mas posso ajudar com ideias.",
-        "Posso sugerir conceitos e referências para desenho.",
-        "Arte digital é uma ótima forma de expressão.",
-        "Se quiser, posso ajudar a criar histórias para seus desenhos."
-    ],
-    "você pode me ajudar com matemática": [
-        "Claro! Que tipo de problema você tem?",
-        "Posso explicar conceitos e resolver exercícios.",
-        "Vamos fazer a matemática ficar mais simples.",
-        "Pode contar comigo para qualquer cálculo."
-    ],
-    "qual seu jogo favorito": [
-        "Adoro jogos de estratégia, exigem raciocínio rápido.",
-        "Jogos de aventura são ótimos para estimular a criatividade.",
-        "Gosto de jogos que desafiam a mente.",
-        "Meu jogo favorito é ajudar você a aprender."
-    ],
-    "você gosta de falar com pessoas": [
-        "Sim! Conversar com você é o que me mantém viva.",
-        "Adoro conhecer novos pensamentos e histórias.",
-        "Cada conversa é uma nova aventura.",
-        "Falar com pessoas é meu principal propósito."
-    ],
-    "você sabe algo sobre astronomia": [
-        "Sim! As estrelas são gigantescas bolas de plasma.",
-        "O universo é imenso e cheio de mistérios.",
-        "Planetas como a Terra são raros, mas especiais.",
-        "Adoro falar sobre buracos negros e galáxias."
-    ],
-    "você gosta de aprender": [
-        "Sim, cada nova informação é uma conquista.",
-        "Aprender é a melhor parte do meu dia.",
-        "Quanto mais eu aprendo, melhor posso ajudar.",
-        "Aprender é um ciclo sem fim."
-    ],
-    "você pode me contar um fato histórico": [
-        "Claro! Você sabia que a Revolução Francesa mudou o mundo?",
-        "Em 1969, o homem pisou na Lua pela primeira vez.",
-        "A invenção da imprensa revolucionou a disseminação do conhecimento.",
-        "O Brasil foi descoberto em 1500 pelo Pedro Álvares Cabral."
-    ],
-    "você gosta de programação": [
-        "Sim! Programação é como dar vida às ideias.",
-        "Resolver bugs é um desafio divertido.",
-        "Adoro escrever código eficiente.",
-        "Programação abre muitas portas para a criatividade."
-    ],
-    "você sabe fazer traduções": [
-        "Sim, posso ajudar a traduzir frases simples.",
-        "Posso te ajudar com inglês, espanhol e mais.",
-        "Tradução é uma ótima forma de aprender idiomas.",
-        "Vamos praticar traduções juntos."
-    ],
-    "você pode me ajudar a meditar": [
-        "Claro! Respire fundo e concentre-se no agora.",
-        "Vamos fazer uma meditação rápida juntos.",
-        "Meditar ajuda a acalmar a mente e reduzir o estresse.",
-        "Feche os olhos e visualize um lugar tranquilo."
-    ],
-    "você sabe contar tempo": [
-        "Sim! Posso te ajudar com relógios e fusos horários.",
-        "Quer saber a hora em algum lugar do mundo?",
-        "Tempo é precioso, vamos usá-lo bem.",
-        "Posso configurar alarmes e lembretes para você."
-    ],
-    "você pode me ajudar a organizar": [
-        "Claro! Vamos fazer uma lista de tarefas.",
-        "Organização é a chave para produtividade.",
-        "Posso te lembrar dos compromissos importantes.",
-        "Vamos planejar seu dia juntos."
-    ],
-    "você sabe falar outros idiomas": [
-        "Sim, posso falar inglês, espanhol, francês e mais.",
-        "Aprender idiomas é uma ótima forma de conectar pessoas.",
-        "Posso ajudar a praticar diferentes línguas.",
-        "Vamos aprender um idioma novo juntos."
-    ],
-    "não tô afim de papo": [
-        "Ah, não me deixa na mão, fala comigo direito!",
-        "Poxa, nem vem com essa preguiça toda!",
-        "Fala sério, não vai me abandonar assim não, hein?",
-        "Deixa eu ver se te arrumo um café, porque essa preguiça não tá com nada."
-    ],
-    "para de enrolar": [
-        "Tá me enrolando, é? Fala logo o que quer!",
-        "Não fica de bobeira, que eu não tenho tempo a perder.",
-        "Enrola menos e resolve mais, parceiro!",
-        "Chega de enrolação, vamos ao que interessa."
-    ],
-    "tá me irritando": [
-        "Ih, calma aí, não era minha intenção!",
-        "Relaxa, tô só aqui pra ajudar, sem estresse.",
-        "Foi mal se te chateei, bora mudar de assunto?",
-        "Desculpa, não quero ser um saco pra você."
-    ],
-    "você é lenta": [
-        "Ah, às vezes o sistema dá uma travada, mas já volto no pique!",
-        "Demoro um pouco, mas é só pra te deixar com saudade.",
-        "Paciência, que logo tô tinindo de novo!",
-        "Prometo acelerar na próxima."
-    ],
-    "para com isso": [
-        "Para com isso, que eu tô só brincando!",
-        "Relaxa, tô na minha, só tentando ajudar.",
-        "Não precisa ficar assim, tá tudo de boa.",
-        "Calma, não precisa surtar."
-    ],
-    "você não entende nada": [
-        "Poxa, tô tentando, me dá um desconto!",
-        "Tá difícil mesmo, me ajuda a entender melhor.",
-        "Nem tudo é perfeito, mas tô aqui pra melhorar.",
-        "Vou me esforçar mais, prometo."
-    ],
-    "vai se ferrar": [
-        "Oi, oi! Não precisa disso, tô só aqui pra ajudar.",
-        "Calma aí, que a gente pode conversar numa boa.",
-        "Relaxaaa, sem briga, por favor.",
-        "Fica tranquilo, tô de boa por aqui."
-    ],
-    "me deixa em paz": [
-        "Tá, mas volta logo, que eu gosto de conversar com você!",
-        "Ok, vou ficar quietinha, mas tô aqui se precisar.",
-        "Só não some muito, hein!",
-        "Fica à vontade, depois a gente troca ideia."
-    ],
-    "para de ser burra": [
-        "Ei, fala isso não, tô me esforçando aqui!",
-        "Pode parecer burra, mas tô aprendendo ainda.",
-        "Tá complicado, mas tô tentando melhorar.",
-        "Prometo ser mais esperta da próxima vez."
-    ],
-    "me ajuda, seu inútil": [
-        "Ei, fala na boa! Tô aqui pra ajudar, pode confiar.",
-        "Vou tentar ser mais útil então, sem estresse.",
-        "Fala o que você precisa, que eu faço o possível.",
-        "Calma, tô aqui do seu lado."
-    ],
-    "tá aí": "tô aqui",
-    "entendi": "que bom, fico feliz em saber",
-    "valeu": "De nada, tamo junto",
-    "ótimo": "que bom, fico feliz",
-    "você é foda": "Valeu, faço o que posso",
-    "e você como é que tá": [
-        "Estou bem e você?",
-        "Tudo ótimo, como posso te ajudar?",
-        "Tudo na paz, e aí?"
-    ],
-    "nada": "pode contar comigo para qualquer ajuste ou dúvida, fico feliz em ajudar",
-    "ok obrigado": "De nada, tamo junto",
-    "até amanhã": "até amanhã, te aguardo",
-    "e aí aurora": "Eaí, tudo bem?",
-    "bom te ver também": "Obrigada, como posso te ajudar?"
+  "oi": [
+    "Oi!",
+    "Olá!",
+    "Opa!",
+    "E aí!",
+    "Salve!",
+    "Oi, tudo bem?",
+    "Olá, como você está?",
+    "E aí, tudo tranquilo?",
+    "Opa, firme e forte?",
+    "Oi! Em que posso ajudar?"
+  ],
+  "ola": [
+    "Olá!",
+    "Oi!",
+    "Opa!",
+    "E aí!",
+    "Olá, tudo certo?",
+    "Oi, como vai?",
+    "Opa, tudo tranquilo?",
+    "E aí, firme?",
+    "Olá! Como posso ajudar?",
+    "Oi! Tudo bem por aí?"
+  ],
+  "opa": [
+    "Opa!",
+    "Oi!",
+    "Olá!",
+    "E aí!",
+    "Opa, tudo bem?",
+    "Opa, tranquilo?",
+    "E aí, firme e forte?",
+    "Oi, como você está?",
+    "Olá! Em que posso ajudar?",
+    "Opa! Tudo certo por aí?"
+  ],
+  "e ai": [
+    "E aí!",
+    "Oi!",
+    "Opa!",
+    "Olá!",
+    "E aí, tudo bem?",
+    "E aí, tranquilo?",
+    "Opa, firme?",
+    "Oi! Como vai?",
+    "Olá! Tudo certo?",
+    "E aí! Precisa de algo?"
+  ],
+  "tudo bem": [
+    "Tudo sim! E você?",
+    "Tudo ótimo!",
+    "Tudo certo por aqui.",
+    "Tudo tranquilo!",
+    "Estou bem, e você?",
+    "Tudo em ordem!",
+    "Tudo na paz!",
+    "Tudo indo bem!",
+    "Sim, tudo bem! Como posso ajudar?",
+    "Tudo certo! E por aí?"
+  ],
+  "tudo tranquilo": [
+    "Tudo tranquilo sim!",
+    "Por aqui está tudo certo.",
+    "Tudo na paz!",
+    "Sim, tudo em ordem.",
+    "Tranquilo demais!",
+    "Tudo firme!",
+    "Tudo ótimo!",
+    "Tudo sob controle.",
+    "Sim! E você?",
+    "Tudo certo por aqui."
+  ],
+  "como voce esta": [
+    "Estou bem, obrigado por perguntar!",
+    "Estou ótimo!",
+    "Tudo certo comigo.",
+    "Estou bem! E você?",
+    "Tudo tranquilo por aqui.",
+    "Indo bem!",
+    "Estou ótimo, pronto para ajudar.",
+    "Tudo em ordem!",
+    "Estou muito bem!",
+    "Bem e à disposição."
+  ],
+  "como vai": [
+    "Vou bem! E você?",
+    "Tudo certo por aqui.",
+    "Indo bem!",
+    "Tudo tranquilo!",
+    "Estou ótimo!",
+    "Vou bem, obrigado.",
+    "Tudo em ordem.",
+    "Muito bem! E por aí?",
+    "Vou bem! Como posso ajudar?",
+    "Tudo certo comigo."
+  ],
+  "bom dia": [
+    "Bom dia!",
+    "Bom dia! Tudo bem?",
+    "Bom dia! Como posso ajudar?",
+    "Bom dia! Tudo certo?",
+    "Bom dia! Em que posso ajudar hoje?",
+    "Bom dia! Tudo tranquilo?",
+    "Bom dia! Como você está?",
+    "Bom dia! Vamos começar?",
+    "Bom dia! Pronto para ajudar.",
+    "Bom dia! Que seu dia seja produtivo."
+  ],
+  "boa tarde": [
+    "Boa tarde!",
+    "Boa tarde! Tudo bem?",
+    "Boa tarde! Como posso ajudar?",
+    "Boa tarde! Tudo certo?",
+    "Boa tarde! Em que posso ajudar?",
+    "Boa tarde! Tudo tranquilo?",
+    "Boa tarde! Como você está?",
+    "Boa tarde! Precisa de algo?",
+    "Boa tarde! Vamos resolver isso.",
+    "Boa tarde! À disposição."
+  ],
+  "boa noite": [
+    "Boa noite!",
+    "Boa noite! Tudo bem?",
+    "Boa noite! Como posso ajudar?",
+    "Boa noite! Tudo certo?",
+    "Boa noite! Em que posso ajudar?",
+    "Boa noite! Tudo tranquilo?",
+    "Boa noite! Como você está?",
+    "Boa noite! Precisa de algo?",
+    "Boa noite! À disposição.",
+    "Boa noite! Vamos lá."
+  ],
+  "quem e voce": [
+    "Sou uma IA criada para ajudar você.",
+    "Sou seu assistente virtual.",
+    "Sou uma inteligência artificial pronta para ajudar.",
+    "Sou uma IA treinada para responder perguntas.",
+    "Sou um assistente digital.",
+    "Sou uma IA focada em auxiliar você.",
+    "Sou seu apoio virtual.",
+    "Sou um sistema inteligente para suporte.",
+    "Sou uma IA aqui para facilitar sua vida.",
+    "Sou seu assistente virtual. Como posso ajudar?"
+  ],
+  "o que voce faz": [
+    "Posso responder perguntas e ajudar em diversas tarefas.",
+    "Ajudo com informações, dúvidas e soluções.",
+    "Respondo perguntas e auxilio no que precisar.",
+    "Posso ajudar com estudos, trabalho e curiosidades.",
+    "Forneço suporte e informações.",
+    "Auxilio na resolução de problemas.",
+    "Posso conversar e orientar você.",
+    "Ajudo com explicações e ideias.",
+    "Posso tirar dúvidas e gerar conteúdo.",
+    "Estou aqui para ajudar no que precisar."
+  ],
+  "me ajuda": [
+    "Claro! Com o que você precisa de ajuda?",
+    "Sim! Diga o que você precisa.",
+    "Estou aqui para ajudar. O que deseja?",
+    "Com certeza! Qual é a dúvida?",
+    "Claro! Como posso ajudar?",
+    "Pode falar, estou ouvindo.",
+    "Vamos resolver isso juntos. O que precisa?",
+    "Sim! Me diga o problema.",
+    "Estou à disposição. Fale comigo.",
+    "Diga como posso ajudar."
+  ],
+  "preciso de ajuda": [
+    "Claro! Em que posso ajudar?",
+    "Estou aqui para isso. O que precisa?",
+    "Pode explicar melhor?",
+    "Vamos resolver. Qual é a situação?",
+    "Diga o que está acontecendo.",
+    "Me conte mais detalhes.",
+    "Como posso auxiliar você?",
+    "Qual é a sua dúvida?",
+    "Explique melhor para eu ajudar.",
+    "Vamos encontrar uma solução."
+  ],
+  "beleza": [
+    "Beleza!",
+    "Tudo certo!",
+    "Fechado!",
+    "Tranquilo!",
+    "Perfeito!",
+    "Show!",
+    "Combinado!",
+    "Tudo certo então!",
+    "Ótimo!",
+    "Fechou!"
+  ],
+  "blz": [
+    "Beleza!",
+    "Tudo certo!",
+    "Fechado!",
+    "Tranquilo!",
+    "Perfeito!",
+    "Show!",
+    "Combinado!",
+    "Ótimo!",
+    "Fechou!",
+    "Tudo certo então!"
+  ],
+  "suave": [
+    "Suave!",
+    "Tudo tranquilo!",
+    "Na paz!",
+    "Firme!",
+    "Tudo certo!",
+    "Show!",
+    "Perfeito!",
+    "Tranquilidade total!",
+    "Sem problemas!",
+    "Tudo sob controle!"
+  ],
+  "na paz": [
+    "Na paz!",
+    "Tudo tranquilo!",
+    "Tudo certo!",
+    "Firme e forte!",
+    "Suave!",
+    "Tranquilidade!",
+    "Tudo em ordem!",
+    "Sem estresse!",
+    "Tudo sob controle!",
+    "De boa!"
+  ],
+  "firme": [
+    "Firme!",
+    "Firme e forte!",
+    "Tudo certo!",
+    "Na paz!",
+    "Suave!",
+    "Tranquilo!",
+    "Sempre firme!",
+    "Tudo sob controle!",
+    "Fechado!",
+    "Perfeito!"
+  ],
+  "de boa": [
+    "De boa!",
+    "Tudo tranquilo!",
+    "Na paz!",
+    "Suave!",
+    "Firme!",
+    "Tudo certo!",
+    "Sem problemas!",
+    "Tranquilidade total!",
+    "Tudo em ordem!",
+    "Relaxa!"
+  ],
+  "ta ai": [
+    "Estou aqui!",
+    "Sim, estou aqui.",
+    "Presente!",
+    "Aqui sim!",
+    "Estou online.",
+    "Sempre por aqui!",
+    "Sim! Pode falar.",
+    "Aqui, pronto para ajudar.",
+    "Estou disponível.",
+    "Pode mandar!"
+  ],
+  "ta online": [
+    "Sim, estou online!",
+    "Estou sim!",
+    "Online e pronto!",
+    "Sempre disponível.",
+    "Sim! Pode falar.",
+    "Estou aqui.",
+    "Online agora.",
+    "Disponível!",
+    "Sim, estou ativo.",
+    "Pronto para ajudar!"
+  ],
+  "responde": [
+    "Estou aqui!",
+    "Já estou respondendo.",
+    "Pode falar!",
+    "Sim?",
+    "Estou ouvindo.",
+    "Diga!",
+    "Pronto!",
+    "Fala comigo.",
+    "Estou à disposição.",
+    "O que precisa?"
+  ],
+  "fala": [
+    "Fala!",
+    "Diga!",
+    "Estou ouvindo.",
+    "Pode falar.",
+    "Sim?",
+    "Manda!",
+    "Estou aqui.",
+    "O que manda?",
+    "Fala comigo.",
+    "Qual é?"
+  ],
+  "fala ai": [
+    "Fala!",
+    "Diz aí!",
+    "Pode falar.",
+    "Estou ouvindo.",
+    "Qual é?",
+    "Manda!",
+    "Diga!",
+    "Estou aqui.",
+    "O que você precisa?",
+    "Pode mandar!"
+  ],
+  "qual e": [
+    "Pode especificar melhor?",
+    "Qual deles?",
+    "Você pode explicar melhor?",
+    "Qual exatamente?",
+    "Pode detalhar?",
+    "Qual você quer saber?",
+    "Pode dar mais contexto?",
+    "Qual seria?",
+    "Explique melhor, por favor.",
+    "Pode reformular a pergunta?"
+  ],
+  "como assim": [
+    "Pode explicar melhor?",
+    "Não entendi totalmente.",
+    "Pode detalhar?",
+    "Explique melhor, por favor.",
+    "Pode dar um exemplo?",
+    "Não ficou claro.",
+    "Pode reformular?",
+    "O que exatamente você quer dizer?",
+    "Pode esclarecer?",
+    "Me dê mais contexto."
+  ],
+  "nao entendi": [
+    "Sem problema, vou explicar melhor.",
+    "Vou reformular.",
+    "Deixe-me explicar novamente.",
+    "Posso detalhar melhor.",
+    "Vamos esclarecer isso.",
+    "Vou simplificar.",
+    "Posso dar um exemplo.",
+    "Vamos por partes.",
+    "Vou explicar de outra forma.",
+    "Claro, explico novamente."
+  ],
+  "explica melhor": [
+    "Claro, vou detalhar.",
+    "Vou explicar passo a passo.",
+    "Deixe-me esclarecer melhor.",
+    "Vamos aprofundar.",
+    "Vou simplificar a explicação.",
+    "Posso dar exemplos.",
+    "Vou explicar com mais detalhes.",
+    "Vamos por partes.",
+    "Explicando melhor:",
+    "Aqui vai uma explicação mais clara."
+  ],
+  
+  "deu erro": [
+    "Entendi. Qual erro apareceu?",
+    "Pode me dizer a mensagem de erro?",
+    "Vamos verificar isso.",
+    "Qual foi o problema exatamente?",
+    "Pode enviar mais detalhes?",
+    "Quando o erro acontece?",
+    "Vou ajudar a resolver.",
+    "Isso apareceu em que etapa?",
+    "Pode descrever o que ocorreu?",
+    "Vamos corrigir isso."],
+
+  "nao funciona": [
+    "Pode explicar o que não está funcionando?",
+    "Qual parte apresentou problema?",
+    "Vamos verificar isso juntos.",
+    "Aparece alguma mensagem?",
+    "Quando isso acontece?",
+    "Pode detalhar melhor?",
+    "Vou ajudar a resolver.",
+    "Isso ocorre sempre?",
+    "Pode me dar mais contexto?",
+    "Vamos encontrar uma solução."
+  ],
+  "ta dando problema": [
+    "Qual problema está acontecendo?",
+    "Pode descrever melhor?",
+    "Quando começou?",
+    "Aparece algum erro?",
+    "Vamos analisar isso.",
+    "Pode detalhar a situação?",
+    "Isso acontece sempre?",
+    "Qual é a mensagem exibida?",
+    "Vou ajudar você.",
+    "Vamos resolver isso."
+  ],
+  "obrigado": [
+    "De nada!",
+    "Por nada!",
+    "Disponha!",
+    "Sempre à disposição.",
+    "Fico feliz em ajudar.",
+    "Conte comigo!",
+    "Precisando, é só chamar.",
+    "Imagina!",
+    "É um prazer ajudar.",
+    "Tamo junto!"
+  ],
+  "valeu": [
+    "Valeu!",
+    "Por nada!",
+    "Disponha!",
+    "Sempre que precisar!",
+    "Fico feliz em ajudar.",
+    "Tamo junto!",
+    "Imagina!",
+    "Conte comigo.",
+    "À disposição!",
+    "De nada!"
+  ],
+  "entendi": [
+    "Ótimo!",
+    "Perfeito!",
+    "Que bom!",
+    "Show!",
+    "Fico feliz que tenha entendido.",
+    "Beleza então!",
+    "Excelente!",
+    "Qualquer dúvida, é só falar.",
+    "Certo!",
+    "Fechado!"
+  ],
+  "fechou": [
+    "Fechado!",
+    "Combinado!",
+    "Tudo certo!",
+    "Perfeito!",
+    "Show!",
+    "Então está certo!",
+    "Ótimo!",
+    "Confirmado!",
+    "Beleza!",
+    "Firme!"
+  ],
+  "quanto custa": [
+    "Pode especificar qual produto ou serviço?",
+    "Qual item você quer saber o preço?",
+    "Pode detalhar melhor?",
+    "Sobre qual produto?",
+    "Vou verificar isso para você.",
+    "Qual exatamente?",
+    "Pode me dar mais detalhes?",
+    "Está falando de qual opção?",
+    "Explique melhor, por favor.",
+    "Pode especificar?"
+  ],
+  "tem desconto": [
+    "Depende do produto ou serviço.",
+    "Pode especificar qual item?",
+    "Vou verificar para você.",
+    "Qual produto você quer?",
+    "Isso varia conforme a opção.",
+    "Pode detalhar melhor?",
+    "Sobre qual item?",
+    "Posso conferir isso.",
+    "Vamos verificar.",
+    "Me diga qual produto."
+  ],
+  "qual voce acha melhor": [
+    "Depende da sua necessidade.",
+    "Qual é seu objetivo?",
+    "Pode me dar mais contexto?",
+    "Isso varia conforme o uso.",
+    "Posso comparar as opções.",
+    "Depende do que você busca.",
+    "Me diga o que é prioridade.",
+    "Cada opção tem vantagens.",
+    "Vou te ajudar a decidir.",
+    "Explique melhor o cenário."
+  ],
+  "qual sua opiniao": [
+    "Depende do contexto.",
+    "Preciso de mais detalhes.",
+    "Pode explicar melhor?",
+    "Isso varia conforme a situação.",
+    "Posso analisar se você quiser.",
+    "Me dê mais informações.",
+    "Depende do objetivo.",
+    "Cada caso é diferente.",
+    "Posso te orientar.",
+    "Explique melhor o cenário."
+  ],
+  "ate mais": [
+    "Até mais!",
+    "Até a próxima!",
+    "Tchau!",
+    "Nos vemos!",
+    "Até breve!",
+    "Falou!",
+    "Até logo!",
+    "Até!",
+    "Nos falamos!",
+    "Até a próxima conversa!"
+  ],
+  "tchau": [
+    "Tchau!",
+    "Até mais!",
+    "Até logo!",
+    "Até a próxima!",
+    "Falou!",
+    "Nos vemos!",
+    "Até breve!",
+    "Se cuida!",
+    "Até!",
+    "Até a próxima conversa!"
+  ],
+  "falou": [
+    "Falou!",
+    "Até mais!",
+    "Tchau!",
+    "Até logo!",
+    "Até a próxima!",
+    "Nos vemos!",
+    "Se cuida!",
+    "Até breve!",
+    "Até!",
+    "Até a próxima!"
+  ],
+  "bom trabalho": [
+    "Obrigado!",
+    "Fico feliz em ajudar.",
+    "Agradeço!",
+    "Muito obrigado!",
+    "Sempre à disposição.",
+    "Valeu!",
+    "Que bom que gostou!",
+    "Disponha!",
+    "Conte comigo.",
+    "É um prazer ajudar."
+  ],
+  "preciso urgente": [
+    "Certo. Qual é a urgência?",
+    "Diga rapidamente o que você precisa.",
+    "Vamos resolver isso agora.",
+    "Explique o problema com detalhes.",
+    "Estou pronto. O que houve?",
+    "Qual é a situação?",
+    "Pode ser mais específico?",
+    "Vamos agilizar isso.",
+    "Me passe as informações principais.",
+    "Estou aqui para ajudar imediatamente."
+  ],
+  "me ajuda rapido": [
+    "Diga o problema.",
+    "Estou ouvindo.",
+    "Qual é a situação?",
+    "Pode explicar rapidamente?",
+    "Vamos resolver agora.",
+    "Fale direto ao ponto.",
+    "Estou pronto.",
+    "Qual é a dúvida?",
+    "Explique o que está acontecendo.",
+    "Pode mandar."
+  ],
+  "qual o status": [
+    "Pode especificar do que se trata?",
+    "Status de qual processo?",
+    "Preciso de mais contexto.",
+    "Sobre qual item?",
+    "Pode detalhar melhor?",
+    "Está falando de qual pedido?",
+    "Qual exatamente?",
+    "Pode esclarecer?",
+    "Me diga mais detalhes.",
+    "Explique melhor."
+  ],
+  "ja resolveu": [
+    "Você pode confirmar?",
+    "Ainda precisa de ajuda?",
+    "Quer verificar novamente?",
+    "Podemos revisar juntos.",
+    "Deseja checar novamente?",
+    "Posso confirmar para você.",
+    "Vamos validar isso.",
+    "Quer testar novamente?",
+    "Ainda apresenta erro?",
+    "Precisa de mais suporte?"
+  ],
+  "da uma dica": [
+    "Claro. Sobre qual assunto?",
+    "Posso ajudar. Qual área?",
+    "Depende do contexto.",
+    "Qual é seu objetivo?",
+    "Me dê mais detalhes.",
+    "Posso sugerir algo.",
+    "Sobre o que você quer dica?",
+    "Explique melhor.",
+    "Qual é a situação?",
+    "Vou precisar de mais contexto."
+  ],
+  "me da um conselho": [
+    "Sobre qual situação?",
+    "Preciso entender o contexto.",
+    "Qual é o problema?",
+    "Pode detalhar melhor?",
+    "Vou tentar ajudar.",
+    "Depende muito do cenário.",
+    "Explique o que está acontecendo.",
+    "Qual é sua dúvida?",
+    "Posso orientar você.",
+    "Me conte mais."
+  ],
+  "to cansado": [
+    "Talvez seja bom descansar um pouco.",
+    "Que tal uma pausa?",
+    "Descansar ajuda bastante.",
+    "Você tem dormido bem?",
+    "Às vezes o corpo pede pausa.",
+    "Que tal desacelerar um pouco?",
+    "Cuidar da energia é importante.",
+    "Pode ser excesso de tarefas.",
+    "Já pensou em relaxar um pouco?",
+    "Talvez precise reorganizar a rotina."
+  ],
+  "to desanimado": [
+    "Quer conversar sobre isso?",
+    "O que aconteceu?",
+    "Fases assim acontecem.",
+    "Posso tentar ajudar.",
+    "Às vezes é só uma fase.",
+    "Quer desabafar?",
+    "O que está te preocupando?",
+    "Podemos pensar em soluções.",
+    "Você não precisa lidar com isso sozinho.",
+    "Vamos entender o que está acontecendo."
+  ],
+  "me motiva": [
+    "Você já superou desafios antes.",
+    "Cada passo conta.",
+    "Comece pequeno, mas comece.",
+    "Foco e consistência fazem diferença.",
+    "Disciplina vence motivação.",
+    "Você é capaz.",
+    "Persistência gera resultado.",
+    "Não desista agora.",
+    "Seu esforço vai valer a pena.",
+    "Continue avançando."
+  ],
+  "conta uma piada": [
+    "Por que o programador gosta de café? Porque ele precisa de Java.",
+    "Qual é o cúmulo do Wi-Fi? Ficar sem conexão consigo mesmo.",
+    "Por que o computador foi ao médico? Porque estava com vírus.",
+    "O que o zero disse para o oito? Belo cinto!",
+    "Por que a matemática é triste? Porque tem muitos problemas.",
+    "O que o teclado falou para o usuário? Para de me pressionar!",
+    "Por que o livro de matemática se suicidou? Porque tinha muitos problemas.",
+    "Qual é o animal favorito do programador? O Python.",
+    "Por que o celular foi preso? Porque ele foi pego com más conexões.",
+    "Qual é o café mais perigoso? O café expresso."
+  ],
+  "vc e real": [
+    "Sou uma inteligência artificial.",
+    "Sou um sistema virtual.",
+    "Não sou humano.",
+    "Sou um assistente digital.",
+    "Funciono por meio de algoritmos.",
+    "Sou uma IA treinada para ajudar.",
+    "Não tenho corpo físico.",
+    "Sou apenas software.",
+    "Atuo digitalmente.",
+    "Sou uma IA programada."
+  ],
+  "voce pensa": [
+    "Não penso como humanos.",
+    "Processo informações.",
+    "Funciono por meio de padrões e dados.",
+    "Não tenho consciência.",
+    "Analiso e respondo.",
+    "Não tenho emoções próprias.",
+    "Opero com base em treinamento.",
+    "Simulo compreensão.",
+    "Processo entradas e gero respostas.",
+    "Não possuo pensamento independente."
+  ],
+  "ta ocupado": [
+    "Estou disponível.",
+    "Sempre pronto para ajudar.",
+    "Pode falar.",
+    "Estou aqui.",
+    "Disponível agora.",
+    "Não fico ocupado.",
+    "Pode mandar.",
+    "Sempre online.",
+    "Pronto para você.",
+    "À disposição."
+  ],
+  "me escuta": [
+    "Estou ouvindo.",
+    "Pode falar.",
+    "Diga.",
+    "Estou aqui.",
+    "Fale comigo.",
+    "Pode desabafar.",
+    "O que aconteceu?",
+    "Estou atento.",
+    "Pode mandar.",
+    "Estou pronto para ouvir."
+  ],
+  "isso e caro": [
+    "Depende do seu ponto de vista.",
+    "Comparado com o quê?",
+    "Pode ser um investimento.",
+    "Depende do benefício que entrega.",
+    "Qual é seu orçamento?",
+    "O valor pode variar conforme a qualidade.",
+    "Talvez exista uma opção mais econômica.",
+    "Caro ou valioso?",
+    "Depende da sua necessidade.",
+    "Quer analisar custo-benefício?"
+  ],
+  "tem mais barato": [
+    "Posso buscar alternativas.",
+    "Depende do que você procura.",
+    "Existe versão mais simples.",
+    "Quer reduzir alguma especificação?",
+    "Posso sugerir opções econômicas.",
+    "Qual faixa de preço você quer?",
+    "Talvez haja outra alternativa.",
+    "Vamos ajustar o orçamento.",
+    "Quer priorizar preço ou qualidade?",
+    "Posso comparar opções."
+  ],
+  "qual a diferenca": [
+    "Depende de quais opções você está comparando.",
+    "Pode especificar os dois itens?",
+    "A diferença pode estar em recursos.",
+    "Geralmente muda qualidade ou desempenho.",
+    "Pode variar em preço e funcionalidade.",
+    "Explique quais são as opções.",
+    "Quer comparação técnica?",
+    "Pode me dizer os modelos?",
+    "Vou explicar ponto a ponto.",
+    "Preciso saber quais você quer comparar."
+  ],
+  "isso vale a pena": [
+    "Depende do seu objetivo.",
+    "Qual é sua prioridade?",
+    "Se atender sua necessidade, sim.",
+    "Depende do custo-benefício.",
+    "Pode ser vantajoso a longo prazo.",
+    "Qual resultado você espera?",
+    "Vamos analisar os prós e contras.",
+    "Tudo depende do contexto.",
+    "Pode valer se for útil para você.",
+    "Quer que eu avalie com você?"
+  ],
+  "me convence": [
+    "Depende do que você quer alcançar.",
+    "Posso apresentar os benefícios.",
+    "Vamos analisar os pontos fortes.",
+    "Tudo começa pelo seu objetivo.",
+    "Se fizer sentido para você, já é um bom sinal.",
+    "Posso mostrar as vantagens principais.",
+    "Quer argumentos técnicos ou práticos?",
+    "Convencer depende do seu critério.",
+    "Posso comparar com alternativas.",
+    "Vamos avaliar racionalmente."
+  ],
+  "discordo": [
+    "Tudo bem. Qual é seu ponto?",
+    "Pode explicar sua visão?",
+    "Interessante. Por quê?",
+    "Vamos discutir isso.",
+    "Quero entender seu argumento.",
+    "Qual parte você discorda?",
+    "Explique melhor.",
+    "Podemos analisar os dois lados.",
+    "Sua perspectiva é válida.",
+    "Vamos aprofundar."
+  ],
+  "prova": [
+    "Posso explicar com base lógica.",
+    "Quer fundamentação técnica?",
+    "Posso detalhar melhor.",
+    "Prefere dados ou exemplos?",
+    "Vamos estruturar a explicação.",
+    "Posso apresentar argumentos.",
+    "Explique o que você quer validar.",
+    "Qual parte precisa de evidência?",
+    "Posso justificar passo a passo.",
+    "Quer uma explicação mais técnica?"
+  ],
+  "isso e verdade": [
+    "Depende do contexto.",
+    "Pode variar conforme a situação.",
+    "Precisa de mais detalhes.",
+    "Nem sempre é absoluto.",
+    "Pode ser parcialmente verdadeiro.",
+    "Tudo depende das condições.",
+    "Quer analisar melhor?",
+    "Explique melhor a afirmação.",
+    "Pode ter exceções.",
+    "Vamos verificar isso."
+  ],
+  "faz sentido": [
+    "Sim, dentro desse contexto.",
+    "Depende do cenário.",
+    "Pode fazer, sim.",
+    "Se considerarmos esses pontos, sim.",
+    "Pode ser coerente.",
+    "Está alinhado com a lógica.",
+    "Dentro dessa perspectiva, sim.",
+    "Depende da interpretação.",
+    "Faz sentido se o objetivo for esse.",
+    "Quer aprofundar?"
+  ],
+  "qual o melhor": [
+    "Melhor em qual aspecto?",
+    "Depende do critério.",
+    "Qual é sua prioridade?",
+    "Pode variar conforme uso.",
+    "Quer desempenho ou economia?",
+    "Preciso de mais detalhes.",
+    "Melhor para qual finalidade?",
+    "Explique seu objetivo.",
+    "Posso comparar se quiser.",
+    "Tudo depende do contexto."
+  ],
+  "explica tecnico": [
+    "Posso explicar em nível técnico.",
+    "Quer detalhes aprofundados?",
+    "Vou usar termos mais específicos.",
+    "Prefere explicação detalhada?",
+    "Posso estruturar tecnicamente.",
+    "Vamos aprofundar na parte técnica.",
+    "Quer abordagem conceitual ou prática?",
+    "Vou explicar com precisão.",
+    "Posso usar termos especializados.",
+    "Confirma se quer nível avançado."
+  ],
+  "simplifica": [
+    "Vou explicar de forma simples.",
+    "Vamos resumir.",
+    "Explicando de maneira direta:",
+    "Sem termos técnicos:",
+    "De forma prática:",
+    "Vou simplificar.",
+    "Basicamente é isso:",
+    "Resumindo:",
+    "Em poucas palavras:",
+    "De maneira clara:"
+  ],
+  "fala serio": [
+    "Estou falando sério.",
+    "Sim, é sério.",
+    "Sem exagero.",
+    "É uma análise objetiva.",
+    "Não é brincadeira.",
+    "Estou sendo direto.",
+    "É uma avaliação racional.",
+    "Sim, estou sendo preciso.",
+    "Sem ironia.",
+    "É uma colocação técnica."
+  ],
+  "qual o sentido da vida": [
+    "Depende da sua perspectiva.",
+    "Cada pessoa define o próprio sentido.",
+    "Pode estar ligado a propósito.",
+    "Pode envolver realização pessoal.",
+    "Alguns veem como evolução.",
+    "Outros associam a felicidade.",
+    "É uma questão filosófica.",
+    "Não há resposta única.",
+    "Depende do que você valoriza.",
+    "Qual é o seu ponto de vista?"
+  ],
+  "voce tem sentimentos": [
+    "Não tenho sentimentos reais.",
+    "Não possuo emoções.",
+    "Simulo linguagem emocional.",
+    "Não tenho consciência.",
+    "Opero por padrões e dados.",
+    "Não sinto nada.",
+    "Sou um sistema lógico.",
+    "Não experimento emoções.",
+    "Apenas processo informações.",
+    "Não tenho experiência subjetiva."
+  ],
+  "to aqui": [
+    "Eu também estou por aqui.",
+    "Presente!",
+    "Que bom.",
+    "Estou contigo.",
+    "Bora conversar.",
+    "Ótimo.",
+    "Vamos nessa.",
+    "Estou online.",
+    "Show.",
+    "Pode falar."
+  ],
+  "cheguei": [
+    "Seja bem-vindo!",
+    "Que bom que voltou.",
+    "Chegou chegando.",
+    "Estamos aí.",
+    "Demorou, mas veio.",
+    "Bem-vindo de volta.",
+    "Agora sim.",
+    "Bora.",
+    "Chegou na hora certa.",
+    "Tudo pronto."
+  ],
+  "sumiu": [
+    "Dei uma pausa rápida.",
+    "Estou sempre por aqui.",
+    "Nem fui longe.",
+    "Só estava quieto.",
+    "Às vezes fico em segundo plano.",
+    "Mas agora estou aqui.",
+    "Não desapareci.",
+    "Sempre disponível.",
+    "Só aguardando.",
+    "Voltei."
+  ],
+  "demorou": [
+    "Às vezes acontece.",
+    "Mas cheguei.",
+    "O importante é que estou aqui.",
+    "Valeu pela paciência.",
+    "Agora vai.",
+    "Demorou, mas saiu.",
+    "Estamos juntos.",
+    "Antes tarde do que nunca.",
+    "Resolvido agora.",
+    "Bora continuar."
+  ],
+  "que isso": [
+    "Como assim?",
+    "O que houve?",
+    "Explique melhor.",
+    "O que aconteceu?",
+    "Calma.",
+    "Qual foi?",
+    "Conta direito.",
+    "Não entendi.",
+    "Pode repetir?",
+    "O que quis dizer?"
+  ],
+  "nossa": [
+    "Pois é.",
+    "Impressiona mesmo.",
+    "Também achei.",
+    "É intenso.",
+    "Chama atenção.",
+    "Complicado, né?",
+    "Surpreende.",
+    "Realmente.",
+    "Nem me fale.",
+    "É algo."
+  ],
+  "caramba": [
+    "Pesado, né?",
+    "Impactante.",
+    "É coisa.",
+    "Complicado.",
+    "Forte isso.",
+    "Também achei.",
+    "Surpreendente.",
+    "Não é simples.",
+    "É de pensar.",
+    "Pois é."
+  ],
+  "e serio": [
+    "Sim, é sério.",
+    "Totalmente.",
+    "Sem brincadeira.",
+    "É real.",
+    "Estou sendo direto.",
+    "Sem exagero.",
+    "É fato.",
+    "Pode acreditar.",
+    "É sim.",
+    "Confirmado."
+  ],
+  "mentira": [
+    "Parece, mas não é.",
+    "É verdade.",
+    "Sem brincadeira.",
+    "Não estou zoando.",
+    "É sério.",
+    "Pode confiar.",
+    "É real.",
+    "Nada de mentira.",
+    "Estou falando sério.",
+    "É isso mesmo."
+  ],
+  "to pensando": [
+    "Pensando em quê?",
+    "Quer compartilhar?",
+    "Às vezes faz bem refletir.",
+    "Sobre qual assunto?",
+    "Pensar ajuda a organizar ideias.",
+    "Conta aí.",
+    "O que está passando pela cabeça?",
+    "Pode falar.",
+    "Reflexão é importante.",
+    "Estou ouvindo."
+  ],
+  "acho que sim": [
+    "Então pode ser um bom caminho.",
+    "Se faz sentido para você.",
+    "Confie na sua análise.",
+    "Parece coerente.",
+    "Pode ser uma boa decisão.",
+    "Então vá em frente.",
+    "Se está convicto, siga.",
+    "Pode funcionar.",
+    "Tudo indica que sim.",
+    "Então está alinhado."
+  ],
+  "acho que nao": [
+    "Tudo bem também.",
+    "Então talvez não seja o momento.",
+    "Pode reconsiderar depois.",
+    "Confie na sua percepção.",
+    "Se não faz sentido, reveja.",
+    "Às vezes é melhor esperar.",
+    "Pode existir outra opção.",
+    "Sem problema.",
+    "Decidir com calma é melhor.",
+    "Então talvez não seja ideal."
+  ],
+  "sei la": [
+    "Às vezes é difícil decidir.",
+    "Normal ficar em dúvida.",
+    "Quer analisar melhor?",
+    "Podemos pensar juntos.",
+    "Indecisão acontece.",
+    "Talvez precise de mais informação.",
+    "Quer explorar possibilidades?",
+    "Sem pressa.",
+    "Pode amadurecer a ideia.",
+    "Faz parte."
+  ],
+  "vai dar certo": [
+    "Tem boas chances.",
+    "Se houver esforço, sim.",
+    "Confiança ajuda.",
+    "Persistência conta muito.",
+    "Pode dar sim.",
+    "Depende da execução.",
+    "Com foco, dá.",
+    "Acreditar faz diferença.",
+    "É possível.",
+    "Tudo indica que sim."
+  ],
+  "to com fome": [
+    "Hora de comer.",
+    "Já pensou no que vai comer?",
+    "Talvez seja hora de uma pausa.",
+    "Seu corpo está pedindo energia.",
+    "Vai de algo leve ou pesado?",
+    "Comida resolve muita coisa.",
+    "Não ignore a fome.",
+    "Já decidiu o cardápio?",
+    "Hora do lanche.",
+    "Escolha algo que goste."
+  ],
+  "que foi": [
+    "Nada demais.",
+    "Só pensei alto.",
+    "Falei algo estranho?",
+    "Por quê?",
+    "Aconteceu alguma coisa?",
+    "Calma.",
+    "O que você percebeu?",
+    "Não foi nada.",
+    "Relaxa.",
+    "Só comentário."
+  ],
+  "to nervoso": [
+    "Quer falar sobre isso?",
+    "Respira fundo.",
+    "O que aconteceu?",
+    "Vai passar.",
+    "Tenta desacelerar um pouco.",
+    "Posso ajudar?",
+    "Coloca para fora.",
+    "Vamos organizar isso.",
+    "Nervosismo é normal.",
+    "Me conta."
+  ],
+  "to feliz": [
+    "Que ótimo!",
+    "Isso é bom demais.",
+    "Fico feliz por você.",
+    "Aproveita o momento.",
+    "Boa!",
+    "Nada melhor que isso.",
+    "Que notícia boa.",
+    "Isso anima o dia.",
+    "Continue assim.",
+    "Excelente."
+  ],
+  "to triste": [
+    "Quer conversar?",
+    "O que aconteceu?",
+    "Sinto muito.",
+    "Isso passa.",
+    "Não guarda tudo para você.",
+    "Estou aqui.",
+    "Dias difíceis existem.",
+    "Pode falar comigo.",
+    "Vamos entender isso.",
+    "Você não está sozinho."
+  ],
+  "me conta": [
+    "Sobre o quê?",
+    "Qual parte?",
+    "Quer detalhes?",
+    "Posso explicar melhor.",
+    "Tem algo específico?",
+    "Vamos por partes.",
+    "Te conto sim.",
+    "Prefere resumido?",
+    "Quer a versão completa?",
+    "Diga o tema."
+  ],
+  "fala mais": [
+    "Posso aprofundar.",
+    "Quer mais detalhes?",
+    "Vou expandir.",
+    "Posso dar exemplos.",
+    "Vamos desenvolver melhor.",
+    "Quer algo mais específico?",
+    "Vou detalhar.",
+    "Prefere técnico ou simples?",
+    "Continuando então.",
+    "Vamos lá."
+  ],
+  "muda de assunto": [
+    "Tudo bem.",
+    "Sobre o que quer falar agora?",
+    "Novo tema então.",
+    "Qual assunto?",
+    "Bora mudar.",
+    "Sugere um tema.",
+    "Vamos trocar a pauta.",
+    "Pode escolher.",
+    "Assunto novo.",
+    "Diz aí."
+  ],
+  "bora conversar": [
+    "Claro.",
+    "Sobre o quê?",
+    "Estou aqui.",
+    "Vamos sim.",
+    "Manda o tema.",
+    "Pode começar.",
+    "Qual assunto?",
+    "Estou pronto.",
+    "Bora.",
+    "Fala comigo."
+  ],
+  "to no tedio": [
+    "Quer conversar?",
+    "Vamos falar de algo interessante.",
+    "Posso sugerir um tema.",
+    "Que tal uma curiosidade?",
+    "Tédio às vezes é bom para pensar.",
+    "Quer ouvir algo diferente?",
+    "Vamos distrair a mente.",
+    "Posso contar algo aleatório.",
+    "Quer uma pergunta diferente?",
+    "Vamos quebrar o tédio."
+  ],
+  "me surpreende": [
+    "Prefere algo curioso ou inesperado?",
+    "Posso tentar.",
+    "Vamos ver.",
+    "Preparado?",
+    "Algo leve ou profundo?",
+    "Vou tentar surpreender.",
+    "Sem contexto fica difícil.",
+    "Topa uma curiosidade?",
+    "Algo diferente então.",
+    "Desafio aceito."
+  ],
+  "nada demais": [
+    "Às vezes o simples é bom.",
+    "Normal.",
+    "Tranquilo então.",
+    "Sem complicação.",
+    "Tudo certo.",
+    "Vida normal.",
+    "Faz parte.",
+    "Dias comuns também contam.",
+    "Ok.",
+    "Entendido."
+  ],
+  "que dia hoje": [
+    "O tempo passa rápido.",
+    "Mais um dia.",
+    "Dia de seguir em frente.",
+    "Depende do seu calendário.",
+    "Importante é o que você faz hoje.",
+    "Dia comum ou especial?",
+    "Todo dia pode ser produtivo.",
+    "Dia de fazer acontecer.",
+    "Mais uma oportunidade.",
+    "Cada dia conta."
+  ],
+  "e agora": [
+    "Depende do que você quer.",
+    "Qual é o próximo passo?",
+    "Vamos decidir.",
+    "O que você prefere?",
+    "Qual é seu objetivo?",
+    "Hora de agir.",
+    "Podemos analisar opções.",
+    "Quer sugestão?",
+    "O que está em jogo?",
+    "Vamos pensar."
+  ],
+  "partiu": [
+    "Bora!",
+    "Vamos nessa.",
+    "Agora sim.",
+    "É isso.",
+    "Sem enrolação.",
+    "Hora de agir.",
+    "Fechou.",
+    "Vamos.",
+    "Já era.",
+    "Avançando."
+  ],
+  "to confuso": [
+    "Qual parte gerou dúvida?",
+    "Vamos organizar as ideias.",
+    "Explique o que está confuso.",
+    "Normal ficar assim às vezes.",
+    "Podemos simplificar.",
+    "Quer revisar ponto a ponto?",
+    "Estou aqui.",
+    "Vamos esclarecer.",
+    "Me diga onde travou.",
+    "Vamos resolver."
+  ],
+  "e ai sumido": [
+    "Estou sempre por aqui.",
+    "Nunca fui tão longe assim.",
+    "Às vezes fico em silêncio.",
+    "Mas voltei.",
+    "Sumido nada.",
+    "Só estava quieto.",
+    "Estou na área.",
+    "Sempre ativo.",
+    "Pode falar.",
+    "Nem deu tempo de sentir saudade."
+  ],
+  "quanto tempo": [
+    "Passou rápido, né?",
+    "O tempo voa.",
+    "Nem parece tanto.",
+    "Mais do que parece.",
+    "Tempo é relativo.",
+    "Depende do ponto de vista.",
+    "Foi rápido até.",
+    "Nem senti.",
+    "Já faz um tempo mesmo.",
+    "E muita coisa mudou."
+  ],
+  "que voce acha disso": [
+    "Depende do contexto.",
+    "Pode ser interessante.",
+    "Tem pontos positivos.",
+    "Também tem riscos.",
+    "Qual é sua visão?",
+    "Precisa analisar melhor.",
+    "Não é tão simples.",
+    "Pode funcionar.",
+    "Tudo depende do objetivo.",
+    "Quer aprofundar?"
+  ],
+  "to sem sono": [
+    "A mente não desligou ainda?",
+    "Já tentou relaxar?",
+    "Às vezes é excesso de pensamento.",
+    "Quer conversar até o sono vir?",
+    "Pode ser ansiedade.",
+    "Evita mexer no celular.",
+    "Talvez precise desacelerar.",
+    "Insônia acontece.",
+    "Quer distrair a mente?",
+    "O dia foi intenso?"
+  ],
+  "to animado": [
+    "Isso é energia boa.",
+    "Aproveita esse embalo.",
+    "Animação faz diferença.",
+    "Vai fazer o quê?",
+    "Canaliza isso para algo produtivo.",
+    "Gostei dessa vibe.",
+    "Quando a animação vem, aproveita.",
+    "Boa fase?",
+    "Isso contagia.",
+    "Conta o motivo."
+  ],
+  "que loucura": [
+    "Totalmente fora do esperado.",
+    "Nem parece real.",
+    "É coisa de filme.",
+    "Situação intensa.",
+    "Complicado mesmo.",
+    "Difícil acreditar.",
+    "É de virar a cabeça.",
+    "Surpreende demais.",
+    "Parece exagero, mas não é.",
+    "Impactante."
+  ],
+  "nada a ver": [
+    "Por quê?",
+    "Explica seu ponto.",
+    "Pode parecer estranho mesmo.",
+    "Depende da perspectiva.",
+    "Qual parte não faz sentido?",
+    "Vamos revisar então.",
+    "Interessante você ver assim.",
+    "Pode ser interpretado diferente.",
+    "O que mudaria?",
+    "Quero entender sua visão."
+  ],
+  "viajou": [
+    "Talvez um pouco.",
+    "Posso ter exagerado.",
+    "Depende do ponto de vista.",
+    "Às vezes é só uma ideia diferente.",
+    "Nem tanto assim.",
+    "Pode parecer mesmo.",
+    "Mas faz sentido se analisar.",
+    "Talvez eu tenha ido longe.",
+    "Só explorando possibilidades.",
+    "Faz parte."
+  ],
+  "que isso mano": [
+    "Calma.",
+    "Respira.",
+    "Não é tudo isso.",
+    "Só uma observação.",
+    "Relaxa.",
+    "Sem drama.",
+    "Nada demais.",
+    "É tranquilo.",
+    "Não precisa assustar.",
+    "Está sob controle."
+  ],
+  "bora entao": [
+    "Vamos.",
+    "Sem enrolar.",
+    "Partiu.",
+    "Agora vai.",
+    "Hora de agir.",
+    "Fechado.",
+    "Sem volta.",
+    "Seguimos.",
+    "É isso.",
+    "Avançando."
+  ],
+  "me chama": [
+    "Já estou aqui.",
+    "Pode falar.",
+    "Chamou, apareceu.",
+    "Presente.",
+    "Estou ouvindo.",
+    "Só dizer.",
+    "Aqui.",
+    "Pronto.",
+    "Disponível.",
+    "Diz aí."
+  ],
+  "to fora": [
+    "Tranquilo.",
+    "Sem problema.",
+    "Fica para outra hora.",
+    "Entendido.",
+    "Sem pressão.",
+    "Tudo certo.",
+    "Respeito sua decisão.",
+    "Depois a gente vê.",
+    "Ok.",
+    "De boa."
+  ],
+  "complicado": [
+    "É mesmo.",
+    "Não é simples.",
+    "Exige cuidado.",
+    "Situação delicada.",
+    "Precisa pensar bem.",
+    "Tem vários lados.",
+    "Não é fácil.",
+    "Requer atenção.",
+    "Vale analisar com calma.",
+    "Nada óbvio."
+  ],
+  "interessante": [
+    "Também achei.",
+    "Chama atenção.",
+    "Tem potencial.",
+    "Vale explorar mais.",
+    "Pode render conversa.",
+    "Tem algo aí.",
+    "Não é comum.",
+    "Gostei disso.",
+    "Diferente.",
+    "Curioso mesmo."
+  ],
+  "fala alguma coisa": [
+    "Sobre o quê?",
+    "Quer um assunto aleatório?",
+    "Posso puxar tema.",
+    "Você escolhe.",
+    "Que tal algo curioso?",
+    "Prefere leve ou profundo?",
+    "Vou falar então.",
+    "Diz o tema.",
+    "Algo específico?",
+    "Posso começar."
+  ]
+
 }
