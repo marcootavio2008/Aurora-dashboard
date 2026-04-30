@@ -337,7 +337,7 @@ body::before {
 }
 
 .card {
-    background: #181717;
+    background: #000000;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     padding: 20px;
@@ -438,7 +438,11 @@ table th {
 table tr:hover {
     background-color: #f1f1f1;
 }
-fieldset{
-   padding: 2px;
-   border-bottom: 2px solid #ddd;
+fieldset {
+    padding: 8px;
+    border: 5px double rgb(108 0 159 / 30%);
+    border-radius: 4px;
+    margin: 18px;
+    box-shadow: 4px 4px rgb(0 0 0 / 34%);
+    background-color: black;
 }
