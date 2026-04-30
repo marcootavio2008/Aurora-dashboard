@@ -2,9 +2,8 @@
 {% block page_title %} Configurações {% endblock %}
 
 {% block content %}
-
+<fieldset>
 <h1 class="page-title">👤 Perfil</h1>
-
 <div class="card">
   <div class="row">
     <div class="field">
@@ -33,9 +32,10 @@
     <button class="btn-primary" onclick="criarUsuario()">Salvar Configurações</button>
   </div>
 </div>
+</fieldset>
 
+<fieldset>
 <h1 class="page-title">🏠 Casas</h1>
-
 <div class="card">
   <div class="row">
     <div class="field">
@@ -59,9 +59,10 @@
     </div>
   </div>
 </div>
+</fieldset>
 
+<fieldset>
 <h1 class="page-title">👥 Usuários</h1>
-
 <div class="card">
   <table id="usersTable">
     <thead>
@@ -74,6 +75,7 @@
     <tbody></tbody>
   </table>
 </div>
+</fieldset>
 
 <script>
 /* ==========================
