@@ -438,3 +438,7 @@ table th {
 table tr:hover {
     background-color: #f1f1f1;
 }
+fieldset{
+   padding: 2px;
+   border-bottom: 2px solid #ddd;
+}
