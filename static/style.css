@@ -2,7 +2,7 @@
    BASE GLOBAL
 ========================= */
 body {
-    background-color: #0b0b12;
+    background-color: #000000;
     color: #eaeaea;
     font-family: 'Inter', 'Poppins', Arial, sans-serif;
     margin: 0;
@@ -32,7 +32,7 @@ body {
     align-items: center;
     justify-content: space-between;
     padding: 14px 20px;
-    background: rgba(10, 10, 20, 0.7);
+    background: rgb(0 0 0 / 50%);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(123, 63, 242, 0.4);
 }
@@ -157,7 +157,7 @@ body {
 .messages {
     height: 65vh;
     overflow-y: auto;
-    background: linear-gradient(180deg, #14141d, #0d0d12);
+    background: linear-gradient(180deg, #010113, #000000);
     padding: 15px;
     border-radius: 16px;
     margin-bottom: 12px;
