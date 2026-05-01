@@ -62,6 +62,10 @@ db = SQLAlchemy(app)
 # MODELOS
 # ===============================
 
+class PushSubscription(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    data = db.Column(db.JSON)
+
 class User(db.Model):
     __tablename__ = "users"
 
@@ -299,9 +303,10 @@ def sw():
 
 @app.route("/save-subscription", methods=["POST"])
 def save_sub():
-    print("= aqui =")
     sub = request.json
-    subscriptions.append(sub)
+    nova = PushSubscription(data=sub)
+    db.session.add(nova)
+    db.session.commit()
     return {"status": "ok"}
 
 @app.route("/notify", methods=["POST"])
@@ -309,18 +314,14 @@ def notify():
     data = request.json
     print("Recebido:", data)  # DEBUG
     print("Subs:", len(subscriptions))
-    for sub in subscriptions:
-        try:
-            webpush(
-                subscription_info=sub,
-                data=json.dumps(data),
-                vapid_private_key=VAPID_PRIVATE,
-                vapid_claims={"sub": "mailto:marcootavio2008@gmail.com"}
-            )
-            print("Push enviado")
-        except Exception as e:
-            print("Erro push:", e)
-
+    subs = PushSubscription.query.all()
+    for s in subs:
+        webpush(
+            subscription_info=s.data,
+            data=json.dumps(data),
+            vapid_private_key=VAPID_PRIVATE,
+            vapid_claims={"sub": "mailto:marcootavio2008@gmail.com"}
+        )
     return {"status": "ok"}, 200
 
 @app.route("/", methods=["GET", "POST"])
