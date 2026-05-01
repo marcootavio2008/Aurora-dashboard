@@ -28,7 +28,8 @@ app = Flask(__name__)
 app.secret_key = "cx1228"
 app.config.update(
     SESSION_COOKIE_SAMESITE="None",
-    SESSION_COOKIE_SECURE=True  # obrigatório em HTTPS (Render)
+    SESSION_COOKIE_SECURE=True,
+    SESSION_COOKIE_HTTPONLY=True
 )
 socketio = SocketIO(app)
 sock = Sock(app)
@@ -314,13 +315,17 @@ def login():
         ).first()
 
         if user:
+            session.clear()
             session["user_id"] = user.id
             session["username"] = user.username
             session["role"] = user.role
-            session["house_id"] = user.house_id  # <- aqui
+            session["house_id"] = user.house_id
+            session.permanent = True
+
             return redirect(url_for("home"))
 
     return render_template("login.html")
+
 
 @app.route("/service-worker.js")
 def sw():
@@ -328,28 +333,40 @@ def sw():
 
 @app.route("/save-subscription", methods=["POST"])
 def save_sub():
-    print("SESSION:", session)
-    if "user_id" not in session:
+    data = request.get_json()
+
+    user_id = session.get("user_id") or data.get("user_id")
+
+    print("SESSION RAW:", dict(session))
+    print("USER_ID:", user_id)
+
+    if not user_id:
         return {"error": "não logado"}, 403
 
-    sub = request.json
-    print("SUB:", sub)
+    sub = data.get("subscription") or data
 
     nova = PushSubscription(
-        user_id=session["user_id"],
+        user_id=user_id,
         data=sub
     )
+
     db.session.add(nova)
     db.session.commit()
 
     print("SALVO NO BANCO")
 
     return {"status": "ok"}
+    
 @app.route("/notify", methods=["POST"])
 def notify():
-    data = request.json
-    user_id = data.get("user_id")  # 🔥 importante
+    data = request.json or {}
+
+    user_id = data.get("user_id")
+    if not user_id:
+        return {"error": "user_id obrigatório"}, 400
+
     subs = PushSubscription.query.filter_by(user_id=user_id).all()
+
     for s in subs:
         try:
             webpush(
@@ -359,9 +376,9 @@ def notify():
                 vapid_claims={"sub": "mailto:marcootavio2008@gmail.com"}
             )
         except Exception as e:
-            print("Erro:", e)
-    return {"status": "ok"}
+            print("Erro push:", e)
 
+    return {"status": "ok"}
     
 @app.route("/dashboard")
 def home():
