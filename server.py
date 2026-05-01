@@ -398,7 +398,13 @@ def casa():
 
 @app.route("/configs")
 def configs():
-    return render_template("config.html")
+    if "user_id" not in session:
+        return redirect(url_for("login"))
+
+    return render_template(
+        "config.html",
+        user_id=session.get("user_id")
+    )
     
 @app.route("/dash_residencial")
 def dash_residencial():
