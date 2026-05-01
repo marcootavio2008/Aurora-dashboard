@@ -308,15 +308,24 @@ def sw():
 
 @app.route("/save-subscription", methods=["POST"])
 def save_sub():
+    print("SESSION:", session)
+
+    if "user_id" not in session:
+        return {"error": "não logado"}, 403
+
     sub = request.json
+    print("SUB:", sub)
+
     nova = PushSubscription(
         user_id=session["user_id"],
         data=sub
     )
     db.session.add(nova)
     db.session.commit()
-    return {"status": "ok"}
 
+    print("SALVO NO BANCO")
+
+    return {"status": "ok"}
 @app.route("/notify", methods=["POST"])
 def notify():
     data = request.json
