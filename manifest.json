@@ -1,0 +1,16 @@
+{
+  "name": "Aurora",
+  "short_name": "Aurora",
+  "start_url": "/",
+  "display": "standalone",
+  "shortcuts": [
+    {
+      "name": "Ligar tudo",
+      "url": "/?action=all_on"
+    },
+    {
+      "name": "Desligar tudo",
+      "url": "/?action=all_off"
+    }
+  ]
+}
