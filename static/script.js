@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 // ===============================
-// FALA DA AURORA
+// AURORA FALA
 // ===============================
 function auroraFalar(texto) {
     if ('speechSynthesis' in window) {
@@ -34,10 +34,7 @@ function auroraFalar(texto) {
         fala.pitch = 1;
         fala.rate = 1;
         fala.volume = 1;
-
         speechSynthesis.speak(fala);
-    } else {
-        console.log("API de fala não suportada.");
     }
 }
 
@@ -59,22 +56,23 @@ function toggleLuz(el) {
 // CHAT
 // ===============================
 async function sendMessage() {
-    let msg = document.getElementById('inputMsg').value;
+    const msg = document.getElementById('inputMsg').value;
     if (!msg) return;
 
-    let res = await fetch('/message', {
+    const res = await fetch('/message', {
         method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({message: msg})
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: msg })
     });
 
-    let data = await res.json();
+    const data = await res.json();
 
-    let messagesDiv = document.getElementById('messages');
+    const messagesDiv = document.getElementById('messages');
     messagesDiv.innerHTML += `<p><b>Você:</b> ${msg}</p>`;
     messagesDiv.innerHTML += `<p><b>Aurora:</b> ${data.response}</p>`;
 
     auroraFalar(data.response);
+
     document.getElementById('inputMsg').value = "";
 }
 
@@ -83,7 +81,10 @@ async function sendMessage() {
 // PUSH NOTIFICATION
 // ===============================
 
-// 🔧 Converter VAPID KEY
+let swRegistration = null;
+
+
+// Converter VAPID KEY
 function urlBase64ToUint8Array(base64String) {
     const padding = '='.repeat((4 - base64String.length % 4) % 4);
     const base64 = (base64String + padding)
@@ -95,10 +96,49 @@ function urlBase64ToUint8Array(base64String) {
 }
 
 
-// 🔔 Inscrição no push
+// ===============================
+// REGISTRO DO SERVICE WORKER
+// ===============================
+document.addEventListener("DOMContentLoaded", async () => {
+    if (!("serviceWorker" in navigator)) {
+        console.log("Service Worker não suportado");
+        return;
+    }
+
+    try {
+        swRegistration = await navigator.serviceWorker.register("/service-worker.js");
+        console.log("✅ Service Worker registrado");
+    } catch (err) {
+        console.error("❌ Erro ao registrar SW:", err);
+    }
+});
+
+
+// ===============================
+// ATIVAR NOTIFICAÇÕES (CHAMAR NO BOTÃO)
+// ===============================
+async function enableNotifications() {
+    if (!swRegistration) {
+        console.log("SW ainda não carregado");
+        return;
+    }
+
+    const permission = await Notification.requestPermission();
+
+    if (permission !== "granted") {
+        console.log("❌ Permissão negada");
+        return;
+    }
+
+    await subscribeUser(swRegistration);
+}
+
+
+// ===============================
+// INSCRIÇÃO PUSH
+// ===============================
 async function subscribeUser(registration) {
     try {
-        // Verifica se já existe inscrição
         let subscription = await registration.pushManager.getSubscription();
 
         if (!subscription) {
@@ -108,54 +148,23 @@ async function subscribeUser(registration) {
                     "BFmyZPH_eZg-3Uj3VvmXEJXO5IFKQRadp5pWKs1Rx5jE0QPO0FjodSgBwj6L_B0NraDhu8jykMJ6F8V7LONPe4o"
                 )
             });
+
             console.log("🆕 Nova inscrição criada");
         } else {
-            console.log("ℹ️ Já estava inscrito");
+            console.log("ℹ️ Já inscrito");
         }
 
-        // Envia pro backend
         const res = await fetch("/save-subscription", {
             method: "POST",
-            body: JSON.stringify(subscription),
             headers: { "Content-Type": "application/json" },
-            credentials: "include" // 🔥 mantém sessão
+            credentials: "include",
+            body: JSON.stringify(subscription)
         });
 
         const data = await res.json();
         console.log("📡 Backend:", data);
 
     } catch (err) {
-        console.error("❌ Erro ao inscrever:", err);
+        console.error("❌ Erro no subscribe:", err);
     }
 }
-
-
-// ===============================
-// INICIALIZAÇÃO DO PUSH
-// ===============================
-document.addEventListener("DOMContentLoaded", async () => {
-    if (!("serviceWorker" in navigator)) {
-        console.log("Service Worker não suportado");
-        return;
-    }
-
-    try {
-        // 🔥 registra corretamente
-        const registration = await navigator.serviceWorker.register("/service-worker.js");
-        console.log("✅ Service Worker registrado");
-
-        // 🔥 pede permissão UMA vez
-        const permission = await Notification.requestPermission();
-
-        if (permission !== "granted") {
-            console.log("❌ Permissão negada");
-            return;
-        }
-
-        // 🔥 inscreve usuário
-        await subscribeUser(registration);
-
-    } catch (err) {
-        console.error("❌ Erro no setup do push:", err);
-    }
-});
