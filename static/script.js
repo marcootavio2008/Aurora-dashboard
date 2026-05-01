@@ -80,10 +80,10 @@ async function sendMessage() {
 
 
 // ===============================
-// PUSH NOTIFICATION (CORRIGIDO)
+// PUSH NOTIFICATION
 // ===============================
 
-// 🔧 Conversão obrigatória da VAPID KEY
+// 🔧 Converter VAPID KEY
 function urlBase64ToUint8Array(base64String) {
     const padding = '='.repeat((4 - base64String.length % 4) % 4);
     const base64 = (base64String + padding)
@@ -95,36 +95,37 @@ function urlBase64ToUint8Array(base64String) {
 }
 
 
-// 🔔 Inscrever usuário no push
-async function subscribeUser() {
+// 🔔 Inscrição no push
+async function subscribeUser(registration) {
     try {
-        const permission = await Notification.requestPermission();
+        // Verifica se já existe inscrição
+        let subscription = await registration.pushManager.getSubscription();
 
-        if (permission !== "granted") {
-            console.log("❌ Permissão de notificação negada");
-            return;
+        if (!subscription) {
+            subscription = await registration.pushManager.subscribe({
+                userVisibleOnly: true,
+                applicationServerKey: urlBase64ToUint8Array(
+                    "BFmyZPH_eZg-3Uj3VvmXEJXO5IFKQRadp5pWKs1Rx5jE0QPO0FjodSgBwj6L_B0NraDhu8jykMJ6F8V7LONPe4o"
+                )
+            });
+            console.log("🆕 Nova inscrição criada");
+        } else {
+            console.log("ℹ️ Já estava inscrito");
         }
 
-        const registration = await navigator.serviceWorker.ready;
-
-        const subscription = await registration.pushManager.subscribe({
-            userVisibleOnly: true,
-            applicationServerKey: urlBase64ToUint8Array(
-                "BFmyZPH_eZg-3Uj3VvmXEJXO5IFKQRadp5pWKs1Rx5jE0QPO0FjodSgBwj6L_B0NraDhu8jykMJ6F8V7LONPe4o"
-            )
-        });
-
-        await fetch("/save-subscription", {
+        // Envia pro backend
+        const res = await fetch("/save-subscription", {
             method: "POST",
             body: JSON.stringify(subscription),
             headers: { "Content-Type": "application/json" },
-            credentials: "include" // 🔥 ESSENCIAL
+            credentials: "include" // 🔥 mantém sessão
         });
 
-        console.log("✅ Inscrito para push");
+        const data = await res.json();
+        console.log("📡 Backend:", data);
 
     } catch (err) {
-        console.error("Erro ao inscrever:", err);
+        console.error("❌ Erro ao inscrever:", err);
     }
 }
 
@@ -133,11 +134,28 @@ async function subscribeUser() {
 // INICIALIZAÇÃO DO PUSH
 // ===============================
 document.addEventListener("DOMContentLoaded", async () => {
-    if ("serviceWorker" in navigator) {
-        await navigator.serviceWorker.register("/service-worker.js");
+    if (!("serviceWorker" in navigator)) {
+        console.log("Service Worker não suportado");
+        return;
+    }
+
+    try {
+        // 🔥 registra corretamente
+        const registration = await navigator.serviceWorker.register("/service-worker.js");
+        console.log("✅ Service Worker registrado");
+
+        // 🔥 pede permissão UMA vez
         const permission = await Notification.requestPermission();
-        if (permission === "granted") {
-            await subscribeUser();
+
+        if (permission !== "granted") {
+            console.log("❌ Permissão negada");
+            return;
         }
+
+        // 🔥 inscreve usuário
+        await subscribeUser(registration);
+
+    } catch (err) {
+        console.error("❌ Erro no setup do push:", err);
     }
 });
