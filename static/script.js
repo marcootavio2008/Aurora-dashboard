@@ -108,7 +108,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     try {
-        swRegistration = await navigator.serviceWorker.register("/service-worker.js", {
+        swRegistration = await navigator.serviceWorker.register("service-worker.js", {
             scope: "/"
         });
 
