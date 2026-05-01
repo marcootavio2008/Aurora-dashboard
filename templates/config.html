@@ -83,30 +83,32 @@
 
 
 <script>
-window.enableNotifications = async function () {
+async function subscribeUser(registration) {
     try {
-        const permission = await Notification.requestPermission();
+        // Pega o ID do usuário que o Flask injetou no template
+        const userId = "{{ user_id }}"; 
 
-        if (permission !== "granted") {
-            console.log("Permissão negada");
-            return;
-        }
+        let subscription = await registration.pushManager.subscribe({
+            userVisibleOnly: true,
+            applicationServerKey: urlBase64ToUint8Array("SUA_CHAVE_VAPID_AQUI")
+        });
 
-        const registration = await navigator.serviceWorker.ready;
+        // Envia para o servidor garantindo que o user_id vá junto
+        await fetch("/save-subscription", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                subscription: subscription,
+                user_id: userId 
+            })
+        });
 
-        if (!registration) {
-            console.log("Service Worker não pronto");
-            return;
-        }
-
-        await subscribeUser(registration);
-        alert("Notificações ativadas");
-        console.log("Inscrição concluída");
-
+        alert("Celular registrado com sucesso!");
     } catch (err) {
-        console.error("Erro notifications:", err);
+        console.error("Erro no celular:", err);
+        alert("Erro: " + err.message);
     }
-};
+}
 /* ==========================
    CASAS
 ========================== */
