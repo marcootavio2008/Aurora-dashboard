@@ -64,7 +64,8 @@ db = SQLAlchemy(app)
 
 class PushSubscription(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    data = db.Column(db.JSON)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
+    data = db.Column(db.JSON, nullable=False)
 
 class User(db.Model):
     __tablename__ = "users"
@@ -303,8 +304,13 @@ def sw():
 
 @app.route("/save-subscription", methods=["POST"])
 def save_sub():
+    if "user_id" not in session:
+        return {"error": "não autenticado"}, 403
     sub = request.json
-    nova = PushSubscription(data=sub)
+    nova = PushSubscription(
+        user_id=session["user_id"],
+        data=sub
+    )
     db.session.add(nova)
     db.session.commit()
     return {"status": "ok"}
@@ -312,17 +318,19 @@ def save_sub():
 @app.route("/notify", methods=["POST"])
 def notify():
     data = request.json
-    print("Recebido:", data)  # DEBUG
-    print("Subs:", len(subscriptions))
-    subs = PushSubscription.query.all()
+    user_id = data.get("user_id")  # 🔥 importante
+    subs = PushSubscription.query.filter_by(user_id=user_id).all()
     for s in subs:
-        webpush(
-            subscription_info=s.data,
-            data=json.dumps(data),
-            vapid_private_key=VAPID_PRIVATE,
-            vapid_claims={"sub": "mailto:marcootavio2008@gmail.com"}
-        )
-    return {"status": "ok"}, 200
+        try:
+            webpush(
+                subscription_info=s.data,
+                data=json.dumps(data),
+                vapid_private_key=VAPID_PRIVATE,
+                vapid_claims={"sub": "mailto:marcootavio2008@gmail.com"}
+            )
+        except Exception as e:
+            print("Erro:", e)
+    return {"status": "ok"}
 
 @app.route("/", methods=["GET", "POST"])
 def login():
