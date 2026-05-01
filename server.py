@@ -26,7 +26,10 @@ from pywebpush import webpush, WebPushException
 
 app = Flask(__name__)
 app.secret_key = "cx1228"
-
+app.config.update(
+    SESSION_COOKIE_SAMESITE="None",
+    SESSION_COOKIE_SECURE=True  # obrigatório em HTTPS (Render)
+)
 socketio = SocketIO(app)
 sock = Sock(app)
 
