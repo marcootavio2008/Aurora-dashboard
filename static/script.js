@@ -134,14 +134,10 @@ async function subscribeUser() {
 // ===============================
 document.addEventListener("DOMContentLoaded", async () => {
     if ("serviceWorker" in navigator) {
-        try {
-            await navigator.serviceWorker.register("/service-worker.js");
-            console.log("✅ Service Worker registrado");
-
-            await subscribeUser(); // 🔥 ESSENCIAL
-
-        } catch (err) {
-            console.error("Erro no Service Worker:", err);
+        await navigator.serviceWorker.register("/service-worker.js");
+        const permission = await Notification.requestPermission();
+        if (permission === "granted") {
+            await subscribeUser();
         }
     }
 });
