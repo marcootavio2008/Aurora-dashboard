@@ -293,6 +293,10 @@ def processar_frase(frase, user_id):
 # ROTAS AUTH
 # ===============================
 
+@app.route("/service-worker.js")
+def sw():
+    return app.send_static_file("service-worker.js")
+
 @app.route("/save-subscription", methods=["POST"])
 def save_sub():
     print("= aqui =")
