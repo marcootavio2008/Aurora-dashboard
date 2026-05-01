@@ -155,11 +155,13 @@ async function subscribeUser(registration) {
         }
 
         const res = await fetch("/save-subscription", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            credentials: "include",
-            body: JSON.stringify(subscription)
-        });
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            subscription: subscription,
+            user_id: window.user_id // Garanta que o ID do usuário esteja disponível
+        })
+    });
 
         const data = await res.json();
         console.log("📡 Backend:", data);
