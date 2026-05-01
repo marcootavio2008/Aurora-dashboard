@@ -302,6 +302,23 @@ def processar_frase(frase, user_id):
 # ROTAS AUTH
 # ===============================
 
+@app.route("/", methods=["GET", "POST"])
+def login():
+    if request.method == "POST":
+        user = User.query.filter_by(
+            username=request.form["usuario"],
+            password=request.form["senha"]
+        ).first()
+
+        if user:
+            session["user_id"] = user.id
+            session["username"] = user.username
+            session["role"] = user.role
+            session["house_id"] = user.house_id  # <- aqui
+            return redirect(url_for("home"))
+
+    return render_template("login.html")
+
 @app.route("/service-worker.js")
 def sw():
     return app.send_static_file("service-worker.js")
@@ -309,7 +326,6 @@ def sw():
 @app.route("/save-subscription", methods=["POST"])
 def save_sub():
     print("SESSION:", session)
-
     if "user_id" not in session:
         return {"error": "não logado"}, 403
 
@@ -343,24 +359,7 @@ def notify():
             print("Erro:", e)
     return {"status": "ok"}
 
-@app.route("/", methods=["GET", "POST"])
-def login():
-    if request.method == "POST":
-        user = User.query.filter_by(
-            username=request.form["usuario"],
-            password=request.form["senha"]
-        ).first()
-
-        if user:
-            session["user_id"] = user.id
-            session["username"] = user.username
-            session["role"] = user.role
-            session["house_id"] = user.house_id  # <- aqui
-            return redirect(url_for("home"))
-
-    return render_template("login.html")
-
-
+    
 @app.route("/dashboard")
 def home():
     if "user_id" not in session:
