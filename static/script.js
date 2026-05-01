@@ -99,17 +99,27 @@ function urlBase64ToUint8Array(base64String) {
 // ===============================
 // REGISTRO DO SERVICE WORKER
 // ===============================
+let swRegistration = null;
+
 document.addEventListener("DOMContentLoaded", async () => {
     if (!("serviceWorker" in navigator)) {
-        console.log("Service Worker não suportado");
+        console.log("SW não suportado");
         return;
     }
 
     try {
-        swRegistration = await navigator.serviceWorker.register("/service-worker.js");
-        console.log("✅ Service Worker registrado");
+        swRegistration = await navigator.serviceWorker.register("/service-worker.js", {
+            scope: "/"
+        });
+
+        console.log("SW registrado:", swRegistration.scope);
+
+        await navigator.serviceWorker.ready;
+        console.log("SW pronto para uso");
+        alert("funcionando");
+
     } catch (err) {
-        console.error("❌ Erro ao registrar SW:", err);
+        console.error("Erro SW:", err);
     }
 });
 
