@@ -295,6 +295,7 @@ def processar_frase(frase, user_id):
 
 @app.route("/save-subscription", methods=["POST"])
 def save_sub():
+    print("= aqui =")
     sub = request.json
     subscriptions.append(sub)
     return {"status": "ok"}
@@ -302,10 +303,11 @@ def save_sub():
 @app.route("/notify", methods=["POST"])
 def notify():
     data = request.json
-
     print("Recebido:", data)  # DEBUG
+    print("Subs:", len(subscriptions))
 
     for sub in subscriptions:
+    print("Enviando para:", sub)
         try:
             webpush(
                 subscription_info=sub,
