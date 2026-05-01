@@ -32,5 +32,15 @@
     {% block scripts %}{% endblock %}
 
     <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script>
+        window.addEventListener("load", async () => {
+    if ("serviceWorker" in navigator) {
+        const registration = await navigator.serviceWorker.register("/service-worker.js");
+        console.log("SW registrado");
+
+        await subscribeUser(); // 🔥 AQUI
+    }
+});
+    </script>
 </body>
 </html>
