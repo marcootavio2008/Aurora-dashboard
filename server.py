@@ -132,7 +132,9 @@ PALAVRAS_CONTINUACAO = [
 ]
 
 wikipedia.set_lang("pt")
-
+subscriptions = []
+VAPID_PUBLIC = "BFmyZPH_eZg-3Uj3VvmXEJXO5IFKQRadp5pWKs1Rx5jE0QPO0FjodSgBwj6L_B0NraDhu8jykMJ6F8V7LONPe4o"
+VAPID_PRIVATE = "bP5irRD_aRrWXx-_2KSAbJUENTyQa7CLi6p_-xSxhF4"
 CAMINHO = "dictionary.json"
 
 with open(CAMINHO, "r", encoding="utf-8") as f:
@@ -285,6 +287,29 @@ def processar_frase(frase, user_id):
 # ===============================
 # ROTAS AUTH
 # ===============================
+
+@app.route("/save-subscription", methods=["POST"])
+def save_sub():
+    sub = request.json
+    subscriptions.append(sub)
+    return {"status": "ok"}
+
+@app.route("/notify", methods=["POST"])
+def notify():
+    data = request.json
+
+    for sub in subscriptions:
+        try:
+            webpush(
+                subscription_info=sub,
+                data=json.dumps(data),
+                vapid_private_key=VAPID_PRIVATE,
+                vapid_claims={"sub": "mailto:marcootavio2008@gmail.com"}
+            )
+        except WebPushException as e:
+            print(e)
+
+    return {"status": "sent"}
 
 @app.route("/", methods=["GET", "POST"])
 def login():
