@@ -309,9 +309,7 @@ def notify():
     data = request.json
     print("Recebido:", data)  # DEBUG
     print("Subs:", len(subscriptions))
-
     for sub in subscriptions:
-    print("Enviando para:", sub)
         try:
             webpush(
                 subscription_info=sub,
