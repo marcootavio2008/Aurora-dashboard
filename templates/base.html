@@ -32,9 +32,15 @@
     {% block scripts %}{% endblock %}
 
     <script src="/static/script.js"></script>
-    <script>
-        window.USER_ID = {{ user_id | tojson }};
-    </script>
+{% if user_id is defined %}
+<script>
+    window.USER_ID = {{ user_id | tojson }};
+</script>
+{% else %}
+<script>
+    window.USER_ID = null;
+</script>
+{% endif %}
   
 </body>
 </html>
