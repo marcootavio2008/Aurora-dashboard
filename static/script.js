@@ -70,7 +70,7 @@ async function subscribeUser() {
 
     const subscription = await registration.pushManager.subscribe({
         userVisibleOnly: true,
-        applicationServerKey: "SUA_PUBLIC_VAPID_KEY"
+        applicationServerKey: "BFmyZPH_eZg-3Uj3VvmXEJXO5IFKQRadp5pWKs1Rx5jE0QPO0FjodSgBwj6L_B0NraDhu8jykMJ6F8V7LONPe4o"
     });
 
     await fetch("/save-subscription", {
