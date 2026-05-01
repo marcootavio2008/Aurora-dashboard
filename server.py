@@ -308,8 +308,6 @@ def sw():
 
 @app.route("/save-subscription", methods=["POST"])
 def save_sub():
-    if "user_id" not in session:
-        return {"error": "não autenticado"}, 403
     sub = request.json
     nova = PushSubscription(
         user_id=session["user_id"],
