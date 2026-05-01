@@ -36,11 +36,15 @@ sock = Sock(app)
 
 @app.before_request
 def check_login():
-    rotas_livres = {"login", "static"}
+    rotas_livres = {
+        "login",
+        "static",
+        "notify",             # 🔥 ADICIONE
+        "save_sub"            # 🔥 ADICIONE (nome da função)
+    }
 
     if request.endpoint not in rotas_livres and "user_id" not in session:
         return redirect(url_for("login"))
-
 # ===============================
 # DATABASE
 # ===============================
