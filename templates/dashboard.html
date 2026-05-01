@@ -3,7 +3,11 @@
 {% block title %}Aurora Dashboard{% endblock %}
 
 {% block page_title %}Aurora Dashboard{% endblock %}
-
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    subscribeUser();
+});
+</script>
 {% block content %}
     <div class="container">
         <div class="chat">
