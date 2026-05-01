@@ -117,7 +117,8 @@ async function subscribeUser() {
         await fetch("/save-subscription", {
             method: "POST",
             body: JSON.stringify(subscription),
-            headers: { "Content-Type": "application/json" }
+            headers: { "Content-Type": "application/json" },
+            credentials: "include" // 🔥 ESSENCIAL
         });
 
         console.log("✅ Inscrito para push");
