@@ -370,7 +370,8 @@ def home():
 
     return render_template(
         "dashboard.html",
-        username=session.get("username", "Usuário")
+        username=session.get("username", "Usuário"),
+        user_id=session.get("user_id")
     )
 
 @app.route('/casa') 
