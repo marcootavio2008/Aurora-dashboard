@@ -64,3 +64,18 @@ async function sendMessage() {
 
     document.getElementById('inputMsg').value = "";
 }
+
+async function subscribeUser() {
+    const registration = await navigator.serviceWorker.ready;
+
+    const subscription = await registration.pushManager.subscribe({
+        userVisibleOnly: true,
+        applicationServerKey: "SUA_PUBLIC_VAPID_KEY"
+    });
+
+    await fetch("/save-subscription", {
+        method: "POST",
+        body: JSON.stringify(subscription),
+        headers: { "Content-Type": "application/json" }
+    });
+}
