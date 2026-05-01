@@ -32,6 +32,9 @@
     {% block scripts %}{% endblock %}
 
     <script src="/static/script.js"></script>
+    <script>
+        window.USER_ID = {{ user_id | tojson }};
+    </script>
   
 </body>
 </html>
