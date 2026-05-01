@@ -299,6 +299,8 @@ def save_sub():
 def notify():
     data = request.json
 
+    print("Recebido:", data)  # DEBUG
+
     for sub in subscriptions:
         try:
             webpush(
@@ -307,10 +309,11 @@ def notify():
                 vapid_private_key=VAPID_PRIVATE,
                 vapid_claims={"sub": "mailto:marcootavio2008@gmail.com"}
             )
-        except WebPushException as e:
-            print(e)
+            print("Push enviado")
+        except Exception as e:
+            print("Erro push:", e)
 
-    return {"status": "sent"}
+    return {"status": "ok"}, 200
 
 @app.route("/", methods=["GET", "POST"])
 def login():
