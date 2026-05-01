@@ -43,10 +43,10 @@ def check_login():
     rotas_livres = {
         "login",
         "static",
-        "notify",             # 🔥 ADICIONE
-        "save_sub"            # 🔥 ADICIONE (nome da função)
+        "sw",            # Permitir o Service Worker
+        "save_sub",      # Nome da função da rota /save-subscription
+        "notify"         # Nome da função da rota /notify
     }
-
     if request.endpoint not in rotas_livres and "user_id" not in session:
         return redirect(url_for("login"))
 # ===============================
