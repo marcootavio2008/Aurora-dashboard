@@ -1,3 +1,6 @@
+// ===============================
+// MENU LATERAL
+// ===============================
 document.addEventListener('DOMContentLoaded', () => {
     const menuToggle = document.querySelector('.menu-toggle');
     const closeBtn = document.querySelector('.close-btn');
@@ -21,21 +24,27 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+// ===============================
+// FALA DA AURORA
+// ===============================
 function auroraFalar(texto) {
     if ('speechSynthesis' in window) {
         const fala = new SpeechSynthesisUtterance(texto);
-        fala.lang = 'pt-BR';  // Português do Brasil
-        fala.pitch = 1;       // Tom de voz (0 a 2)
-        fala.rate = 1;        // Velocidade da fala
-        fala.volume = 1;      // Volume (0 a 1)
+        fala.lang = 'pt-BR';
+        fala.pitch = 1;
+        fala.rate = 1;
+        fala.volume = 1;
 
         speechSynthesis.speak(fala);
     } else {
-        console.log("A API de fala não é suportada neste navegador.");
+        console.log("API de fala não suportada.");
     }
 }
 
 
+// ===============================
+// CONTROLE DE LUZ
+// ===============================
 function toggleLuz(el) {
     const estado = el.checked ? "ligar" : "desligar";
 
@@ -46,6 +55,9 @@ function toggleLuz(el) {
 }
 
 
+// ===============================
+// CHAT
+// ===============================
 async function sendMessage() {
     let msg = document.getElementById('inputMsg').value;
     if (!msg) return;
@@ -55,27 +67,80 @@ async function sendMessage() {
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({message: msg})
     });
+
     let data = await res.json();
 
     let messagesDiv = document.getElementById('messages');
     messagesDiv.innerHTML += `<p><b>Você:</b> ${msg}</p>`;
     messagesDiv.innerHTML += `<p><b>Aurora:</b> ${data.response}</p>`;
-    auroraFalar(data.response);
 
+    auroraFalar(data.response);
     document.getElementById('inputMsg').value = "";
 }
 
-async function subscribeUser() {
-    const registration = await navigator.serviceWorker.ready;
 
-    const subscription = await registration.pushManager.subscribe({
-        userVisibleOnly: true,
-        applicationServerKey: "BFmyZPH_eZg-3Uj3VvmXEJXO5IFKQRadp5pWKs1Rx5jE0QPO0FjodSgBwj6L_B0NraDhu8jykMJ6F8V7LONPe4o"
-    });
+// ===============================
+// PUSH NOTIFICATION (CORRIGIDO)
+// ===============================
 
-    await fetch("/save-subscription", {
-        method: "POST",
-        body: JSON.stringify(subscription),
-        headers: { "Content-Type": "application/json" }
-    });
+// 🔧 Conversão obrigatória da VAPID KEY
+function urlBase64ToUint8Array(base64String) {
+    const padding = '='.repeat((4 - base64String.length % 4) % 4);
+    const base64 = (base64String + padding)
+        .replace(/-/g, '+')
+        .replace(/_/g, '/');
+
+    const rawData = atob(base64);
+    return Uint8Array.from([...rawData].map(c => c.charCodeAt(0)));
 }
+
+
+// 🔔 Inscrever usuário no push
+async function subscribeUser() {
+    try {
+        const permission = await Notification.requestPermission();
+
+        if (permission !== "granted") {
+            console.log("❌ Permissão de notificação negada");
+            return;
+        }
+
+        const registration = await navigator.serviceWorker.ready;
+
+        const subscription = await registration.pushManager.subscribe({
+            userVisibleOnly: true,
+            applicationServerKey: urlBase64ToUint8Array(
+                "BFmyZPH_eZg-3Uj3VvmXEJXO5IFKQRadp5pWKs1Rx5jE0QPO0FjodSgBwj6L_B0NraDhu8jykMJ6F8V7LONPe4o"
+            )
+        });
+
+        await fetch("/save-subscription", {
+            method: "POST",
+            body: JSON.stringify(subscription),
+            headers: { "Content-Type": "application/json" }
+        });
+
+        console.log("✅ Inscrito para push");
+
+    } catch (err) {
+        console.error("Erro ao inscrever:", err);
+    }
+}
+
+
+// ===============================
+// INICIALIZAÇÃO DO PUSH
+// ===============================
+document.addEventListener("DOMContentLoaded", async () => {
+    if ("serviceWorker" in navigator) {
+        try {
+            await navigator.serviceWorker.register("/service-worker.js");
+            console.log("✅ Service Worker registrado");
+
+            await subscribeUser(); // 🔥 ESSENCIAL
+
+        } catch (err) {
+            console.error("Erro no Service Worker:", err);
+        }
+    }
+});
