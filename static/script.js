@@ -118,22 +118,29 @@ document.addEventListener("DOMContentLoaded", async () => {
 // ATIVAR NOTIFICAÇÕES (CHAMAR NO BOTÃO)
 // ===============================
 async function enableNotifications() {
-    if (!swRegistration) {
-        console.log("SW ainda não carregado");
-        return;
+    try {
+        const permission = await Notification.requestPermission();
+
+        if (permission !== "granted") {
+            alert("⚠️ Você receberá as notificações a partir de agora!");
+            return;
+        }
+
+        const registration = await navigator.serviceWorker.ready;
+
+        if (!registration) {
+            alert("❌ O Service Worker ainda não está pronto. Tente novamente em instantes.");
+            return;
+        }
+
+        // Chama a função de inscrição
+        await subscribeUser(registration);
+
+    } catch (err) {
+        console.error("Erro notifications:", err);
+        alert("❌ Erro crítico: " + err.message);
     }
-
-    const permission = await Notification.requestPermission();
-
-    if (permission !== "granted") {
-        console.log("❌ Permissão negada");
-        return;
-    }
-
-    await subscribeUser(swRegistration);
 }
-
-
 // ===============================
 // INSCRIÇÃO PUSH
 // ===============================
