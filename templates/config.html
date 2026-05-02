@@ -85,28 +85,36 @@
 <script>
 async function subscribeUser(registration) {
     try {
-        // Pega o ID do usuário que o Flask injetou no template
-        const userId = "{{ user_id }}"; 
+        let subscription = await registration.pushManager.getSubscription();
 
-        let subscription = await registration.pushManager.subscribe({
-            userVisibleOnly: true,
-            applicationServerKey: urlBase64ToUint8Array("SUA_CHAVE_VAPID_AQUI")
-        });
+        if (!subscription) {
+            subscription = await registration.pushManager.subscribe({
+                userVisibleOnly: true,
+                applicationServerKey: urlBase64ToUint8Array(
+                    "BFmyZPH_eZg-3Uj3VvmXEJXO5IFKQRadp5pWKs1Rx5jE0QPO0FjodSgBwj6L_B0NraDhu8jykMJ6F8V7LONPe4o"
+                )
+            });
+        }
 
-        // Envia para o servidor garantindo que o user_id vá junto
-        await fetch("/save-subscription", {
+        const res = await fetch("/save-subscription", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                subscription: subscription,
-                user_id: userId 
-            })
-            alert("Celular registrado com sucesso!");
+            body: JSON.stringify(subscription)
         });
 
+        const data = await res.json();
+
+        if (res.ok) {
+            // ALERTA DE SUCESSO 
+            alert("✅ Sucesso! Este dispositivo agora receberá notificações da Aurora.");
+            console.log("📡 Backend confirmou registro:", data);
+        } else {
+            throw new Error(data.error || "Erro ao salvar no servidor");
+        }
+
     } catch (err) {
-        console.error("Erro no celular:", err);
-        alert("Erro: " + err.message);
+        console.error("❌ Erro no subscribe:", err);
+        alert("❌ Falha ao registrar dispositivo: " + err.message);
     }
 }
 /* ==========================
