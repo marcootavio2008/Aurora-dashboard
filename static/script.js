@@ -150,6 +150,7 @@ async function subscribeUser(registration) {
             });
 
             console.log("🆕 Nova inscrição criada");
+            alert("Nova inscrição criada, agora você receberá notificações!");
         } else {
             console.log("ℹ️ Já inscrito");
         }
