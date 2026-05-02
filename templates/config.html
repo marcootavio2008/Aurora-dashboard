@@ -101,9 +101,9 @@ async function subscribeUser(registration) {
                 subscription: subscription,
                 user_id: userId 
             })
+            alert("Celular registrado com sucesso!");
         });
 
-        alert("Celular registrado com sucesso!");
     } catch (err) {
         console.error("Erro no celular:", err);
         alert("Erro: " + err.message);
