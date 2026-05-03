@@ -18,6 +18,7 @@ self.addEventListener("push", function(event) {
     event.waitUntil(
         self.registration.showNotification(data.title, {
             body: data.body,
+            badge: "/static/file_0000000083f071f590c5479d73121091.png",
             icon: "/static/android-chrome-512x512.png", // certifique-se que este caminho existe
             vibrate: [200, 100, 200],
             data: {
