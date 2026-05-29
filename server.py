@@ -201,14 +201,24 @@ dias = {
 
 def get_dados(): 
     #conversao de moedas
-    site = r"https://economia.awesomeapi.com.br/last/USD-BRL,EUR-BRL"
-    conversao = requests.get(site)
-    conversao_dict = conversao.json()
-    bid_dolar = float(conversao_dict['USDBRL']['bid'])
-    bid_euro = float(conversao_dict['EURBRL']['bid'])
-    
-    bid_euro = (f"R$:{bid_euro:.2f}")
-    bid_dolar = (f"R$:{bid_dolar:.2f}")
+    siteurl = r"https://economia.awesomeapi.com.br/last/USD-BRL,EUR-BRL"
+    conversao = requests.get(siteurl, timeout=10)
+    try:
+        conversao_dict = conversao.json()
+        print(conversao_dict)
+    except Exception:
+        print("Erro ao converter JSON")
+        conversao_dict = {}
+    if 'USDBRL' not in conversao_dict:
+        print("Resposta inválida da API:", conversao_dict)
+        bid_dolar = 5.10
+        bid_euro = 5.87
+    else:
+        bid_dolar = float(conversao_dict['USDBRL']['bid'])
+        bid_euro = float(conversao_dict['EURBRL']['bid'])
+        bid_euro = (f"R$:{bid_euro:.2f}")
+        bid_dolar = (f"R$:{bid_dolar:.2f}")
+
     #data 
     agora_br = datetime.now(ZoneInfo("America/Sao_Paulo")) 
     day_en = agora_br.strftime(f'%A') 
