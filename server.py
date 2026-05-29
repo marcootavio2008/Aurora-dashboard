@@ -207,8 +207,8 @@ def get_dados():
     bid_dolar = float(conversao_dict['USDBRL']['bid'])
     bid_euro = float(conversao_dict['EURBRL']['bid'])
     
-    bid_euro = (f"Euro -> Real: R$:{bid_euro:.2f}")
-    bid_dolar = (f"Dólar -> Real: R$:{bid_dolar:.2f}")
+    bid_euro = (f"R$:{bid_euro:.2f}")
+    bid_dolar = (f"R$:{bid_dolar:.2f}")
     #data 
     agora_br = datetime.now(ZoneInfo("America/Sao_Paulo")) 
     day_en = agora_br.strftime(f'%A') 
@@ -233,7 +233,8 @@ def get_dados():
             "Data: ": dia_resposta, 
             "Clima: ": clima, 
             "Umidade: ": umidade,
-            bid_dolar, bid_euro}
+            "Dólar -> Real: ": bid_dolar, 
+            "Euro -> Real: ": bid_euro}
 
 def processar_pesquisa(frase):
     termo = detectar_pesquisa(frase)
