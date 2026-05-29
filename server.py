@@ -200,6 +200,15 @@ dias = {
     "Sunday": "Domingo", }
 
 def get_dados(): 
+    #conversao de moedas
+    site = r"https://economia.awesomeapi.com.br/last/USD-BRL,EUR-BRL"
+    conversao = requests.get(site)
+    conversao_dict = conversao.json()
+    bid_dolar = float(conversao_dict['USDBRL']['bid'])
+    bid_euro = float(conversao_dict['EURBRL']['bid'])
+    
+    bid_euro = (f"Euro -> Real: R$:{bid_euro:.2f}")
+    bid_dolar = (f"Dólar -> Real: R$:{bid_dolar:.2f}")
     #data 
     agora_br = datetime.now(ZoneInfo("America/Sao_Paulo")) 
     day_en = agora_br.strftime(f'%A') 
@@ -223,7 +232,8 @@ def get_dados():
     return {"Horas: ": horas, 
             "Data: ": dia_resposta, 
             "Clima: ": clima, 
-            "Umidade: ": umidade}
+            "Umidade: ": umidade,
+            bid_dolar, bid_euro}
 
 def processar_pesquisa(frase):
     termo = detectar_pesquisa(frase)
