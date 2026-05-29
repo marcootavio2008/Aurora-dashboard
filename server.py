@@ -201,7 +201,8 @@ dias = {
 
 def get_dados(): 
     #conversao de moedas
-    siteurl = r"https://economia.awesomeapi.com.br/last/USD-BRL,EUR-BRL"
+    token = "ce49a8f6758277364ae252f6148d7a6cdb975b74def1882c0077d6b108b71ac2"
+    siteurl = f"https://economia.awesomeapi.com.br/json/last/USD-BRL,EUR-BRL?token={token}"
     conversao = requests.get(siteurl, timeout=10)
     try:
         conversao_dict = conversao.json()
@@ -211,13 +212,13 @@ def get_dados():
         conversao_dict = {}
     if 'USDBRL' not in conversao_dict:
         print("Resposta inválida da API:", conversao_dict)
-        bid_dolar = 5.10
-        bid_euro = 5.87
+        bid_dolar = "Dólar -> Real: 5.10"
+        bid_euro = "Euro-> Real: 5.87"
     else:
         bid_dolar = float(conversao_dict['USDBRL']['bid'])
         bid_euro = float(conversao_dict['EURBRL']['bid'])
-        bid_euro = (f"R$:{bid_euro:.2f}")
-        bid_dolar = (f"R$:{bid_dolar:.2f}")
+        bid_euro = (f"Euro -> Real: R$:{bid_euro:.2f}")
+        bid_dolar = (f"Dólar -> Real: R$:{bid_dolar:.2f}")
 
     #data 
     agora_br = datetime.now(ZoneInfo("America/Sao_Paulo")) 
